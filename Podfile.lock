@@ -1,0 +1,24 @@
+PODS:
+  - FloatingPanel (2.7.0)
+  - SkyFloatingLabelTextField (3.8.0)
+  - YandexMapsMobile (4.4.0-full)
+
+DEPENDENCIES:
+  - FloatingPanel
+  - SkyFloatingLabelTextField (~> 3.0)
+  - YandexMapsMobile (= 4.4.0-full)
+
+SPEC REPOS:
+  trunk:
+    - FloatingPanel
+    - SkyFloatingLabelTextField
+    - YandexMapsMobile
+
+SPEC CHECKSUMS:
+  FloatingPanel: c88e3fd981b7a74121ff48746fb14d496f5fd553
+  SkyFloatingLabelTextField: 5a338412114808e961fe2d14ea2c5452c8b6e4aa
+  YandexMapsMobile: a76ddceccf2d78f9f1034d07a354810cd21ef21a
+
+PODFILE CHECKSUM: 8aea0dfb21e5eedf3ac3164c685491699a9c20ab
+
+COCOAPODS: 1.12.1
