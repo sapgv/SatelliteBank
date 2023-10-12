@@ -9,10 +9,29 @@
 /* Begin PBXBuildFile section */
 		10BEBB902AD86F99008F9DF0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BEBB8F2AD86F99008F9DF0 /* AppDelegate.swift */; };
 		10BEBB922AD86F99008F9DF0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BEBB912AD86F99008F9DF0 /* SceneDelegate.swift */; };
-		10BEBB942AD86F99008F9DF0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BEBB932AD86F99008F9DF0 /* ViewController.swift */; };
+		10BEBB942AD86F99008F9DF0 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BEBB932AD86F99008F9DF0 /* MapViewController.swift */; };
 		10BEBB972AD86F99008F9DF0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10BEBB952AD86F99008F9DF0 /* Main.storyboard */; };
 		10BEBB992AD86F9A008F9DF0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10BEBB982AD86F9A008F9DF0 /* Assets.xcassets */; };
 		10BEBB9C2AD86F9A008F9DF0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10BEBB9A2AD86F9A008F9DF0 /* LaunchScreen.storyboard */; };
+		10BEBBA82AD870F7008F9DF0 /* LocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BEBBA62AD870F7008F9DF0 /* LocationViewModel.swift */; };
+		10BEBBA92AD870F7008F9DF0 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BEBBA72AD870F7008F9DF0 /* LoginViewController.swift */; };
+		10BEBBC12AD87111008F9DF0 /* LocationArrowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BEBBAA2AD87111008F9DF0 /* LocationArrowButton.swift */; };
+		10BEBBC22AD87111008F9DF0 /* String + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BEBBAC2AD87111008F9DF0 /* String + Extensions.swift */; };
+		10BEBBC32AD87111008F9DF0 /* UIViewController + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BEBBAD2AD87111008F9DF0 /* UIViewController + Extensions.swift */; };
+		10BEBBC42AD87111008F9DF0 /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BEBBAE2AD87111008F9DF0 /* ContentViewController.swift */; };
+		10BEBBC52AD87111008F9DF0 /* LoginViewSkipButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BEBBB12AD87111008F9DF0 /* LoginViewSkipButton.swift */; };
+		10BEBBC62AD87111008F9DF0 /* LoginViewAlternativeLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BEBBB22AD87111008F9DF0 /* LoginViewAlternativeLoginButton.swift */; };
+		10BEBBC72AD87111008F9DF0 /* LoginViewTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BEBBB32AD87111008F9DF0 /* LoginViewTitleLabel.swift */; };
+		10BEBBC82AD87111008F9DF0 /* LoginViewMessageLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BEBBB42AD87111008F9DF0 /* LoginViewMessageLabel.swift */; };
+		10BEBBC92AD87111008F9DF0 /* LoginViewSubmitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BEBBB52AD87111008F9DF0 /* LoginViewSubmitButton.swift */; };
+		10BEBBCA2AD87111008F9DF0 /* LoginViewLogoImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BEBBB62AD87111008F9DF0 /* LoginViewLogoImageView.swift */; };
+		10BEBBCB2AD87111008F9DF0 /* LoginTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BEBBB72AD87111008F9DF0 /* LoginTextFieldView.swift */; };
+		10BEBBCC2AD87111008F9DF0 /* PrimaryLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BEBBB92AD87111008F9DF0 /* PrimaryLabel.swift */; };
+		10BEBBCD2AD87111008F9DF0 /* LoginTextFieldPlaceholderLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BEBBBA2AD87111008F9DF0 /* LoginTextFieldPlaceholderLabel.swift */; };
+		10BEBBCE2AD87111008F9DF0 /* LoginPhoneTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BEBBBC2AD87111008F9DF0 /* LoginPhoneTextField.swift */; };
+		10BEBBCF2AD87111008F9DF0 /* AppColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BEBBBD2AD87111008F9DF0 /* AppColor.swift */; };
+		10BEBBD02AD87111008F9DF0 /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BEBBBF2AD87111008F9DF0 /* PrimaryButton.swift */; };
+		10BEBBD12AD87111008F9DF0 /* SecondaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BEBBC02AD87111008F9DF0 /* SecondaryButton.swift */; };
 		3050344B9C029F502440D735 /* Pods_SatelliteBank.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFDC9AED26327F2C511D59D4 /* Pods_SatelliteBank.framework */; };
 /* End PBXBuildFile section */
 
@@ -20,11 +39,30 @@
 		10BEBB8C2AD86F99008F9DF0 /* SatelliteBank.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SatelliteBank.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		10BEBB8F2AD86F99008F9DF0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		10BEBB912AD86F99008F9DF0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		10BEBB932AD86F99008F9DF0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		10BEBB932AD86F99008F9DF0 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		10BEBB962AD86F99008F9DF0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		10BEBB982AD86F9A008F9DF0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		10BEBB9B2AD86F9A008F9DF0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		10BEBB9D2AD86F9A008F9DF0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		10BEBBA62AD870F7008F9DF0 /* LocationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationViewModel.swift; sourceTree = "<group>"; };
+		10BEBBA72AD870F7008F9DF0 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		10BEBBAA2AD87111008F9DF0 /* LocationArrowButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationArrowButton.swift; sourceTree = "<group>"; };
+		10BEBBAC2AD87111008F9DF0 /* String + Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String + Extensions.swift"; sourceTree = "<group>"; };
+		10BEBBAD2AD87111008F9DF0 /* UIViewController + Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController + Extensions.swift"; sourceTree = "<group>"; };
+		10BEBBAE2AD87111008F9DF0 /* ContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
+		10BEBBB12AD87111008F9DF0 /* LoginViewSkipButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewSkipButton.swift; sourceTree = "<group>"; };
+		10BEBBB22AD87111008F9DF0 /* LoginViewAlternativeLoginButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewAlternativeLoginButton.swift; sourceTree = "<group>"; };
+		10BEBBB32AD87111008F9DF0 /* LoginViewTitleLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewTitleLabel.swift; sourceTree = "<group>"; };
+		10BEBBB42AD87111008F9DF0 /* LoginViewMessageLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewMessageLabel.swift; sourceTree = "<group>"; };
+		10BEBBB52AD87111008F9DF0 /* LoginViewSubmitButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewSubmitButton.swift; sourceTree = "<group>"; };
+		10BEBBB62AD87111008F9DF0 /* LoginViewLogoImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewLogoImageView.swift; sourceTree = "<group>"; };
+		10BEBBB72AD87111008F9DF0 /* LoginTextFieldView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTextFieldView.swift; sourceTree = "<group>"; };
+		10BEBBB92AD87111008F9DF0 /* PrimaryLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrimaryLabel.swift; sourceTree = "<group>"; };
+		10BEBBBA2AD87111008F9DF0 /* LoginTextFieldPlaceholderLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTextFieldPlaceholderLabel.swift; sourceTree = "<group>"; };
+		10BEBBBC2AD87111008F9DF0 /* LoginPhoneTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPhoneTextField.swift; sourceTree = "<group>"; };
+		10BEBBBD2AD87111008F9DF0 /* AppColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppColor.swift; sourceTree = "<group>"; };
+		10BEBBBF2AD87111008F9DF0 /* PrimaryButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
+		10BEBBC02AD87111008F9DF0 /* SecondaryButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondaryButton.swift; sourceTree = "<group>"; };
 		2E9E4335137551567CBD13CB /* Pods-SatelliteBank.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SatelliteBank.release.xcconfig"; path = "Target Support Files/Pods-SatelliteBank/Pods-SatelliteBank.release.xcconfig"; sourceTree = "<group>"; };
 		7640744D2B08E1C331430BEE /* Pods-SatelliteBank.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SatelliteBank.debug.xcconfig"; path = "Target Support Files/Pods-SatelliteBank/Pods-SatelliteBank.debug.xcconfig"; sourceTree = "<group>"; };
 		FFDC9AED26327F2C511D59D4 /* Pods_SatelliteBank.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SatelliteBank.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -65,13 +103,88 @@
 			children = (
 				10BEBB8F2AD86F99008F9DF0 /* AppDelegate.swift */,
 				10BEBB912AD86F99008F9DF0 /* SceneDelegate.swift */,
-				10BEBB932AD86F99008F9DF0 /* ViewController.swift */,
+				10BEBB932AD86F99008F9DF0 /* MapViewController.swift */,
 				10BEBB952AD86F99008F9DF0 /* Main.storyboard */,
 				10BEBB982AD86F9A008F9DF0 /* Assets.xcassets */,
+				10BEBBAE2AD87111008F9DF0 /* ContentViewController.swift */,
+				10BEBBAB2AD87111008F9DF0 /* Extensions */,
+				10BEBBAA2AD87111008F9DF0 /* LocationArrowButton.swift */,
+				10BEBBAF2AD87111008F9DF0 /* UI */,
+				10BEBBA52AD870F7008F9DF0 /* LoginViewController */,
 				10BEBB9A2AD86F9A008F9DF0 /* LaunchScreen.storyboard */,
 				10BEBB9D2AD86F9A008F9DF0 /* Info.plist */,
 			);
 			path = SatelliteBank;
+			sourceTree = "<group>";
+		};
+		10BEBBA52AD870F7008F9DF0 /* LoginViewController */ = {
+			isa = PBXGroup;
+			children = (
+				10BEBBA62AD870F7008F9DF0 /* LocationViewModel.swift */,
+				10BEBBA72AD870F7008F9DF0 /* LoginViewController.swift */,
+			);
+			path = LoginViewController;
+			sourceTree = "<group>";
+		};
+		10BEBBAB2AD87111008F9DF0 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				10BEBBAC2AD87111008F9DF0 /* String + Extensions.swift */,
+				10BEBBAD2AD87111008F9DF0 /* UIViewController + Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		10BEBBAF2AD87111008F9DF0 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				10BEBBB02AD87111008F9DF0 /* LoginViewUI */,
+				10BEBBB82AD87111008F9DF0 /* Label */,
+				10BEBBBB2AD87111008F9DF0 /* TextField */,
+				10BEBBBD2AD87111008F9DF0 /* AppColor.swift */,
+				10BEBBBE2AD87111008F9DF0 /* Button */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		10BEBBB02AD87111008F9DF0 /* LoginViewUI */ = {
+			isa = PBXGroup;
+			children = (
+				10BEBBB12AD87111008F9DF0 /* LoginViewSkipButton.swift */,
+				10BEBBB22AD87111008F9DF0 /* LoginViewAlternativeLoginButton.swift */,
+				10BEBBB32AD87111008F9DF0 /* LoginViewTitleLabel.swift */,
+				10BEBBB42AD87111008F9DF0 /* LoginViewMessageLabel.swift */,
+				10BEBBB52AD87111008F9DF0 /* LoginViewSubmitButton.swift */,
+				10BEBBB62AD87111008F9DF0 /* LoginViewLogoImageView.swift */,
+				10BEBBB72AD87111008F9DF0 /* LoginTextFieldView.swift */,
+			);
+			path = LoginViewUI;
+			sourceTree = "<group>";
+		};
+		10BEBBB82AD87111008F9DF0 /* Label */ = {
+			isa = PBXGroup;
+			children = (
+				10BEBBB92AD87111008F9DF0 /* PrimaryLabel.swift */,
+				10BEBBBA2AD87111008F9DF0 /* LoginTextFieldPlaceholderLabel.swift */,
+			);
+			path = Label;
+			sourceTree = "<group>";
+		};
+		10BEBBBB2AD87111008F9DF0 /* TextField */ = {
+			isa = PBXGroup;
+			children = (
+				10BEBBBC2AD87111008F9DF0 /* LoginPhoneTextField.swift */,
+			);
+			path = TextField;
+			sourceTree = "<group>";
+		};
+		10BEBBBE2AD87111008F9DF0 /* Button */ = {
+			isa = PBXGroup;
+			children = (
+				10BEBBBF2AD87111008F9DF0 /* PrimaryButton.swift */,
+				10BEBBC02AD87111008F9DF0 /* SecondaryButton.swift */,
+			);
+			path = Button;
 			sourceTree = "<group>";
 		};
 		4464ADF2ADB0EF85D58A3CFE /* Frameworks */ = {
@@ -88,7 +201,6 @@
 				7640744D2B08E1C331430BEE /* Pods-SatelliteBank.debug.xcconfig */,
 				2E9E4335137551567CBD13CB /* Pods-SatelliteBank.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -225,9 +337,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				10BEBB942AD86F99008F9DF0 /* ViewController.swift in Sources */,
+				10BEBBD12AD87111008F9DF0 /* SecondaryButton.swift in Sources */,
+				10BEBBCD2AD87111008F9DF0 /* LoginTextFieldPlaceholderLabel.swift in Sources */,
+				10BEBBCF2AD87111008F9DF0 /* AppColor.swift in Sources */,
+				10BEBBCB2AD87111008F9DF0 /* LoginTextFieldView.swift in Sources */,
+				10BEBB942AD86F99008F9DF0 /* MapViewController.swift in Sources */,
+				10BEBBCE2AD87111008F9DF0 /* LoginPhoneTextField.swift in Sources */,
 				10BEBB902AD86F99008F9DF0 /* AppDelegate.swift in Sources */,
+				10BEBBCA2AD87111008F9DF0 /* LoginViewLogoImageView.swift in Sources */,
+				10BEBBC72AD87111008F9DF0 /* LoginViewTitleLabel.swift in Sources */,
 				10BEBB922AD86F99008F9DF0 /* SceneDelegate.swift in Sources */,
+				10BEBBC92AD87111008F9DF0 /* LoginViewSubmitButton.swift in Sources */,
+				10BEBBC82AD87111008F9DF0 /* LoginViewMessageLabel.swift in Sources */,
+				10BEBBA92AD870F7008F9DF0 /* LoginViewController.swift in Sources */,
+				10BEBBC42AD87111008F9DF0 /* ContentViewController.swift in Sources */,
+				10BEBBC12AD87111008F9DF0 /* LocationArrowButton.swift in Sources */,
+				10BEBBA82AD870F7008F9DF0 /* LocationViewModel.swift in Sources */,
+				10BEBBC32AD87111008F9DF0 /* UIViewController + Extensions.swift in Sources */,
+				10BEBBCC2AD87111008F9DF0 /* PrimaryLabel.swift in Sources */,
+				10BEBBC22AD87111008F9DF0 /* String + Extensions.swift in Sources */,
+				10BEBBD02AD87111008F9DF0 /* PrimaryButton.swift in Sources */,
+				10BEBBC62AD87111008F9DF0 /* LoginViewAlternativeLoginButton.swift in Sources */,
+				10BEBBC52AD87111008F9DF0 /* LoginViewSkipButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -303,7 +434,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -357,7 +488,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -378,11 +509,14 @@
 				DEVELOPMENT_TEAM = KTV28US9SX;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SatelliteBank/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "ВТБ Рядом";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Для поиска местонахождения банка и локации пользователя";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -407,11 +541,14 @@
 				DEVELOPMENT_TEAM = KTV28US9SX;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SatelliteBank/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "ВТБ Рядом";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Для поиска местонахождения банка и локации пользователя";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
