@@ -20,29 +20,14 @@
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="yqX-rb-Fr0">
                         <rect key="frame" x="16" y="16" width="288" height="182"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="iCn-e7-lCD">
-                                <rect key="frame" x="0.0" y="0.0" width="69" height="30"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hxw-tT-9R7">
-                                        <rect key="frame" x="0.0" y="0.0" width="35" height="30"/>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rY3-cb-8T0" userLabel="Close Button" customClass="CloseButton" customModule="SatelliteBank" customModuleProvider="target">
-                                        <rect key="frame" x="39" y="0.0" width="30" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="30" id="mrI-yI-xf3"/>
-                                            <constraint firstAttribute="width" secondItem="rY3-cb-8T0" secondAttribute="height" id="ola-nb-77b"/>
-                                        </constraints>
-                                        <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" image="xmark.circle.fill" catalog="system"/>
-                                    </button>
-                                </subviews>
-                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hxw-tT-9R7">
+                                <rect key="frame" x="0.0" y="0.0" width="35" height="90.333333333333329"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MzY-tS-4kY">
-                                <rect key="frame" x="0.0" y="46" width="49.666666666666664" height="76"/>
+                                <rect key="frame" x="0.0" y="106.33333333333333" width="49.666666666666664" height="15.666666666666671"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                 <color key="textColor" systemColor="secondaryLabelColor"/>
                                 <nil key="highlightedColor"/>
@@ -57,10 +42,22 @@
                             </button>
                         </subviews>
                     </stackView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rY3-cb-8T0" userLabel="Close Button" customClass="CloseButton" customModule="SatelliteBank" customModuleProvider="target">
+                        <rect key="frame" x="282" y="8" width="30" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="2Sm-wz-ptf"/>
+                            <constraint firstAttribute="width" constant="30" id="xdS-pi-WTt"/>
+                        </constraints>
+                        <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                        <state key="normal" image="xmark.circle.fill" catalog="system"/>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="yqX-rb-Fr0" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="4PW-IP-bTy"/>
+                    <constraint firstAttribute="trailing" secondItem="rY3-cb-8T0" secondAttribute="trailing" constant="8" id="EVR-X4-6YN"/>
                     <constraint firstAttribute="trailing" secondItem="yqX-rb-Fr0" secondAttribute="trailing" constant="16" id="T0g-Pa-qDQ"/>
+                    <constraint firstItem="rY3-cb-8T0" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="TyZ-hL-9BL"/>
                     <constraint firstItem="yqX-rb-Fr0" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="cf6-2E-kb0"/>
                     <constraint firstAttribute="bottom" secondItem="yqX-rb-Fr0" secondAttribute="bottom" constant="16" id="mzM-DT-nC7"/>
                 </constraints>
