@@ -10,6 +10,8 @@ import CoreLocation
 
 protocol IMapViewModel: NSObject {
     
+    var officeService: IOfficeService { get }
+    
     var locationManager: CLLocationManager { get }
     
     var requestLocationCompletion: ((CLLocation) -> Void)? { get set }
@@ -22,11 +24,14 @@ protocol IMapViewModel: NSObject {
 
 final class MapViewModel: NSObject, IMapViewModel {
     
+    let officeService: IOfficeService
+    
     let locationManager: CLLocationManager
     
     var requestLocationCompletion: ((CLLocation) -> Void)?
     
-    init(locationManager: CLLocationManager = CLLocationManager()) {
+    init(officeService: IOfficeService = OfficeService.shared, locationManager: CLLocationManager = CLLocationManager()) {
+        self.officeService = officeService
         self.locationManager = locationManager
         super.init()
         self.locationManager.delegate = self

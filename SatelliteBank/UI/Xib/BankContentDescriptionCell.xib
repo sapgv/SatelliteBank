@@ -20,14 +20,29 @@
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="yqX-rb-Fr0">
                         <rect key="frame" x="16" y="16" width="288" height="182"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hxw-tT-9R7">
-                                <rect key="frame" x="0.0" y="0.0" width="35" height="90.333333333333329"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="iCn-e7-lCD">
+                                <rect key="frame" x="0.0" y="0.0" width="69" height="30"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hxw-tT-9R7">
+                                        <rect key="frame" x="0.0" y="0.0" width="35" height="30"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rY3-cb-8T0" userLabel="Close Button" customClass="CloseButton" customModule="SatelliteBank" customModuleProvider="target">
+                                        <rect key="frame" x="39" y="0.0" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="mrI-yI-xf3"/>
+                                            <constraint firstAttribute="width" secondItem="rY3-cb-8T0" secondAttribute="height" id="ola-nb-77b"/>
+                                        </constraints>
+                                        <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" image="xmark.circle.fill" catalog="system"/>
+                                    </button>
+                                </subviews>
+                            </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MzY-tS-4kY">
-                                <rect key="frame" x="0.0" y="106.33333333333333" width="49.666666666666664" height="15.666666666666671"/>
+                                <rect key="frame" x="0.0" y="46" width="49.666666666666664" height="76"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                 <color key="textColor" systemColor="secondaryLabelColor"/>
                                 <nil key="highlightedColor"/>
@@ -53,12 +68,14 @@
             <connections>
                 <outlet property="addressLabel" destination="MzY-tS-4kY" id="bcP-0X-Orp"/>
                 <outlet property="button" destination="uda-fq-yta" id="fbM-SJ-mSt"/>
+                <outlet property="closeButton" destination="rY3-cb-8T0" id="3dt-XJ-It9"/>
                 <outlet property="titleLabel" destination="Hxw-tT-9R7" id="c8O-ts-YU2"/>
             </connections>
             <point key="canvasLocation" x="131.29770992366412" y="69.718309859154928"/>
         </tableViewCell>
     </objects>
     <resources>
+        <image name="xmark.circle.fill" catalog="system" width="128" height="123"/>
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

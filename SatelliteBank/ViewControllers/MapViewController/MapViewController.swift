@@ -20,6 +20,45 @@ class MyFloatingPanelLayout: FloatingPanelLayout {
     ]
 }
 
+final private class MapObjectTapListener: NSObject, YMKMapObjectTapListener {
+    
+    init(controller: IMapViewController) {
+        self.controller = controller
+    }
+
+    func onMapObjectTap(with mapObject: YMKMapObject, point: YMKPoint) -> Bool {
+        guard let placemark = mapObject as? YMKPlacemarkMapObject else { return false }
+        self.controller?.didTap(placemark: placemark)
+        return true
+    }
+
+    private weak var controller: IMapViewController?
+    
+}
+
+protocol IMapViewController: UIViewController {
+    
+    func didTap(placemark: YMKPlacemarkMapObject)
+    
+}
+
+extension MapViewController: IMapViewController {
+    
+    func didTap(placemark: YMKPlacemarkMapObject) {
+        
+        guard let office = self.viewModel?
+            .officeService
+            .offices
+            .first(where: {
+                $0.coordinate.latitude == placemark.geometry.latitude && $0.coordinate.longitude == placemark.geometry.longitude
+            }) else { return }
+        
+        self.show(office: office)
+        
+    }
+    
+}
+
 class MapViewController: UIViewController {
     
     var viewModel: IMapViewModel?
@@ -44,6 +83,12 @@ class MapViewController: UIViewController {
         self.mapView.mapWindow.map
     }
     
+    private lazy var mapObjectTapListener: YMKMapObjectTapListener = MapObjectTapListener(controller: self)
+    
+    var drivingSession: YMKDrivingSession?
+    
+    var routesCollection: YMKMapObjectCollection!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
@@ -51,7 +96,10 @@ class MapViewController: UIViewController {
         self.setupViewModel()
         self.setupLocationButton()
         self.layout()
-        self.setupContentViewController()
+//        self.setupContentViewController()
+        self.updateOffice()
+        
+        self.routesCollection = map.mapObjects.add()
         
     }
     
@@ -72,6 +120,21 @@ class MapViewController: UIViewController {
             
             self?.currentLocation = location
             self?.updateCurrentLocation(location: location)
+            
+        }
+        
+    }
+    
+    private func updateOffice() {
+        
+        self.viewModel?.officeService.update { [weak self] error in
+         
+            if let error = error {
+                print(error.localizedDescription)
+                return
+            }
+            
+            self?.layoutPlacemarks()
             
         }
         
@@ -124,8 +187,6 @@ class MapViewController: UIViewController {
     
     private let locationArrowButtonSize: CGFloat = 48
     
-    
-    
     private let locationArrowButtonPadding: CGFloat = 88 + 16
     
     private lazy var currentLocationPlacemark: YMKPlacemarkMapObject = {
@@ -175,6 +236,128 @@ extension MapViewController: ContentViewControllerDelegate {
     
 }
 
+//MARK: - Routes
+
+extension MapViewController {
+    
+    private func createRoute(toOffice office: IOffice) {
+        
+//        self.drivingSession?.cancel()
+        
+        guard let currentLocation = self.currentLocation else { return }
+        
+        let requestPoints : [YMKRequestPoint] = [
+            YMKRequestPoint(
+                point: currentLocation.point, type: .waypoint,
+                pointContext: nil, drivingArrivalPointId: nil),
+            YMKRequestPoint(
+                point: office.coordinate.point, type: .waypoint,
+                pointContext: nil, drivingArrivalPointId: nil),
+            ]
+        
+        let responseHandler = {(routesResponse: [YMKDrivingRoute]?, error: Error?) -> Void in
+            if let routes = routesResponse {
+                self.onRoutesReceived(routes)
+            } else {
+                self.onRoutesError(error!)
+            }
+        }
+        
+        let drivingRouter = YMKDirections.sharedInstance().createDrivingRouter()
+        
+        let drivingOptions = YMKDrivingDrivingOptions()
+        drivingOptions.routesCount = 2
+        
+        drivingSession = drivingRouter.requestRoutes(
+            with: requestPoints,
+            drivingOptions: drivingOptions,
+            vehicleOptions: YMKDrivingVehicleOptions(),
+            routeHandler: responseHandler)
+        
+    }
+    
+    private func onRoutesReceived(_ routes: [YMKDrivingRoute]) {
+        self.routesCollection.clear()
+        
+        routes.enumerated().forEach { pair in
+            let routePolyline = self.routesCollection.addPolyline(with: pair.element.geometry)
+            if pair.offset == 0 {
+                routePolyline.styleMainRoute()
+            } else {
+                routePolyline.styleAlternativeRoute()
+            }
+        }
+        
+    }
+    
+    private func onRoutesError(_ error: Error) {
+        let routingError = (error as NSError).userInfo[YRTUnderlyingErrorKey] as! YRTError
+        var errorMessage = "Unknown error"
+        if routingError.isKind(of: YRTNetworkError.self) {
+            errorMessage = "Network error"
+        } else if routingError.isKind(of: YRTRemoteError.self) {
+            errorMessage = "Remote server error"
+        }
+
+        let alert = UIAlertController(title: "Error", message: errorMessage, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+
+        present(alert, animated: true, completion: nil)
+    }
+    
+}
+
+//MARK: - Presentation
+
+extension MapViewController {
+    
+    func show(office: IOffice) {
+        
+        let viewModel = BankContentViewModel(office: office)
+        let viewController = BankContentViewController()
+        viewController.viewModel = viewModel
+        viewController.addRouteCompletion = { [weak self] office in
+            self?.createRoute(toOffice: office)
+        }
+
+        self.present(viewController, animated: true)
+        
+    }
+    
+}
+
+//MARK: - Placemark Office
+
+extension MapViewController {
+    
+    private func layoutPlacemarks() {
+        
+        guard let viewModel = self.viewModel else { return }
+        
+        for office in viewModel.officeService.offices {
+            
+            self.addPlacemark(office: office)
+            
+        }
+        
+    }
+    
+    private func addPlacemark(office: IOffice) {
+        
+        let image = UIImage(named: "office_icon_circle")!
+        
+        let placemark = map.mapObjects.addPlacemark()
+        placemark.geometry = office.coordinate.point
+        let style = YMKIconStyle(anchor: nil, rotationType: nil, zIndex: nil, flat: nil, visible: nil, scale: 0.6, tappableArea: nil)
+        placemark.setIconWith(image, style: style)
+        placemark.isDraggable = true
+
+        placemark.addTapListener(with: mapObjectTapListener)
+        
+    }
+    
+}
+
 //MARK: - Layout
 
 extension MapViewController {
@@ -186,10 +369,8 @@ extension MapViewController {
         self.scaleMapStackView.scalePlusMapButton.translatesAutoresizingMaskIntoConstraints = false
         self.scaleMapStackView.scaleMinusMapButton.translatesAutoresizingMaskIntoConstraints = false
         
-        
         self.view.addSubview(self.mapView)
         self.view.addSubview(self.scaleMapStackView)
-        
 
         self.mapView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 0).isActive = true
         self.mapView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 0).isActive = true
@@ -224,7 +405,6 @@ extension MapViewController {
         
         self.scaleMapStackView.scaleMinusMapButton.layer.cornerRadius = locationArrowButtonSize / 2
         self.scaleMapStackView.scaleMinusMapButton.clipsToBounds = true
-        
         
     }
     

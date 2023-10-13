@@ -17,16 +17,18 @@ class BankContentDescriptionCell: UITableViewCell {
     
     @IBOutlet weak var button: ScheduleButton!
     
+    @IBOutlet weak var closeButton: CloseButton!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         self.selectionStyle = .none
         self.button.setTitle("Записаться на посещение", for: .normal)
     }
     
-    func setup(bank: Bank) {
+    func setup(office: IOffice) {
         
-        self.titleLabel.text = bank.title
-        self.addressLabel.text = bank.address
+        self.titleLabel.text = office.salePointName
+        self.addressLabel.text = office.address
         
         
     }

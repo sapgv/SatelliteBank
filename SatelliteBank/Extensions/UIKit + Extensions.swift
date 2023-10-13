@@ -1,11 +1,47 @@
 //
-//  UIViewController + Extensions.swift
+//  UIKit + Extensions.swift
 //  SatelliteBank
 //
-//  Created by Grigory Sapogov on 12.10.2023.
+//  Created by Grigory Sapogov on 14.10.2023.
 //
 
 import UIKit
+
+extension UINavigationBar {
+    
+    static func restoreAppearance() {
+        if #available(iOS 15, *) {
+            let appearance = UINavigationBarAppearance()
+            appearance.configureWithDefaultBackground()
+            UINavigationBar.appearance().standardAppearance = appearance
+            UINavigationBar.appearance().scrollEdgeAppearance = appearance
+        }
+    }
+    
+}
+
+extension UITabBar {
+    
+    static func restoreAppearance() {
+        if #available(iOS 15, *) {
+            let appearance = UITabBarAppearance()
+            appearance.configureWithDefaultBackground()
+            UITabBar.appearance().standardAppearance = appearance
+            UITabBar.appearance().scrollEdgeAppearance = appearance
+        }
+    }
+    
+}
+
+extension UITableView {
+    
+    static func restoreAppearance() {
+        if #available(iOS 15.0, *) {
+            UITableView.appearance().sectionHeaderTopPadding = 0.0
+        }
+    }
+    
+}
 
 public struct KeyboardAssociatedKeys {
     

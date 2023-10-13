@@ -21,6 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         self.restoreAppearance()
         
+        OfficeService.shared.update()
+        
         return true
     }
 

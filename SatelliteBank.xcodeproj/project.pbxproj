@@ -12,10 +12,7 @@
 		10BBC9C72AD9230B0079085F /* ScaleMinusMapButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BBC9C62AD9230B0079085F /* ScaleMinusMapButton.swift */; };
 		10BBC9C92AD923710079085F /* ScaleMapStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BBC9C82AD923710079085F /* ScaleMapStackView.swift */; };
 		10BBC9CB2AD929590079085F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10BBC9CA2AD929590079085F /* Assets.xcassets */; };
-		10BBC9CD2AD92F070079085F /* UITableView + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BBC9CC2AD92F070079085F /* UITableView + Extensions.swift */; };
-		10BBC9CF2AD92F1C0079085F /* UINavigationBar + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BBC9CE2AD92F1C0079085F /* UINavigationBar + Extensions.swift */; };
 		10BBC9D12AD930D70079085F /* YandexMapKit + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BBC9D02AD930D70079085F /* YandexMapKit + Extensions.swift */; };
-		10BBC9D52AD9363B0079085F /* UITabBar + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BBC9D42AD9363B0079085F /* UITabBar + Extensions.swift */; };
 		10BBC9D82AD93D200079085F /* BankContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BBC9D72AD93D200079085F /* BankContentViewController.swift */; };
 		10BBC9DD2AD93D880079085F /* BankContentDescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BBC9DB2AD93D880079085F /* BankContentDescriptionCell.swift */; };
 		10BBC9DE2AD93D880079085F /* BankContentDescriptionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10BBC9DC2AD93D880079085F /* BankContentDescriptionCell.xib */; };
@@ -31,6 +28,14 @@
 		10BBC9F52AD953FD0079085F /* AddRouteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10BBC9F32AD953FD0079085F /* AddRouteCell.xib */; };
 		10BBC9F72AD95EF20079085F /* ChartData + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BBC9F62AD95EF20079085F /* ChartData + Extensions.swift */; };
 		10BBC9F92AD970140079085F /* ContentScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BBC9F82AD970140079085F /* ContentScrollView.swift */; };
+		10BBC9FB2AD997570079085F /* Office.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BBC9FA2AD997570079085F /* Office.swift */; };
+		10BBC9FD2AD997960079085F /* WorkTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BBC9FC2AD997960079085F /* WorkTime.swift */; };
+		10BBC9FF2AD9996C0079085F /* offices.txt in Resources */ = {isa = PBXBuildFile; fileRef = 10BBC9FE2AD9996C0079085F /* offices.txt */; };
+		10BBCA022AD999B00079085F /* OfficeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BBCA012AD999B00079085F /* OfficeService.swift */; };
+		10BBCA042AD99C910079085F /* Thread + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BBCA032AD99C910079085F /* Thread + Extensions.swift */; };
+		10BBCA062AD99D580079085F /* Error + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BBCA052AD99D580079085F /* Error + Extensions.swift */; };
+		10BBCA082AD9B9680079085F /* CloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BBCA072AD9B9680079085F /* CloseButton.swift */; };
+		10BBCA0C2AD9CD960079085F /* UIKit + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BBCA0B2AD9CD960079085F /* UIKit + Extensions.swift */; };
 		10BEBB902AD86F99008F9DF0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BEBB8F2AD86F99008F9DF0 /* AppDelegate.swift */; };
 		10BEBB922AD86F99008F9DF0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BEBB912AD86F99008F9DF0 /* SceneDelegate.swift */; };
 		10BEBB942AD86F99008F9DF0 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BEBB932AD86F99008F9DF0 /* MapViewController.swift */; };
@@ -40,7 +45,6 @@
 		10BEBBA92AD870F7008F9DF0 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BEBBA72AD870F7008F9DF0 /* LoginViewController.swift */; };
 		10BEBBC12AD87111008F9DF0 /* CurrentLocationMapButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BEBBAA2AD87111008F9DF0 /* CurrentLocationMapButton.swift */; };
 		10BEBBC22AD87111008F9DF0 /* String + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BEBBAC2AD87111008F9DF0 /* String + Extensions.swift */; };
-		10BEBBC32AD87111008F9DF0 /* UIViewController + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BEBBAD2AD87111008F9DF0 /* UIViewController + Extensions.swift */; };
 		10BEBBC42AD87111008F9DF0 /* MapContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BEBBAE2AD87111008F9DF0 /* MapContentViewController.swift */; };
 		10BEBBC52AD87111008F9DF0 /* LoginViewSkipButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BEBBB12AD87111008F9DF0 /* LoginViewSkipButton.swift */; };
 		10BEBBC62AD87111008F9DF0 /* LoginViewAlternativeLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BEBBB22AD87111008F9DF0 /* LoginViewAlternativeLoginButton.swift */; };
@@ -66,10 +70,7 @@
 		10BBC9C62AD9230B0079085F /* ScaleMinusMapButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleMinusMapButton.swift; sourceTree = "<group>"; };
 		10BBC9C82AD923710079085F /* ScaleMapStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleMapStackView.swift; sourceTree = "<group>"; };
 		10BBC9CA2AD929590079085F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		10BBC9CC2AD92F070079085F /* UITableView + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView + Extensions.swift"; sourceTree = "<group>"; };
-		10BBC9CE2AD92F1C0079085F /* UINavigationBar + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationBar + Extensions.swift"; sourceTree = "<group>"; };
 		10BBC9D02AD930D70079085F /* YandexMapKit + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "YandexMapKit + Extensions.swift"; sourceTree = "<group>"; };
-		10BBC9D42AD9363B0079085F /* UITabBar + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITabBar + Extensions.swift"; sourceTree = "<group>"; };
 		10BBC9D72AD93D200079085F /* BankContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankContentViewController.swift; sourceTree = "<group>"; };
 		10BBC9DB2AD93D880079085F /* BankContentDescriptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankContentDescriptionCell.swift; sourceTree = "<group>"; };
 		10BBC9DC2AD93D880079085F /* BankContentDescriptionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BankContentDescriptionCell.xib; sourceTree = "<group>"; };
@@ -85,6 +86,14 @@
 		10BBC9F32AD953FD0079085F /* AddRouteCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddRouteCell.xib; sourceTree = "<group>"; };
 		10BBC9F62AD95EF20079085F /* ChartData + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChartData + Extensions.swift"; sourceTree = "<group>"; };
 		10BBC9F82AD970140079085F /* ContentScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentScrollView.swift; sourceTree = "<group>"; };
+		10BBC9FA2AD997570079085F /* Office.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Office.swift; sourceTree = "<group>"; };
+		10BBC9FC2AD997960079085F /* WorkTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkTime.swift; sourceTree = "<group>"; };
+		10BBC9FE2AD9996C0079085F /* offices.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = offices.txt; sourceTree = "<group>"; };
+		10BBCA012AD999B00079085F /* OfficeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfficeService.swift; sourceTree = "<group>"; };
+		10BBCA032AD99C910079085F /* Thread + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Thread + Extensions.swift"; sourceTree = "<group>"; };
+		10BBCA052AD99D580079085F /* Error + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Error + Extensions.swift"; sourceTree = "<group>"; };
+		10BBCA072AD9B9680079085F /* CloseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseButton.swift; sourceTree = "<group>"; };
+		10BBCA0B2AD9CD960079085F /* UIKit + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIKit + Extensions.swift"; sourceTree = "<group>"; };
 		10BEBB8C2AD86F99008F9DF0 /* SatelliteBank.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SatelliteBank.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		10BEBB8F2AD86F99008F9DF0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		10BEBB912AD86F99008F9DF0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -96,7 +105,6 @@
 		10BEBBA72AD870F7008F9DF0 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		10BEBBAA2AD87111008F9DF0 /* CurrentLocationMapButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentLocationMapButton.swift; sourceTree = "<group>"; };
 		10BEBBAC2AD87111008F9DF0 /* String + Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String + Extensions.swift"; sourceTree = "<group>"; };
-		10BEBBAD2AD87111008F9DF0 /* UIViewController + Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController + Extensions.swift"; sourceTree = "<group>"; };
 		10BEBBAE2AD87111008F9DF0 /* MapContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapContentViewController.swift; sourceTree = "<group>"; };
 		10BEBBB12AD87111008F9DF0 /* LoginViewSkipButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewSkipButton.swift; sourceTree = "<group>"; };
 		10BEBBB22AD87111008F9DF0 /* LoginViewAlternativeLoginButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewAlternativeLoginButton.swift; sourceTree = "<group>"; };
@@ -195,8 +203,18 @@
 			isa = PBXGroup;
 			children = (
 				10BBC9E02AD93F290079085F /* Bank.swift */,
+				10BBC9FA2AD997570079085F /* Office.swift */,
+				10BBC9FC2AD997960079085F /* WorkTime.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		10BBCA002AD999A30079085F /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				10BBCA012AD999B00079085F /* OfficeService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		10BEBB832AD86F99008F9DF0 = {
@@ -220,6 +238,7 @@
 		10BEBB8E2AD86F99008F9DF0 /* SatelliteBank */ = {
 			isa = PBXGroup;
 			children = (
+				10BBCA002AD999A30079085F /* Services */,
 				10BBC9DF2AD93F200079085F /* Model */,
 				10BEBBD32AD87380008F9DF0 /* ViewControllers */,
 				10BEBBD22AD87340008F9DF0 /* Supporting Files */,
@@ -242,11 +261,10 @@
 			children = (
 				10BEBBAC2AD87111008F9DF0 /* String + Extensions.swift */,
 				10BBC9D02AD930D70079085F /* YandexMapKit + Extensions.swift */,
-				10BEBBAD2AD87111008F9DF0 /* UIViewController + Extensions.swift */,
-				10BBC9CC2AD92F070079085F /* UITableView + Extensions.swift */,
-				10BBC9CE2AD92F1C0079085F /* UINavigationBar + Extensions.swift */,
-				10BBC9D42AD9363B0079085F /* UITabBar + Extensions.swift */,
+				10BBCA032AD99C910079085F /* Thread + Extensions.swift */,
+				10BBCA052AD99D580079085F /* Error + Extensions.swift */,
 				10BBC9F62AD95EF20079085F /* ChartData + Extensions.swift */,
+				10BBCA0B2AD9CD960079085F /* UIKit + Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -303,6 +321,7 @@
 				10BEBBBF2AD87111008F9DF0 /* PrimaryButton.swift */,
 				10BBC9E22AD93FC70079085F /* PrimaryInvertedButton.swift */,
 				10BBC9E62AD942F30079085F /* ScheduleButton.swift */,
+				10BBCA072AD9B9680079085F /* CloseButton.swift */,
 				10BEBBC02AD87111008F9DF0 /* SecondaryButton.swift */,
 			);
 			path = Button;
@@ -311,6 +330,7 @@
 		10BEBBD22AD87340008F9DF0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				10BBC9FE2AD9996C0079085F /* offices.txt */,
 				10BEBB8F2AD86F99008F9DF0 /* AppDelegate.swift */,
 				10BEBB912AD86F99008F9DF0 /* SceneDelegate.swift */,
 				10BEBB952AD86F99008F9DF0 /* Main.storyboard */,
@@ -420,6 +440,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10BBC9FF2AD9996C0079085F /* offices.txt in Resources */,
 				10BEBB9C2AD86F9A008F9DF0 /* LaunchScreen.storyboard in Resources */,
 				10BBC9EB2AD943830079085F /* WorkTimeCell.xib in Resources */,
 				10BBC9F52AD953FD0079085F /* AddRouteCell.xib in Resources */,
@@ -499,7 +520,6 @@
 				10BBC9EA2AD943830079085F /* WorkTimeCell.swift in Sources */,
 				10BBC9E72AD942F30079085F /* ScheduleButton.swift in Sources */,
 				10BEBBD12AD87111008F9DF0 /* SecondaryButton.swift in Sources */,
-				10BBC9CF2AD92F1C0079085F /* UINavigationBar + Extensions.swift in Sources */,
 				10BEBBCD2AD87111008F9DF0 /* LoginTextFieldPlaceholderLabel.swift in Sources */,
 				10BBC9E32AD93FC70079085F /* PrimaryInvertedButton.swift in Sources */,
 				10BEBBCF2AD87111008F9DF0 /* AppColor.swift in Sources */,
@@ -512,29 +532,33 @@
 				10BBC9D82AD93D200079085F /* BankContentViewController.swift in Sources */,
 				10BEBBCA2AD87111008F9DF0 /* LoginViewLogoImageView.swift in Sources */,
 				10BBC9C92AD923710079085F /* ScaleMapStackView.swift in Sources */,
-				10BBC9CD2AD92F070079085F /* UITableView + Extensions.swift in Sources */,
+				10BBCA022AD999B00079085F /* OfficeService.swift in Sources */,
 				10BEBBC72AD87111008F9DF0 /* LoginViewTitleLabel.swift in Sources */,
 				10BEBB922AD86F99008F9DF0 /* SceneDelegate.swift in Sources */,
 				10BEBBC92AD87111008F9DF0 /* LoginViewSubmitButton.swift in Sources */,
+				10BBC9FD2AD997960079085F /* WorkTime.swift in Sources */,
 				10BEBBC82AD87111008F9DF0 /* LoginViewMessageLabel.swift in Sources */,
 				10BBC9DD2AD93D880079085F /* BankContentDescriptionCell.swift in Sources */,
+				10BBCA062AD99D580079085F /* Error + Extensions.swift in Sources */,
 				10BEBBA92AD870F7008F9DF0 /* LoginViewController.swift in Sources */,
 				10BEBBC42AD87111008F9DF0 /* MapContentViewController.swift in Sources */,
 				10BEBBD62AD87420008F9DF0 /* TabViewController.swift in Sources */,
 				10BEBBC12AD87111008F9DF0 /* CurrentLocationMapButton.swift in Sources */,
 				10BBC9C52AD922C90079085F /* ScalePlusMapButton.swift in Sources */,
 				10BEBBA82AD870F7008F9DF0 /* MapViewModel.swift in Sources */,
-				10BEBBC32AD87111008F9DF0 /* UIViewController + Extensions.swift in Sources */,
+				10BBCA042AD99C910079085F /* Thread + Extensions.swift in Sources */,
 				10BEBBCC2AD87111008F9DF0 /* PrimaryLabel.swift in Sources */,
 				10BBC9F42AD953FD0079085F /* AddRouteCell.swift in Sources */,
 				10BBC9E12AD93F290079085F /* Bank.swift in Sources */,
+				10BBCA0C2AD9CD960079085F /* UIKit + Extensions.swift in Sources */,
 				10BBC9F72AD95EF20079085F /* ChartData + Extensions.swift in Sources */,
 				10BEBBC22AD87111008F9DF0 /* String + Extensions.swift in Sources */,
 				10BEBBD02AD87111008F9DF0 /* PrimaryButton.swift in Sources */,
-				10BBC9D52AD9363B0079085F /* UITabBar + Extensions.swift in Sources */,
+				10BBCA082AD9B9680079085F /* CloseButton.swift in Sources */,
 				10BBC9F92AD970140079085F /* ContentScrollView.swift in Sources */,
 				10BEBBC62AD87111008F9DF0 /* LoginViewAlternativeLoginButton.swift in Sources */,
 				10BBC9C72AD9230B0079085F /* ScaleMinusMapButton.swift in Sources */,
+				10BBC9FB2AD997570079085F /* Office.swift in Sources */,
 				10BBC9EE2AD946900079085F /* ChartCell.swift in Sources */,
 				10BEBBC52AD87111008F9DF0 /* LoginViewSkipButton.swift in Sources */,
 				10BBC9C22AD91D300079085F /* MapButton.swift in Sources */,

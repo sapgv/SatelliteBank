@@ -27,7 +27,7 @@ class ChartCell: UITableViewCell {
         self.chartView.rightAxis.enabled = false
         self.chartView.xAxis.labelPosition = .bottom
         self.chartView.dragEnabled = false
-        self.chartView.backgroundColor = .white
+        self.chartView.backgroundColor = .systemBackground
         self.chartView.doubleTapToZoomEnabled = false
         self.chartView.pinchZoomEnabled = false
         for button in self.dayButtons {
@@ -49,7 +49,7 @@ class ChartCell: UITableViewCell {
     private func updateChart(index: Int) {
         chartView.data = self.charData[index]
         for button in self.dayButtons {
-            button.backgroundColor = button.tag == self.index ? UIColor.separator : .white
+            button.backgroundColor = button.tag == self.index ? UIColor.secondarySystemBackground : .systemBackground
         }
     }
     

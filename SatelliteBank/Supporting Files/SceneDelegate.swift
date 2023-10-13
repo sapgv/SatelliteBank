@@ -23,7 +23,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let favoriteViewController = self.createFavoriteViewController()
         let favoriteNavigationController = UINavigationController(rootViewController: favoriteViewController)
         
-        let bankContentViewController = self.createBankContentViewController()
+//        let bankContentViewController = self.createBankContentViewController()
         
         self.window = UIWindow(windowScene: scene)
         
@@ -34,7 +34,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let tabViewController = TabViewController()
         
-        tabViewController.setViewControllers([mapViewController, favoriteNavigationController, bankContentViewController], animated: false)
+        tabViewController.setViewControllers([mapViewController, favoriteNavigationController], animated: false)
         tabViewController.selectedIndex = 0
         
         self.window?.rootViewController = tabViewController
@@ -62,20 +62,20 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
     }
     
-    func createBankContentViewController() -> BankContentViewController {
+//    func createBankContentViewController() -> BankContentViewController {
         
         
-        let bank = Bank(title: "Филиал Банка ВТБ (ПАО) № 7806", address: "г. Санкт-Петербург, ул. Наличная, д.51, лит. А")
-        let viewModel = BankContentViewModel(bank: bank)
+//        let bank = Bank(title: "Филиал Банка ВТБ (ПАО) № 7806", address: "г. Санкт-Петербург, ул. Наличная, д.51, лит. А")
+//        let viewModel = BankContentViewModel(bank: bank)
+//
+//        let viewController = BankContentViewController()
+//        viewController.viewModel = viewModel
+//        viewController.tabBarItem = UITabBarItem(title: "Банк", image: UIImage(systemName: "house.fill"), tag: 2)
+//
+//        return viewController
+//
         
-        let viewController = BankContentViewController()
-        viewController.viewModel = viewModel
-        viewController.tabBarItem = UITabBarItem(title: "Банк", image: UIImage(systemName: "house.fill"), tag: 2)
-        
-        return viewController
-        
-        
-    }
+//    }
 
 }
 

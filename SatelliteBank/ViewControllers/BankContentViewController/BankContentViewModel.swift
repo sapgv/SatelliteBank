@@ -9,7 +9,7 @@ import Foundation
 
 protocol IBankContentViewModel: AnyObject {
     
-    var bank: Bank { get }
+    var office: IOffice { get }
     
     
     
@@ -17,10 +17,10 @@ protocol IBankContentViewModel: AnyObject {
 
 final class BankContentViewModel: IBankContentViewModel {
     
-    var bank: Bank
+    var office: IOffice
     
-    init(bank: Bank) {
-        self.bank = bank
+    init(office: IOffice) {
+        self.office = office
     }
     
 }

@@ -17,6 +17,26 @@ extension CLLocation {
     
 }
 
+extension CLLocationCoordinate2D: Equatable {
+    
+    public static func == (lhs: CLLocationCoordinate2D, rhs: CLLocationCoordinate2D) -> Bool {
+        lhs.longitude == rhs.longitude && lhs.latitude == rhs.latitude
+    }
+
+    var point: YMKPoint {
+        return YMKPoint(latitude: self.latitude, longitude: self.longitude)
+    }
+    
+}
+
+extension YMKPoint {
+    
+    var coordinate: CLLocationCoordinate2D {
+        return CLLocationCoordinate2D(latitude: self.latitude, longitude: self.longitude)
+    }
+    
+}
+
 extension YMKMap {
     
     func scaleMap(value: Float) {
@@ -34,4 +54,22 @@ extension YMKMap {
         
     }
     
+}
+
+extension YMKPolylineMapObject {
+    func styleMainRoute() {
+        zIndex = 10.0
+        setStrokeColorWith(.systemGreen)
+        strokeWidth = 5.0
+        outlineColor = .black
+        outlineWidth = 1.0
+    }
+
+    func styleAlternativeRoute() {
+        zIndex = 5.0
+        setStrokeColorWith(.systemYellow)
+        strokeWidth = 4.0
+        outlineColor = .black
+        outlineWidth = 1.0
+    }
 }

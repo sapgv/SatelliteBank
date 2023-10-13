@@ -20,7 +20,7 @@ class PrimaryInvertedButton: UIButton {
     }
     
     func commonInit() {
-        self.backgroundColor = .white
+        self.backgroundColor = .systemBackground
         self.setTitleColor(AppColor.primary, for: .normal)
         self.layer.borderColor = AppColor.primary.cgColor
         self.layer.cornerRadius = 8

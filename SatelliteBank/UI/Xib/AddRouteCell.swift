@@ -15,6 +15,7 @@ class AddRouteCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.selectionStyle = .none
         self.addRouteButton.layer.cornerRadius = 8
         self.addRouteButton.clipsToBounds = true
         self.addRouteButton.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .bold)

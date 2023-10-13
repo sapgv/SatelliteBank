@@ -11,10 +11,13 @@ final class BankContentViewController: UIViewController {
     
     var viewModel: IBankContentViewModel?
     
+    var addRouteCompletion: ((IOffice) -> Void)?
+    
     private var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = .systemBackground
         self.setupTableView()
         self.layout()
     }
@@ -57,12 +60,16 @@ extension BankContentViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let bank = self.viewModel?.bank else { return UITableViewCell() }
+        
+        guard let office = self.viewModel?.office else { return UITableViewCell() }
         
         switch indexPath.row {
         case 0:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "BankContentDescriptionCell", for: indexPath) as? BankContentDescriptionCell else { return UITableViewCell() }
-            cell.setup(bank: bank)
+            cell.setup(office: office)
+            cell.closeButton.action = { [weak self] _ in
+                self?.dismiss(animated: true)
+            }
             return cell
         case 1:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "WorkTimeCell", for: indexPath) as? WorkTimeCell else { return UITableViewCell() }
@@ -76,8 +83,10 @@ extension BankContentViewController: UITableViewDataSource {
             
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "AddRouteCell", for: indexPath) as? AddRouteCell else { return UITableViewCell() }
             cell.addRouteButton.action = { [weak self] _ in
-                
-                
+                guard let office = self?.viewModel?.office else { return }
+                self?.dismiss(animated: true, completion: {
+                    self?.addRouteCompletion?(office)
+                })
             }
             return cell
             
