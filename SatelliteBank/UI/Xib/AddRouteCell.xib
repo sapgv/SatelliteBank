@@ -12,24 +12,24 @@
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AddRouteCell" rowHeight="165" id="KGk-i7-Jjw" customClass="AddRouteCell" customModule="SatelliteBank" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="165"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="320" height="165"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0EQ-PB-O2U" customClass="PrimaryButton" customModule="SatelliteBank" customModuleProvider="target">
-                        <rect key="frame" x="16" y="16" width="288" height="44"/>
+                        <rect key="frame" x="16" y="16" width="288" height="133"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="44" id="Fim-e1-JDV"/>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="ejc-nz-QJ3"/>
                         </constraints>
                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                         <state key="normal" title="Проложить маршрут"/>
                     </button>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="0EQ-PB-O2U" secondAttribute="bottom" constant="16" id="Bcy-uE-ItE"/>
-                    <constraint firstItem="0EQ-PB-O2U" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="Omc-Cu-Gvf"/>
-                    <constraint firstItem="0EQ-PB-O2U" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="SwM-hA-oT6"/>
-                    <constraint firstAttribute="trailing" secondItem="0EQ-PB-O2U" secondAttribute="trailing" constant="16" id="fSi-UD-dks"/>
+                    <constraint firstAttribute="trailing" secondItem="0EQ-PB-O2U" secondAttribute="trailing" constant="16" id="Mw0-Yh-vlz"/>
+                    <constraint firstItem="0EQ-PB-O2U" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="hia-eO-JQR"/>
+                    <constraint firstAttribute="bottom" secondItem="0EQ-PB-O2U" secondAttribute="bottom" constant="16" id="nO6-bf-0NL"/>
+                    <constraint firstItem="0EQ-PB-O2U" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="osC-ef-xpG"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

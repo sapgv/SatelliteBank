@@ -19,8 +19,25 @@ extension ChartData {
             
             for i in 1...24 {
                 
-                let value: Double = i < 8 || i > 20 ? 0 : Double.random(in: 5...8)
-                let data = BarChartDataEntry(x: Double(i), y: value)
+                let range: ClosedRange<Double>
+                
+                switch i {
+                case 0...7:
+                    range = 0...0
+                case 8...12:
+                    range = 1...3
+                case 12...16:
+                    range = 2...4
+                case 16...20:
+                    range = 4...6
+                default:
+                    range = 0...0
+                }
+                
+                let randomValue = Double.random(in: range)
+                
+                let data = BarChartDataEntry(x: Double(i), y: randomValue)
+                
                 array.append(data)
                 
             }
