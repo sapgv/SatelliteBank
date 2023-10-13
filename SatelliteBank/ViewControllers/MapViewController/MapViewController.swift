@@ -353,6 +353,60 @@ extension MapViewController {
     
 }
 
+//MARK: - Cluster
+
+extension MapViewController: YMKClusterListener {
+    
+    private var FONT_SIZE: CGFloat {
+        15
+    }
+    private var MARGIN_SIZE: CGFloat {
+        3
+    }
+    private var STROKE_SIZE: CGFloat {
+        3
+    }
+    
+    private func clusterImage(_ clusterSize: UInt) -> UIImage {
+        let scale = UIScreen.main.scale
+        let text = (clusterSize as NSNumber).stringValue
+        let font = UIFont.systemFont(ofSize: FONT_SIZE * scale)
+        let size = text.size(withAttributes: [NSAttributedString.Key.font: font])
+        let textRadius = sqrt(size.height * size.height + size.width * size.width) / 2
+        let internalRadius = textRadius + MARGIN_SIZE * scale
+        let externalRadius = internalRadius + STROKE_SIZE * scale
+        let iconSize = CGSize(width: externalRadius * 2, height: externalRadius * 2)
+
+        UIGraphicsBeginImageContext(iconSize)
+        let ctx = UIGraphicsGetCurrentContext()!
+
+        ctx.setFillColor(AppColor.primary.cgColor)
+        ctx.fillEllipse(in: CGRect(
+            origin: .zero,
+            size: CGSize(width: 2 * externalRadius, height: 2 * externalRadius)));
+
+        ctx.setFillColor(UIColor.white.cgColor)
+        ctx.fillEllipse(in: CGRect(
+            origin: CGPoint(x: externalRadius - internalRadius, y: externalRadius - internalRadius),
+            size: CGSize(width: 2 * internalRadius, height: 2 * internalRadius)));
+
+        (text as NSString).draw(
+            in: CGRect(
+                origin: CGPoint(x: externalRadius - size.width / 2, y: externalRadius - size.height / 2),
+                size: size),
+            withAttributes: [
+                NSAttributedString.Key.font: font,
+                NSAttributedString.Key.foregroundColor: UIColor.black])
+        let image = UIGraphicsGetImageFromCurrentImageContext()!
+        return image
+    }
+    
+    func onClusterAdded(with cluster: YMKCluster) {
+        cluster.appearance.setIconWith(clusterImage(cluster.size))
+    }
+    
+}
+
 //MARK: - Placemark Office
 
 extension MapViewController {
@@ -361,19 +415,24 @@ extension MapViewController {
         
         guard let viewModel = self.viewModel else { return }
         
+        let collection = mapView.mapWindow.map.mapObjects.addClusterizedPlacemarkCollection(with: self)
+        
         for office in viewModel.officeService.offices {
             
-            self.addPlacemark(office: office)
+            self.addPlacemark(office: office, toCollection: collection)
             
         }
         
+        collection.clusterPlacemarks(withClusterRadius: 60, minZoom: 15)
+        
     }
     
-    private func addPlacemark(office: IOffice) {
+    private func addPlacemark(office: IOffice, toCollection collection: YMKClusterizedPlacemarkCollection) {
         
         let image = UIImage(named: "office_icon_circle")!
         
-        let placemark = map.mapObjects.addPlacemark()
+//        let placemark = map.mapObjects.addPlacemark()
+        let placemark = collection.addPlacemark()
         placemark.geometry = office.coordinate.point
         let style = YMKIconStyle(anchor: nil, rotationType: nil, zIndex: nil, flat: nil, visible: nil, scale: 0.6, tappableArea: nil)
         placemark.setIconWith(image, style: style)
