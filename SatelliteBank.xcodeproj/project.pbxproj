@@ -29,6 +29,7 @@
 		10BBC9EF2AD946900079085F /* ChartCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10BBC9ED2AD946900079085F /* ChartCell.xib */; };
 		10BBC9F42AD953FD0079085F /* AddRouteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BBC9F22AD953FD0079085F /* AddRouteCell.swift */; };
 		10BBC9F52AD953FD0079085F /* AddRouteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10BBC9F32AD953FD0079085F /* AddRouteCell.xib */; };
+		10BBC9F72AD95EF20079085F /* ChartData + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BBC9F62AD95EF20079085F /* ChartData + Extensions.swift */; };
 		10BEBB902AD86F99008F9DF0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BEBB8F2AD86F99008F9DF0 /* AppDelegate.swift */; };
 		10BEBB922AD86F99008F9DF0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BEBB912AD86F99008F9DF0 /* SceneDelegate.swift */; };
 		10BEBB942AD86F99008F9DF0 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BEBB932AD86F99008F9DF0 /* MapViewController.swift */; };
@@ -81,6 +82,7 @@
 		10BBC9ED2AD946900079085F /* ChartCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChartCell.xib; sourceTree = "<group>"; };
 		10BBC9F22AD953FD0079085F /* AddRouteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRouteCell.swift; sourceTree = "<group>"; };
 		10BBC9F32AD953FD0079085F /* AddRouteCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddRouteCell.xib; sourceTree = "<group>"; };
+		10BBC9F62AD95EF20079085F /* ChartData + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChartData + Extensions.swift"; sourceTree = "<group>"; };
 		10BEBB8C2AD86F99008F9DF0 /* SatelliteBank.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SatelliteBank.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		10BEBB8F2AD86F99008F9DF0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		10BEBB912AD86F99008F9DF0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -242,6 +244,7 @@
 				10BBC9CC2AD92F070079085F /* UITableView + Extensions.swift */,
 				10BBC9CE2AD92F1C0079085F /* UINavigationBar + Extensions.swift */,
 				10BBC9D42AD9363B0079085F /* UITabBar + Extensions.swift */,
+				10BBC9F62AD95EF20079085F /* ChartData + Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -522,6 +525,7 @@
 				10BEBBCC2AD87111008F9DF0 /* PrimaryLabel.swift in Sources */,
 				10BBC9F42AD953FD0079085F /* AddRouteCell.swift in Sources */,
 				10BBC9E12AD93F290079085F /* Bank.swift in Sources */,
+				10BBC9F72AD95EF20079085F /* ChartData + Extensions.swift in Sources */,
 				10BEBBC22AD87111008F9DF0 /* String + Extensions.swift in Sources */,
 				10BEBBD02AD87111008F9DF0 /* PrimaryButton.swift in Sources */,
 				10BBC9D52AD9363B0079085F /* UITabBar + Extensions.swift in Sources */,
