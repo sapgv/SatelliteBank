@@ -21,7 +21,7 @@
                         <rect key="frame" x="16" y="16" width="288" height="182"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hxw-tT-9R7">
-                                <rect key="frame" x="0.0" y="0.0" width="35" height="90.333333333333329"/>
+                                <rect key="frame" x="0.0" y="0.0" width="272" height="90.333333333333329"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -41,6 +41,9 @@
                                 <state key="normal" title="Записаться на посещение"/>
                             </button>
                         </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Hxw-tT-9R7" secondAttribute="trailing" constant="16" id="JJg-zg-dGu"/>
+                        </constraints>
                     </stackView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rY3-cb-8T0" userLabel="Close Button" customClass="CloseButton" customModule="SatelliteBank" customModuleProvider="target">
                         <rect key="frame" x="282" y="8" width="30" height="30"/>

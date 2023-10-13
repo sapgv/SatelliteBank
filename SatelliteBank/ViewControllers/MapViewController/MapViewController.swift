@@ -65,18 +65,12 @@ class MapViewController: UIViewController {
     
     private var fpc: FloatingPanelController!
     
-    private lazy var locationMapButton: CurrentLocationMapButton = CurrentLocationMapButton()
+//    private lazy var locationMapButton: CurrentLocationMapButton = CurrentLocationMapButton()
     
-    private lazy var scaleMapStackView: ScaleMapStackView = ScaleMapStackView()
+    private lazy var scaleMapStackView: MapButtonVerticalStackView = MapButtonVerticalStackView()
     
-    private var scalePlusMapButton: ScalePlusMapButton {
-        self.scaleMapStackView.scalePlusMapButton
-    }
-
-    private var scaleMinusMapButton: ScaleMinusMapButton {
-        self.scaleMapStackView.scaleMinusMapButton
-    }
-
+    private lazy var bottomMapButtonStackView: MapButtonVerticalStackView = MapButtonVerticalStackView()
+    
     private let mapView: YMKMapView = YMKMapView()
     
     private var map: YMKMap {
@@ -85,16 +79,23 @@ class MapViewController: UIViewController {
     
     private lazy var mapObjectTapListener: YMKMapObjectTapListener = MapObjectTapListener(controller: self)
     
-    var drivingSession: YMKDrivingSession?
+    private var drivingSession: YMKDrivingSession?
     
-    var routesCollection: YMKMapObjectCollection!
+    private var routesCollection: YMKMapObjectCollection!
+    
+    private var routes: [YMKDrivingRoute] = [] {
+        didSet {
+            self.updateRouteButton()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
         
         self.setupViewModel()
-        self.setupLocationButton()
+        self.setupScaleMapStackView()
+        self.setupBottomMapButtonStackView()
         self.layout()
 //        self.setupContentViewController()
         self.updateOffice()
@@ -107,6 +108,7 @@ class MapViewController: UIViewController {
         super.viewDidAppear(animated)
         self.viewModel?.locationManager.requestWhenInUseAuthorization()
         self.viewModel?.requestLocation()
+        self.updateRouteButton()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -162,27 +164,46 @@ class MapViewController: UIViewController {
         
     }
     
-    
-    
-    private func setupLocationButton() {
+    private func setupScaleMapStackView() {
         
-        self.locationMapButton.action = { [weak self] _ in
-            self?.moveToCurrentLocation()
-        }
-        
-        self.scalePlusMapButton.action = { [weak self] _ in
+        let scalePlusMapButton = ScalePlusMapButton()
+        scalePlusMapButton.action = { [weak self] _ in
             
             self?.map.scaleMap(value: 1)
             
         }
         
-        self.scaleMinusMapButton.action = { [weak self] _ in
+        let scaleMinusMapButton = ScaleMinusMapButton()
+        scaleMinusMapButton.action = { [weak self] _ in
             
             self?.map.scaleMap(value: -1)
             
-            
         }
         
+        self.scaleMapStackView.setButtons(buttons: [scalePlusMapButton, scaleMinusMapButton])
+        
+    }
+    
+    private func setupBottomMapButtonStackView() {
+        
+        let locationMapButton: CurrentLocationMapButton = CurrentLocationMapButton()
+        
+        locationMapButton.action = { [weak self] _ in
+            self?.moveToCurrentLocation()
+        }
+        
+        let routeButton: RouteButton = RouteButton()
+        routeButton.action = { [weak self] _ in
+            self?.removeRoutes()
+        }
+        
+        self.bottomMapButtonStackView.setButtons(buttons: [routeButton, locationMapButton])
+        
+    }
+    
+    private func updateRouteButton() {
+        guard let button = self.bottomMapButtonStackView.buttons.first(where: { $0 is RouteButton }) else { return }
+        button.isHidden = self.routes.isEmpty
     }
     
     private let locationArrowButtonSize: CGFloat = 48
@@ -240,9 +261,12 @@ extension MapViewController: ContentViewControllerDelegate {
 
 extension MapViewController {
     
+    private func removeRoutes() {
+        self.routes.removeAll()
+        self.routesCollection.clear()
+    }
+    
     private func createRoute(toOffice office: IOffice) {
-        
-//        self.drivingSession?.cancel()
         
         guard let currentLocation = self.currentLocation else { return }
         
@@ -277,7 +301,10 @@ extension MapViewController {
     }
     
     private func onRoutesReceived(_ routes: [YMKDrivingRoute]) {
-        self.routesCollection.clear()
+        
+        self.removeRoutes()
+        
+        self.routes = routes
         
         routes.enumerated().forEach { pair in
             let routePolyline = self.routesCollection.addPolyline(with: pair.element.geometry)
@@ -366,45 +393,44 @@ extension MapViewController {
         
         self.mapView.translatesAutoresizingMaskIntoConstraints = false
         self.scaleMapStackView.translatesAutoresizingMaskIntoConstraints = false
-        self.scaleMapStackView.scalePlusMapButton.translatesAutoresizingMaskIntoConstraints = false
-        self.scaleMapStackView.scaleMinusMapButton.translatesAutoresizingMaskIntoConstraints = false
+        self.bottomMapButtonStackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        for button in self.scaleMapStackView.buttons {
+            button.translatesAutoresizingMaskIntoConstraints = false
+        }
+        
+        for button in self.bottomMapButtonStackView.buttons {
+            button.translatesAutoresizingMaskIntoConstraints = false
+        }
         
         self.view.addSubview(self.mapView)
         self.view.addSubview(self.scaleMapStackView)
+        self.view.addSubview(self.bottomMapButtonStackView)
 
         self.mapView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 0).isActive = true
         self.mapView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 0).isActive = true
         self.mapView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: 0).isActive = true
         self.mapView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 0).isActive = true
 
-        self.locationMapButton.translatesAutoresizingMaskIntoConstraints = false
-        
-        self.view.addSubview(self.locationMapButton)
-        
-        self.locationMapButton.widthAnchor.constraint(equalToConstant: locationArrowButtonSize).isActive = true
-        self.locationMapButton.heightAnchor.constraint(equalToConstant: locationArrowButtonSize).isActive = true
-        
-        self.locationMapButton.layer.cornerRadius = locationArrowButtonSize / 2
-        self.locationMapButton.clipsToBounds = true
-        
-        self.locationMapButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16).isActive = true
-        self.locationMapButton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -locationArrowButtonPadding).isActive = true
-     
-        
         self.scaleMapStackView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16).isActive = true
         self.scaleMapStackView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: 0).isActive = true
         
+        for button in self.scaleMapStackView.buttons {
+            button.widthAnchor.constraint(equalToConstant: locationArrowButtonSize).isActive = true
+            button.heightAnchor.constraint(equalToConstant: locationArrowButtonSize).isActive = true
+            button.layer.cornerRadius = locationArrowButtonSize / 2
+            button.clipsToBounds = true
+        }
         
-        self.scaleMapStackView.scalePlusMapButton.widthAnchor.constraint(equalToConstant: locationArrowButtonSize).isActive = true
-        self.scaleMapStackView.scalePlusMapButton.heightAnchor.constraint(equalToConstant: locationArrowButtonSize).isActive = true
-        self.scaleMapStackView.scaleMinusMapButton.widthAnchor.constraint(equalToConstant: locationArrowButtonSize).isActive = true
-        self.scaleMapStackView.scaleMinusMapButton.heightAnchor.constraint(equalToConstant: locationArrowButtonSize).isActive = true
+        self.bottomMapButtonStackView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16).isActive = true
+        self.bottomMapButtonStackView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -16).isActive = true
         
-        self.scaleMapStackView.scalePlusMapButton.layer.cornerRadius = locationArrowButtonSize / 2
-        self.scaleMapStackView.scalePlusMapButton.clipsToBounds = true
-        
-        self.scaleMapStackView.scaleMinusMapButton.layer.cornerRadius = locationArrowButtonSize / 2
-        self.scaleMapStackView.scaleMinusMapButton.clipsToBounds = true
+        for button in self.bottomMapButtonStackView.buttons {
+            button.widthAnchor.constraint(equalToConstant: locationArrowButtonSize).isActive = true
+            button.heightAnchor.constraint(equalToConstant: locationArrowButtonSize).isActive = true
+            button.layer.cornerRadius = locationArrowButtonSize / 2
+            button.clipsToBounds = true
+        }
         
     }
     

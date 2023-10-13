@@ -1,5 +1,5 @@
 //
-//  ScaleMapStackView.swift
+//  MapButtonVerticalStackView.swift
 //  SatelliteBank
 //
 //  Created by Grigory Sapogov on 13.10.2023.
@@ -7,11 +7,9 @@
 
 import UIKit
 
-final class ScaleMapStackView: UIStackView {
+final class MapButtonVerticalStackView: UIStackView {
     
-    private(set) var scalePlusMapButton: ScalePlusMapButton = ScalePlusMapButton()
-    
-    private(set) var scaleMinusMapButton: ScaleMinusMapButton = ScaleMinusMapButton()
+    private(set) var buttons: [MapButton] = []
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -36,8 +34,17 @@ final class ScaleMapStackView: UIStackView {
     }
     
     func layout() {
-        self.addArrangedSubview(scalePlusMapButton)
-        self.addArrangedSubview(scaleMinusMapButton)
+        for view in self.arrangedSubviews {
+            view.removeFromSuperview()
+        }
+        for button in self.buttons {
+            self.addArrangedSubview(button)
+        }
+    }
+    
+    func setButtons(buttons: [MapButton]) {
+        self.buttons = buttons
+        self.layout()
     }
     
 }

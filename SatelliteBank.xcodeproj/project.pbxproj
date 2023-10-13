@@ -10,7 +10,7 @@
 		10BBC9C22AD91D300079085F /* MapButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BBC9C12AD91D300079085F /* MapButton.swift */; };
 		10BBC9C52AD922C90079085F /* ScalePlusMapButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BBC9C42AD922C90079085F /* ScalePlusMapButton.swift */; };
 		10BBC9C72AD9230B0079085F /* ScaleMinusMapButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BBC9C62AD9230B0079085F /* ScaleMinusMapButton.swift */; };
-		10BBC9C92AD923710079085F /* ScaleMapStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BBC9C82AD923710079085F /* ScaleMapStackView.swift */; };
+		10BBC9C92AD923710079085F /* MapButtonVerticalStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BBC9C82AD923710079085F /* MapButtonVerticalStackView.swift */; };
 		10BBC9CB2AD929590079085F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10BBC9CA2AD929590079085F /* Assets.xcassets */; };
 		10BBC9D12AD930D70079085F /* YandexMapKit + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BBC9D02AD930D70079085F /* YandexMapKit + Extensions.swift */; };
 		10BBC9D82AD93D200079085F /* BankContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BBC9D72AD93D200079085F /* BankContentViewController.swift */; };
@@ -36,6 +36,7 @@
 		10BBCA062AD99D580079085F /* Error + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BBCA052AD99D580079085F /* Error + Extensions.swift */; };
 		10BBCA082AD9B9680079085F /* CloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BBCA072AD9B9680079085F /* CloseButton.swift */; };
 		10BBCA0C2AD9CD960079085F /* UIKit + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BBCA0B2AD9CD960079085F /* UIKit + Extensions.swift */; };
+		10BBCA0E2AD9D1270079085F /* RouteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BBCA0D2AD9D1270079085F /* RouteButton.swift */; };
 		10BEBB902AD86F99008F9DF0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BEBB8F2AD86F99008F9DF0 /* AppDelegate.swift */; };
 		10BEBB922AD86F99008F9DF0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BEBB912AD86F99008F9DF0 /* SceneDelegate.swift */; };
 		10BEBB942AD86F99008F9DF0 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BEBB932AD86F99008F9DF0 /* MapViewController.swift */; };
@@ -68,7 +69,7 @@
 		10BBC9C12AD91D300079085F /* MapButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapButton.swift; sourceTree = "<group>"; };
 		10BBC9C42AD922C90079085F /* ScalePlusMapButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScalePlusMapButton.swift; sourceTree = "<group>"; };
 		10BBC9C62AD9230B0079085F /* ScaleMinusMapButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleMinusMapButton.swift; sourceTree = "<group>"; };
-		10BBC9C82AD923710079085F /* ScaleMapStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleMapStackView.swift; sourceTree = "<group>"; };
+		10BBC9C82AD923710079085F /* MapButtonVerticalStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapButtonVerticalStackView.swift; sourceTree = "<group>"; };
 		10BBC9CA2AD929590079085F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		10BBC9D02AD930D70079085F /* YandexMapKit + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "YandexMapKit + Extensions.swift"; sourceTree = "<group>"; };
 		10BBC9D72AD93D200079085F /* BankContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankContentViewController.swift; sourceTree = "<group>"; };
@@ -94,6 +95,7 @@
 		10BBCA052AD99D580079085F /* Error + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Error + Extensions.swift"; sourceTree = "<group>"; };
 		10BBCA072AD9B9680079085F /* CloseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseButton.swift; sourceTree = "<group>"; };
 		10BBCA0B2AD9CD960079085F /* UIKit + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIKit + Extensions.swift"; sourceTree = "<group>"; };
+		10BBCA0D2AD9D1270079085F /* RouteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteButton.swift; sourceTree = "<group>"; };
 		10BEBB8C2AD86F99008F9DF0 /* SatelliteBank.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SatelliteBank.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		10BEBB8F2AD86F99008F9DF0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		10BEBB912AD86F99008F9DF0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -145,7 +147,8 @@
 				10BEBBAA2AD87111008F9DF0 /* CurrentLocationMapButton.swift */,
 				10BBC9C42AD922C90079085F /* ScalePlusMapButton.swift */,
 				10BBC9C62AD9230B0079085F /* ScaleMinusMapButton.swift */,
-				10BBC9C82AD923710079085F /* ScaleMapStackView.swift */,
+				10BBC9C82AD923710079085F /* MapButtonVerticalStackView.swift */,
+				10BBCA0D2AD9D1270079085F /* RouteButton.swift */,
 			);
 			path = MapButton;
 			sourceTree = "<group>";
@@ -531,7 +534,7 @@
 				10BEBB902AD86F99008F9DF0 /* AppDelegate.swift in Sources */,
 				10BBC9D82AD93D200079085F /* BankContentViewController.swift in Sources */,
 				10BEBBCA2AD87111008F9DF0 /* LoginViewLogoImageView.swift in Sources */,
-				10BBC9C92AD923710079085F /* ScaleMapStackView.swift in Sources */,
+				10BBC9C92AD923710079085F /* MapButtonVerticalStackView.swift in Sources */,
 				10BBCA022AD999B00079085F /* OfficeService.swift in Sources */,
 				10BEBBC72AD87111008F9DF0 /* LoginViewTitleLabel.swift in Sources */,
 				10BEBB922AD86F99008F9DF0 /* SceneDelegate.swift in Sources */,
@@ -553,6 +556,7 @@
 				10BBCA0C2AD9CD960079085F /* UIKit + Extensions.swift in Sources */,
 				10BBC9F72AD95EF20079085F /* ChartData + Extensions.swift in Sources */,
 				10BEBBC22AD87111008F9DF0 /* String + Extensions.swift in Sources */,
+				10BBCA0E2AD9D1270079085F /* RouteButton.swift in Sources */,
 				10BEBBD02AD87111008F9DF0 /* PrimaryButton.swift in Sources */,
 				10BBCA082AD9B9680079085F /* CloseButton.swift in Sources */,
 				10BBC9F92AD970140079085F /* ContentScrollView.swift in Sources */,
