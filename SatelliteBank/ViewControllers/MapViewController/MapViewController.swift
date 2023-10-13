@@ -89,6 +89,10 @@ class MapViewController: UIViewController {
         
         let navigationController = UINavigationController(rootViewController: contentVC)
         
+        let appearance = SurfaceAppearance()
+        appearance.cornerRadius = 16
+        fpc.surfaceView.appearance = appearance
+        
         self.fpc.set(contentViewController: navigationController)
         
         self.fpc.addPanel(toParent: self)
