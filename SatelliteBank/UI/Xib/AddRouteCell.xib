@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AddRouteCell" rowHeight="165" id="KGk-i7-Jjw" customClass="AddRouteCell" customModule="SatelliteBank" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="165"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="165"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0EQ-PB-O2U" customClass="PrimaryButton" customModule="SatelliteBank" customModuleProvider="target">
+                        <rect key="frame" x="16" y="16" width="288" height="44"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="44" id="Fim-e1-JDV"/>
+                        </constraints>
+                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                        <state key="normal" title="Проложить маршрут"/>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="0EQ-PB-O2U" secondAttribute="bottom" constant="16" id="Bcy-uE-ItE"/>
+                    <constraint firstItem="0EQ-PB-O2U" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="Omc-Cu-Gvf"/>
+                    <constraint firstItem="0EQ-PB-O2U" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="SwM-hA-oT6"/>
+                    <constraint firstAttribute="trailing" secondItem="0EQ-PB-O2U" secondAttribute="trailing" constant="16" id="fSi-UD-dks"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="addRouteButton" destination="0EQ-PB-O2U" id="YFX-SO-WXS"/>
+            </connections>
+            <point key="canvasLocation" x="129.7709923664122" y="51.056338028169016"/>
+        </tableViewCell>
+    </objects>
+</document>

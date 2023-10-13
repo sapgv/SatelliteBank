@@ -9,6 +9,8 @@ import UIKit
 
 class PrimaryButton: UIButton {
     
+    var action: ((PrimaryButton) -> Void)?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.commonInit()
@@ -22,6 +24,11 @@ class PrimaryButton: UIButton {
     func commonInit() {
         self.backgroundColor = AppColor.primary
         self.setTitleColor(.white, for: .normal)
+        self.addTarget(self, action: #selector(self.tapAction), for: .touchUpInside)
     }
     
+    @objc
+    func tapAction() {
+        self.action?(self)
+    }
 }

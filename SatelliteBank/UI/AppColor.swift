@@ -12,3 +12,15 @@ struct AppColor {
     static let primary: UIColor = .systemBlue
     
 }
+
+struct ContentColor {
+    
+    var backgrounColor: UIColor
+    
+    var textColor: UIColor
+    
+    var borderColor: UIColor
+    
+}
+
+
