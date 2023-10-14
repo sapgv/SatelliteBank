@@ -45,10 +45,22 @@ extension MapViewController: IMapViewController {
         let viewModel = BankContentViewModel(office: office)
         let viewController = BankContentViewController()
         viewController.viewModel = viewModel
+        viewController.viewModel?.delegate = self
         viewController.addRouteCompletion = { [weak self] office in
             self?.createRoute(toOffice: office)
         }
-
+        viewController.showFreeOffice = { [weak self] freeOffice, vc in
+            
+            vc.dismiss(animated: true) {
+                let cameraPosition = YMKCameraPosition(target: freeOffice.location.point, zoom: 16, azimuth: 0, tilt: 0)
+                let animation = YMKAnimation(type: .smooth, duration: 2)
+                self?.mapView.mapWindow.map.move(with: cameraPosition, animation: animation, cameraCallback: { _ in
+                    self?.show(office: freeOffice)
+                })
+                
+            }
+            
+        }
         self.present(viewController, animated: true)
         
     }
@@ -60,6 +72,14 @@ extension MapViewController: IMapViewController {
         
         self.present(bonusViewController, animated: true)
         
+    }
+    
+}
+
+extension MapViewController: IBankContentViewControllerDelegate {
+    
+    var offices: [IOffice] {
+        self.viewModel?.officeService.offices ?? []
     }
     
 }

@@ -16,6 +16,8 @@ class ChartCell: UITableViewCell {
     
     @IBOutlet var dayButtons: [UIButton]!
     
+    var showFreeOfficeAction: ((IOffice) -> Void)?
+    
     private var charData: [ChartData] = []
     
     private var index: Int = 0
@@ -24,11 +26,11 @@ class ChartCell: UITableViewCell {
     
     @IBOutlet weak var loadImageView: UIImageView!
     
-    @IBOutlet weak var queueLabel: UILabel!
-    
     @IBOutlet weak var waitLabel: UILabel!
     
     @IBOutlet weak var loadLabel: UILabel!
+    
+    @IBOutlet weak var freeOfficeButton: FreeOfficeButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -49,6 +51,7 @@ class ChartCell: UITableViewCell {
     
     func setup(office: IOffice) {
         self.office = office
+        self.freeOfficeButton.isHidden = office.load == .medium || office.load == .low
         self.charData = ChartData.generate(office: office, color: office.load.color)
         self.setupLabels()
         self.updateChart(index: self.index)
@@ -57,6 +60,11 @@ class ChartCell: UITableViewCell {
     @IBAction func daySelect(_ sender: UIButton) {
         self.index = sender.tag
         self.updateChart(index: sender.tag)
+    }
+    
+    @IBAction func showFreeOffice(_ sender: Any) {
+        guard let office = self.office else { return }
+        self.showFreeOfficeAction?(office)
     }
     
     private func setupLabels() {

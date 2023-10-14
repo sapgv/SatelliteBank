@@ -19,6 +19,7 @@
 		108AE4062ADB2CC3004C3A23 /* ScheduleTimeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 108AE4042ADB2CC3004C3A23 /* ScheduleTimeCell.xib */; };
 		108AE4092ADB2E05004C3A23 /* ButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108AE4072ADB2E05004C3A23 /* ButtonCell.swift */; };
 		108AE40A2ADB2E05004C3A23 /* ButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 108AE4082ADB2E05004C3A23 /* ButtonCell.xib */; };
+		108AE40C2ADB4E9A004C3A23 /* FreeOfficeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108AE40B2ADB4E9A004C3A23 /* FreeOfficeButton.swift */; };
 		108F3D342ADA666D00B23072 /* Double + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108F3D332ADA666D00B23072 /* Double + Extensions.swift */; };
 		108F3D362ADA693300B23072 /* ScheduleRouteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108F3D352ADA693300B23072 /* ScheduleRouteButton.swift */; };
 		108F3D382ADA698300B23072 /* ScheduleCarRouteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108F3D372ADA698300B23072 /* ScheduleCarRouteButton.swift */; };
@@ -104,6 +105,7 @@
 		108AE4042ADB2CC3004C3A23 /* ScheduleTimeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScheduleTimeCell.xib; sourceTree = "<group>"; };
 		108AE4072ADB2E05004C3A23 /* ButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonCell.swift; sourceTree = "<group>"; };
 		108AE4082ADB2E05004C3A23 /* ButtonCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ButtonCell.xib; sourceTree = "<group>"; };
+		108AE40B2ADB4E9A004C3A23 /* FreeOfficeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreeOfficeButton.swift; sourceTree = "<group>"; };
 		108F3D332ADA666D00B23072 /* Double + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double + Extensions.swift"; sourceTree = "<group>"; };
 		108F3D352ADA693300B23072 /* ScheduleRouteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleRouteButton.swift; sourceTree = "<group>"; };
 		108F3D372ADA698300B23072 /* ScheduleCarRouteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCarRouteButton.swift; sourceTree = "<group>"; };
@@ -416,6 +418,7 @@
 				10BBC9E22AD93FC70079085F /* PrimaryInvertedButton.swift */,
 				10BBC9E62AD942F30079085F /* ScheduleButton.swift */,
 				10BBCA072AD9B9680079085F /* CloseButton.swift */,
+				108AE40B2ADB4E9A004C3A23 /* FreeOfficeButton.swift */,
 				10BEBBC02AD87111008F9DF0 /* SecondaryButton.swift */,
 			);
 			path = Button;
@@ -643,6 +646,7 @@
 				10BEBB922AD86F99008F9DF0 /* SceneDelegate.swift in Sources */,
 				10BEBBC92AD87111008F9DF0 /* LoginViewSubmitButton.swift in Sources */,
 				10BBC9FD2AD997960079085F /* WorkTime.swift in Sources */,
+				108AE40C2ADB4E9A004C3A23 /* FreeOfficeButton.swift in Sources */,
 				10BEBBC82AD87111008F9DF0 /* LoginViewMessageLabel.swift in Sources */,
 				108F3D492ADA7FB200B23072 /* RouteLocationDelegate.swift in Sources */,
 				10C8387D2ADAD40E00932CC6 /* BonusService.swift in Sources */,

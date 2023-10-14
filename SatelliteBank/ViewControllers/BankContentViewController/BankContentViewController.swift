@@ -7,11 +7,19 @@
 
 import UIKit
 
+protocol IBankContentViewControllerDelegate: AnyObject {
+    
+    var offices: [IOffice] { get }
+    
+}
+
 final class BankContentViewController: UIViewController {
     
     var viewModel: IBankContentViewModel?
     
     var addRouteCompletion: ((IOffice) -> Void)?
+    
+    var showFreeOffice: ((IOffice, UIViewController) -> Void)?
     
     private var tableView: UITableView!
     
@@ -23,7 +31,6 @@ final class BankContentViewController: UIViewController {
     }
     
     private func setupTableView() {
-        
         self.tableView = UITableView()
         self.tableView.dataSource = self
         self.tableView.delegate = self
@@ -32,7 +39,6 @@ final class BankContentViewController: UIViewController {
         self.tableView.register(UINib(nibName: "ChartCell", bundle: nil), forCellReuseIdentifier: ChartCell.id)
         self.tableView.register(UINib(nibName: "AddRouteCell", bundle: nil), forCellReuseIdentifier: AddRouteCell.id)
     }
-    
     
 }
 
@@ -80,6 +86,11 @@ extension BankContentViewController: UITableViewDataSource {
         case 2:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "ChartCell", for: indexPath) as? ChartCell else { return UITableViewCell() }
             cell.setup(office: office)
+            cell.showFreeOfficeAction = { [weak self] _ in
+                guard let self = self else { return }
+                guard let freeOffice = self.viewModel?.findFreeOfficeNear() else { return }
+                self.showFreeOffice?(freeOffice, self)
+            }
             return cell
             
         case 3:
@@ -105,12 +116,7 @@ extension BankContentViewController: UITableViewDataSource {
 extension BankContentViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        switch indexPath.row {
-        case 2:
-            return 300
-        default:
-            return UITableView.automaticDimension
-        }
+        return UITableView.automaticDimension
     }
     
 }

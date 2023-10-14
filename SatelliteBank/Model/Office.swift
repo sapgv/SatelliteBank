@@ -20,6 +20,8 @@ protocol IOffice: AnyObject {
     
     var coordinate: CLLocationCoordinate2D { get }
     
+    var location: CLLocation { get }
+    
     var queue: Int { get }
     
     var load: OfficeLoad { get }
@@ -53,6 +55,10 @@ extension IOffice {
             return UIImage(named: "icon_red")
         }
         
+    }
+    
+    var location: CLLocation {
+        return CLLocation(latitude: self.coordinate.latitude, longitude: self.coordinate.longitude)
     }
     
 }
