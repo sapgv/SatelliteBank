@@ -16,9 +16,15 @@ protocol IMapViewModel: NSObject {
     
     var requestLocationCompletion: ((CLLocation) -> Void)? { get set }
     
+    var createRouteCompletion: ((Swift.Result<IOffice, NSError>) -> Void)? { get set }
+    
+    var driverRouteService: DriverRouteService { get }
+    
     func requestLocation()
     
+    func createRoute(toOffice office: IOffice)
     
+    func clearRoutes()
     
 }
 
@@ -30,15 +36,47 @@ final class MapViewModel: NSObject, IMapViewModel {
     
     var requestLocationCompletion: ((CLLocation) -> Void)?
     
-    init(officeService: IOfficeService = OfficeService.shared, locationManager: CLLocationManager = CLLocationManager()) {
+    var createRouteCompletion: ((Swift.Result<IOffice, NSError>) -> Void)?
+    
+    var driverRouteService: DriverRouteService
+    
+    var pedastrinaRouteService: PedastrianRouteService
+    
+    init(officeService: IOfficeService = OfficeService.shared,
+         locationManager: CLLocationManager = CLLocationManager(),
+         driverRouteService: DriverRouteService = DriverRouteService(),
+         pedastrinaRouteService: PedastrianRouteService = PedastrianRouteService()) {
         self.officeService = officeService
         self.locationManager = locationManager
+        self.driverRouteService = driverRouteService
+        self.pedastrinaRouteService = pedastrinaRouteService
         super.init()
         self.locationManager.delegate = self
     }
     
     func requestLocation() {
         self.locationManager.startUpdatingLocation()
+    }
+    
+    func createRoute(toOffice office: IOffice) {
+        
+        self.driverRouteService.createRoute(toOffice: office) { [weak self] error in
+            
+            if let error = error {
+                self?.createRouteCompletion?(.failure(error.NSError))
+            }
+            else {
+                self?.createRouteCompletion?(.success(office))
+            }
+            
+        }
+        
+    }
+    
+    func clearRoutes() {
+        
+        self.driverRouteService.removeRoutes()
+        
     }
     
 }

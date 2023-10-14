@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		108F3D342ADA666D00B23072 /* Double + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108F3D332ADA666D00B23072 /* Double + Extensions.swift */; };
+		108F3D362ADA693300B23072 /* ScheduleRouteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108F3D352ADA693300B23072 /* ScheduleRouteButton.swift */; };
+		108F3D382ADA698300B23072 /* ScheduleCarRouteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108F3D372ADA698300B23072 /* ScheduleCarRouteButton.swift */; };
+		108F3D3B2ADA69D800B23072 /* PrepareRouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108F3D3A2ADA69D800B23072 /* PrepareRouteViewController.swift */; };
+		108F3D3D2ADA6F9100B23072 /* ScheduleTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108F3D3C2ADA6F9100B23072 /* ScheduleTypeView.swift */; };
+		108F3D3F2ADA727800B23072 /* ScheduleWalkRouteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108F3D3E2ADA727800B23072 /* ScheduleWalkRouteButton.swift */; };
+		108F3D412ADA73B600B23072 /* ScheduleBusRouteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108F3D402ADA73B600B23072 /* ScheduleBusRouteButton.swift */; };
+		108F3D432ADA752C00B23072 /* MapObjectTapListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108F3D422ADA752C00B23072 /* MapObjectTapListener.swift */; };
+		108F3D452ADA756E00B23072 /* MyFloatingPanelLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108F3D442ADA756E00B23072 /* MyFloatingPanelLayout.swift */; };
+		108F3D472ADA772600B23072 /* DriverRouteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108F3D462ADA772600B23072 /* DriverRouteService.swift */; };
+		108F3D492ADA7FB200B23072 /* RouteLocationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108F3D482ADA7FB200B23072 /* RouteLocationDelegate.swift */; };
+		108F3D4B2ADA84AA00B23072 /* PedastrianRouteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108F3D4A2ADA84AA00B23072 /* PedastrianRouteService.swift */; };
 		10BBC9C22AD91D300079085F /* MapButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BBC9C12AD91D300079085F /* MapButton.swift */; };
 		10BBC9C52AD922C90079085F /* ScalePlusMapButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BBC9C42AD922C90079085F /* ScalePlusMapButton.swift */; };
 		10BBC9C72AD9230B0079085F /* ScaleMinusMapButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BBC9C62AD9230B0079085F /* ScaleMinusMapButton.swift */; };
@@ -36,7 +48,7 @@
 		10BBCA062AD99D580079085F /* Error + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BBCA052AD99D580079085F /* Error + Extensions.swift */; };
 		10BBCA082AD9B9680079085F /* CloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BBCA072AD9B9680079085F /* CloseButton.swift */; };
 		10BBCA0C2AD9CD960079085F /* UIKit + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BBCA0B2AD9CD960079085F /* UIKit + Extensions.swift */; };
-		10BBCA0E2AD9D1270079085F /* RouteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BBCA0D2AD9D1270079085F /* RouteButton.swift */; };
+		10BBCA0E2AD9D1270079085F /* RouteMapButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BBCA0D2AD9D1270079085F /* RouteMapButton.swift */; };
 		10BEBB902AD86F99008F9DF0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BEBB8F2AD86F99008F9DF0 /* AppDelegate.swift */; };
 		10BEBB922AD86F99008F9DF0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BEBB912AD86F99008F9DF0 /* SceneDelegate.swift */; };
 		10BEBB942AD86F99008F9DF0 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BEBB932AD86F99008F9DF0 /* MapViewController.swift */; };
@@ -66,6 +78,18 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		108F3D332ADA666D00B23072 /* Double + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double + Extensions.swift"; sourceTree = "<group>"; };
+		108F3D352ADA693300B23072 /* ScheduleRouteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleRouteButton.swift; sourceTree = "<group>"; };
+		108F3D372ADA698300B23072 /* ScheduleCarRouteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCarRouteButton.swift; sourceTree = "<group>"; };
+		108F3D3A2ADA69D800B23072 /* PrepareRouteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrepareRouteViewController.swift; sourceTree = "<group>"; };
+		108F3D3C2ADA6F9100B23072 /* ScheduleTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTypeView.swift; sourceTree = "<group>"; };
+		108F3D3E2ADA727800B23072 /* ScheduleWalkRouteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleWalkRouteButton.swift; sourceTree = "<group>"; };
+		108F3D402ADA73B600B23072 /* ScheduleBusRouteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleBusRouteButton.swift; sourceTree = "<group>"; };
+		108F3D422ADA752C00B23072 /* MapObjectTapListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapObjectTapListener.swift; sourceTree = "<group>"; };
+		108F3D442ADA756E00B23072 /* MyFloatingPanelLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFloatingPanelLayout.swift; sourceTree = "<group>"; };
+		108F3D462ADA772600B23072 /* DriverRouteService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverRouteService.swift; sourceTree = "<group>"; };
+		108F3D482ADA7FB200B23072 /* RouteLocationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteLocationDelegate.swift; sourceTree = "<group>"; };
+		108F3D4A2ADA84AA00B23072 /* PedastrianRouteService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PedastrianRouteService.swift; sourceTree = "<group>"; };
 		10BBC9C12AD91D300079085F /* MapButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapButton.swift; sourceTree = "<group>"; };
 		10BBC9C42AD922C90079085F /* ScalePlusMapButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScalePlusMapButton.swift; sourceTree = "<group>"; };
 		10BBC9C62AD9230B0079085F /* ScaleMinusMapButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleMinusMapButton.swift; sourceTree = "<group>"; };
@@ -95,7 +119,7 @@
 		10BBCA052AD99D580079085F /* Error + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Error + Extensions.swift"; sourceTree = "<group>"; };
 		10BBCA072AD9B9680079085F /* CloseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseButton.swift; sourceTree = "<group>"; };
 		10BBCA0B2AD9CD960079085F /* UIKit + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIKit + Extensions.swift"; sourceTree = "<group>"; };
-		10BBCA0D2AD9D1270079085F /* RouteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteButton.swift; sourceTree = "<group>"; };
+		10BBCA0D2AD9D1270079085F /* RouteMapButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteMapButton.swift; sourceTree = "<group>"; };
 		10BEBB8C2AD86F99008F9DF0 /* SatelliteBank.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SatelliteBank.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		10BEBB8F2AD86F99008F9DF0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		10BEBB912AD86F99008F9DF0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -140,6 +164,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		108F3D392ADA69C800B23072 /* PrepareRouteViewController */ = {
+			isa = PBXGroup;
+			children = (
+				108F3D3A2ADA69D800B23072 /* PrepareRouteViewController.swift */,
+			);
+			path = PrepareRouteViewController;
+			sourceTree = "<group>";
+		};
 		10BBC9C32AD91D960079085F /* MapButton */ = {
 			isa = PBXGroup;
 			children = (
@@ -148,7 +180,12 @@
 				10BBC9C42AD922C90079085F /* ScalePlusMapButton.swift */,
 				10BBC9C62AD9230B0079085F /* ScaleMinusMapButton.swift */,
 				10BBC9C82AD923710079085F /* MapButtonVerticalStackView.swift */,
-				10BBCA0D2AD9D1270079085F /* RouteButton.swift */,
+				10BBCA0D2AD9D1270079085F /* RouteMapButton.swift */,
+				108F3D352ADA693300B23072 /* ScheduleRouteButton.swift */,
+				108F3D372ADA698300B23072 /* ScheduleCarRouteButton.swift */,
+				108F3D3E2ADA727800B23072 /* ScheduleWalkRouteButton.swift */,
+				108F3D402ADA73B600B23072 /* ScheduleBusRouteButton.swift */,
+				108F3D3C2ADA6F9100B23072 /* ScheduleTypeView.swift */,
 			);
 			path = MapButton;
 			sourceTree = "<group>";
@@ -158,6 +195,8 @@
 			children = (
 				10BEBBA62AD870F7008F9DF0 /* MapViewModel.swift */,
 				10BEBB932AD86F99008F9DF0 /* MapViewController.swift */,
+				108F3D422ADA752C00B23072 /* MapObjectTapListener.swift */,
+				108F3D442ADA756E00B23072 /* MyFloatingPanelLayout.swift */,
 			);
 			path = MapViewController;
 			sourceTree = "<group>";
@@ -216,6 +255,9 @@
 			isa = PBXGroup;
 			children = (
 				10BBCA012AD999B00079085F /* OfficeService.swift */,
+				108F3D462ADA772600B23072 /* DriverRouteService.swift */,
+				108F3D4A2ADA84AA00B23072 /* PedastrianRouteService.swift */,
+				108F3D482ADA7FB200B23072 /* RouteLocationDelegate.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -268,6 +310,7 @@
 				10BBCA052AD99D580079085F /* Error + Extensions.swift */,
 				10BBC9F62AD95EF20079085F /* ChartData + Extensions.swift */,
 				10BBCA0B2AD9CD960079085F /* UIKit + Extensions.swift */,
+				108F3D332ADA666D00B23072 /* Double + Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -347,6 +390,7 @@
 		10BEBBD32AD87380008F9DF0 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				108F3D392ADA69C800B23072 /* PrepareRouteViewController */,
 				10BBC9D62AD93D090079085F /* BankContentViewController */,
 				10BEBBA52AD870F7008F9DF0 /* LoginViewController */,
 				10BEBBD42AD873F7008F9DF0 /* TabViewController */,
@@ -531,6 +575,7 @@
 				10BBC9D12AD930D70079085F /* YandexMapKit + Extensions.swift in Sources */,
 				10BEBBCE2AD87111008F9DF0 /* LoginPhoneTextField.swift in Sources */,
 				10BEBBD82AD8779C008F9DF0 /* FavoriteViewController.swift in Sources */,
+				108F3D382ADA698300B23072 /* ScheduleCarRouteButton.swift in Sources */,
 				10BEBB902AD86F99008F9DF0 /* AppDelegate.swift in Sources */,
 				10BBC9D82AD93D200079085F /* BankContentViewController.swift in Sources */,
 				10BEBBCA2AD87111008F9DF0 /* LoginViewLogoImageView.swift in Sources */,
@@ -542,28 +587,39 @@
 				10BBC9FD2AD997960079085F /* WorkTime.swift in Sources */,
 				10BEBBC82AD87111008F9DF0 /* LoginViewMessageLabel.swift in Sources */,
 				10BBC9DD2AD93D880079085F /* BankContentDescriptionCell.swift in Sources */,
+				108F3D492ADA7FB200B23072 /* RouteLocationDelegate.swift in Sources */,
 				10BBCA062AD99D580079085F /* Error + Extensions.swift in Sources */,
+				108F3D362ADA693300B23072 /* ScheduleRouteButton.swift in Sources */,
 				10BEBBA92AD870F7008F9DF0 /* LoginViewController.swift in Sources */,
 				10BEBBC42AD87111008F9DF0 /* MapContentViewController.swift in Sources */,
 				10BEBBD62AD87420008F9DF0 /* TabViewController.swift in Sources */,
 				10BEBBC12AD87111008F9DF0 /* CurrentLocationMapButton.swift in Sources */,
 				10BBC9C52AD922C90079085F /* ScalePlusMapButton.swift in Sources */,
 				10BEBBA82AD870F7008F9DF0 /* MapViewModel.swift in Sources */,
+				108F3D412ADA73B600B23072 /* ScheduleBusRouteButton.swift in Sources */,
+				108F3D3B2ADA69D800B23072 /* PrepareRouteViewController.swift in Sources */,
 				10BBCA042AD99C910079085F /* Thread + Extensions.swift in Sources */,
 				10BEBBCC2AD87111008F9DF0 /* PrimaryLabel.swift in Sources */,
 				10BBC9F42AD953FD0079085F /* AddRouteCell.swift in Sources */,
 				10BBC9E12AD93F290079085F /* Bank.swift in Sources */,
+				108F3D472ADA772600B23072 /* DriverRouteService.swift in Sources */,
 				10BBCA0C2AD9CD960079085F /* UIKit + Extensions.swift in Sources */,
+				108F3D452ADA756E00B23072 /* MyFloatingPanelLayout.swift in Sources */,
 				10BBC9F72AD95EF20079085F /* ChartData + Extensions.swift in Sources */,
+				108F3D4B2ADA84AA00B23072 /* PedastrianRouteService.swift in Sources */,
 				10BEBBC22AD87111008F9DF0 /* String + Extensions.swift in Sources */,
-				10BBCA0E2AD9D1270079085F /* RouteButton.swift in Sources */,
+				108F3D3D2ADA6F9100B23072 /* ScheduleTypeView.swift in Sources */,
+				10BBCA0E2AD9D1270079085F /* RouteMapButton.swift in Sources */,
 				10BEBBD02AD87111008F9DF0 /* PrimaryButton.swift in Sources */,
 				10BBCA082AD9B9680079085F /* CloseButton.swift in Sources */,
 				10BBC9F92AD970140079085F /* ContentScrollView.swift in Sources */,
 				10BEBBC62AD87111008F9DF0 /* LoginViewAlternativeLoginButton.swift in Sources */,
 				10BBC9C72AD9230B0079085F /* ScaleMinusMapButton.swift in Sources */,
+				108F3D342ADA666D00B23072 /* Double + Extensions.swift in Sources */,
 				10BBC9FB2AD997570079085F /* Office.swift in Sources */,
+				108F3D3F2ADA727800B23072 /* ScheduleWalkRouteButton.swift in Sources */,
 				10BBC9EE2AD946900079085F /* ChartCell.swift in Sources */,
+				108F3D432ADA752C00B23072 /* MapObjectTapListener.swift in Sources */,
 				10BEBBC52AD87111008F9DF0 /* LoginViewSkipButton.swift in Sources */,
 				10BBC9C22AD91D300079085F /* MapButton.swift in Sources */,
 				10BBC9E52AD940C50079085F /* BankContentViewModel.swift in Sources */,
@@ -713,7 +769,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = KTV28US9SX;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "SatelliteBank/Supporting Files/Info.plist";
@@ -745,7 +801,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = KTV28US9SX;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "SatelliteBank/Supporting Files/Info.plist";

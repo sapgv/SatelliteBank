@@ -25,6 +25,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
 //        let bankContentViewController = self.createBankContentViewController()
         
+//        let prepareRouteViewController = PrepareRouteViewController()
+        
+        
         self.window = UIWindow(windowScene: scene)
         
         self.window?.rootViewController = mapViewController

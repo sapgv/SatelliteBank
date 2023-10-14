@@ -1,5 +1,5 @@
 //
-//  RouteButton.swift
+//  RouteMapButton.swift
 //  SatelliteBank
 //
 //  Created by Grigory Sapogov on 14.10.2023.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class RouteButton: MapButton {
+final class RouteMapButton: MapButton {
     
     override func commonInit() {
         super.commonInit()

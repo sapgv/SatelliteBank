@@ -73,3 +73,63 @@ extension YMKPolylineMapObject {
         outlineWidth = 1.0
     }
 }
+
+extension YMKDrivingRoute {
+    
+    var distanceToFinish: Double? {
+        
+        self.routePosition.distanceToFinish()
+        
+//        guard !self.metadata.routePoints.isEmpty else { return nil }
+//
+//        let polylineIndex = YMKPolylineUtils.createPolylineIndex(with: self.geometry)
+//
+//        guard let firstPosition = polylineIndex.closestPolylinePosition(
+//            with: self.routePosition.point,
+//            priority: .closestToRawPoint,
+//            maxLocationBias: 100
+//        ) else { return nil }
+//
+//        guard let secondPosition = polylineIndex.closestPolylinePosition(
+//            with: self.metadata.routePoints.last!.position,
+//            priority: .closestToRawPoint,
+//            maxLocationBias: 100
+//        ) else { return nil }
+//
+//        let distance = Double(
+//            YMKPolylineUtils.distanceBetweenPolylinePositions(
+//                with: self.geometry,
+//                from: firstPosition,
+//                to: secondPosition
+//            )
+//        )
+//
+//        return distance
+        
+    }
+    
+    var timeTravelToPoint: Double? {
+        
+        self.routePosition.timeToFinish()
+        
+//        guard let distance = self.distanceToFinish else { return nil }
+//
+//        let currentPosition = self.routePosition
+//        let targetPosition = currentPosition.advance(withDistance: distance)
+//        let time = targetPosition.timeToFinish() - currentPosition.timeToFinish()
+//        return time
+        
+    }
+    
+//    func timeTravelToPoint(route: YMKDrivingRoute, point: YMKPoint) -> Double {
+//        let currentPosition = route.routePosition
+//        let distance = distanceBetweenPointsOnRoute(
+//            route: route,
+//            first: currentPosition.point,
+//            second: point
+//        )
+//        let targetPosition = currentPosition.advance(withDistance: distance)
+//        return targetPosition.timeToFinish() - currentPosition.timeToFinish()
+//    }
+    
+}

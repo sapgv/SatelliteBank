@@ -10,32 +10,6 @@ import YandexMapsMobile
 import CoreLocation
 import FloatingPanel
 
-class MyFloatingPanelLayout: FloatingPanelLayout {
-    let position: FloatingPanelPosition = .bottom
-    let initialState: FloatingPanelState = .tip
-    let anchors: [FloatingPanelState: FloatingPanelLayoutAnchoring] = [
-        .full: FloatingPanelLayoutAnchor(absoluteInset: 16.0, edge: .top, referenceGuide: .safeArea),
-//        .half: FloatingPanelLayoutAnchor(fractionalInset: 0.5, edge: .bottom, referenceGuide: .safeArea),
-        .tip: FloatingPanelLayoutAnchor(absoluteInset: 88.0, edge: .bottom, referenceGuide: .safeArea),
-    ]
-}
-
-final private class MapObjectTapListener: NSObject, YMKMapObjectTapListener {
-    
-    init(controller: IMapViewController) {
-        self.controller = controller
-    }
-
-    func onMapObjectTap(with mapObject: YMKMapObject, point: YMKPoint) -> Bool {
-        guard let placemark = mapObject as? YMKPlacemarkMapObject else { return false }
-        self.controller?.didTap(placemark: placemark)
-        return true
-    }
-
-    private weak var controller: IMapViewController?
-    
-}
-
 protocol IMapViewController: UIViewController {
     
     func didTap(placemark: YMKPlacemarkMapObject)
@@ -57,6 +31,23 @@ extension MapViewController: IMapViewController {
         
     }
     
+    private func show(office: IOffice) {
+        
+        let viewModel = BankContentViewModel(office: office)
+        let viewController = BankContentViewController()
+        viewController.viewModel = viewModel
+        viewController.addRouteCompletion = { [weak self] office in
+            self?.createRoute(toOffice: office)
+        }
+
+        self.present(viewController, animated: true)
+        
+    }
+    
+}
+
+extension MapViewController: IRouteLocationDelegate {
+    
 }
 
 class MapViewController: UIViewController {
@@ -64,8 +55,6 @@ class MapViewController: UIViewController {
     var viewModel: IMapViewModel?
     
     private var fpc: FloatingPanelController!
-    
-//    private lazy var locationMapButton: CurrentLocationMapButton = CurrentLocationMapButton()
     
     private lazy var scaleMapStackView: MapButtonVerticalStackView = MapButtonVerticalStackView()
     
@@ -118,11 +107,77 @@ class MapViewController: UIViewController {
 
     private func setupViewModel() {
         
+        self.viewModel?.driverRouteService.delegate = self
+        self.viewModel?.driverRouteService.routesCollection = map.mapObjects.add()
+        
+        self.viewModel?.createRouteCompletion = { [weak self] result in
+            
+            switch result {
+            case let .failure(error):
+                break
+            case let .success(office):
+                self?.showRoutePanel(office: office)
+            }
+            
+            
+        }
+        
         self.viewModel?.requestLocationCompletion = { [weak self] location in
             
             self?.currentLocation = location
             self?.updateCurrentLocation(location: location)
             
+        }
+        
+    }
+    
+    private func showRoutePanel(office: IOffice) {
+        
+        self.fpc = FloatingPanelController()
+        
+        self.fpc.layout = MyFloatingPanelLayout()
+        
+        // Set a content view controller.
+        let contentVC = PrepareRouteViewController()
+        contentVC.office = office
+        contentVC.closeCompletion = { [weak self] in
+            self?.viewModel?.clearRoutes()
+        }
+//        contentVC.delegate = self
+        
+        let navigationController = UINavigationController(rootViewController: contentVC)
+        
+        let appearance = SurfaceAppearance()
+        appearance.cornerRadius = 16
+        fpc.surfaceView.appearance = appearance
+        
+        self.fpc.set(contentViewController: contentVC)
+        
+//        self.fpc.addPanel(toParent: self)
+        
+        self.view.addSubview(fpc.view)
+
+        // REQUIRED. It makes the floating panel view have the same size as the controller's view.
+        fpc.view.frame = self.view.bounds
+
+        // In addition, Auto Layout constraints are highly recommended.
+        // Constraint the fpc.view to all four edges of your controller's view.
+        // It makes the layout more robust on trait collection change.
+        fpc.view.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+          fpc.view.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 0.0),
+          fpc.view.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 0.0),
+          fpc.view.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: 0.0),
+          fpc.view.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 0.0),
+        ])
+
+        // Add the floating panel controller to the controller hierarchy.
+        self.addChild(fpc)
+
+        // Show the floating panel at the initial position defined in your `FloatingPanelLayout` object.
+        fpc.show(animated: true) { [weak self] in
+            // Inform the floating panel controller that the transition to the controller hierarchy has completed.
+            self?.fpc.didMove(toParent: self)
         }
         
     }
@@ -192,7 +247,7 @@ class MapViewController: UIViewController {
             self?.moveToCurrentLocation()
         }
         
-        let routeButton: RouteButton = RouteButton()
+        let routeButton: RouteMapButton = RouteMapButton()
         routeButton.action = { [weak self] _ in
             self?.removeRoutes()
         }
@@ -202,7 +257,7 @@ class MapViewController: UIViewController {
     }
     
     private func updateRouteButton() {
-        guard let button = self.bottomMapButtonStackView.buttons.first(where: { $0 is RouteButton }) else { return }
+        guard let button = self.bottomMapButtonStackView.buttons.first(where: { $0 is RouteMapButton }) else { return }
         button.isHidden = self.routes.isEmpty
     }
     
@@ -220,7 +275,7 @@ class MapViewController: UIViewController {
         
     }()
     
-    private var currentLocation: CLLocation? {
+    private(set) var currentLocation: CLLocation? {
         didSet {
             guard !initialMovedCurrent else { return }
             self.moveToCurrentLocation()
@@ -268,88 +323,77 @@ extension MapViewController {
     
     private func createRoute(toOffice office: IOffice) {
         
-        guard let currentLocation = self.currentLocation else { return }
+        self.viewModel?.createRoute(toOffice: office)
         
-        let requestPoints : [YMKRequestPoint] = [
-            YMKRequestPoint(
-                point: currentLocation.point, type: .waypoint,
-                pointContext: nil, drivingArrivalPointId: nil),
-            YMKRequestPoint(
-                point: office.coordinate.point, type: .waypoint,
-                pointContext: nil, drivingArrivalPointId: nil),
-            ]
-        
-        let responseHandler = {(routesResponse: [YMKDrivingRoute]?, error: Error?) -> Void in
-            if let routes = routesResponse {
-                self.onRoutesReceived(routes)
-            } else {
-                self.onRoutesError(error!)
-            }
-        }
-        
-        let drivingRouter = YMKDirections.sharedInstance().createDrivingRouter()
-        
-        let drivingOptions = YMKDrivingDrivingOptions()
-        drivingOptions.routesCount = 2
-        
-        drivingSession = drivingRouter.requestRoutes(
-            with: requestPoints,
-            drivingOptions: drivingOptions,
-            vehicleOptions: YMKDrivingVehicleOptions(),
-            routeHandler: responseHandler)
-        
-    }
-    
-    private func onRoutesReceived(_ routes: [YMKDrivingRoute]) {
-        
-        self.removeRoutes()
-        
-        self.routes = routes
-        
-        routes.enumerated().forEach { pair in
-            let routePolyline = self.routesCollection.addPolyline(with: pair.element.geometry)
-            if pair.offset == 0 {
-                routePolyline.styleMainRoute()
-            } else {
-                routePolyline.styleAlternativeRoute()
-            }
-        }
+//        guard let currentLocation = self.currentLocation else { return }
+//
+//        let requestPoints : [YMKRequestPoint] = [
+//            YMKRequestPoint(
+//                point: currentLocation.point, type: .waypoint,
+//                pointContext: nil, drivingArrivalPointId: nil),
+//            YMKRequestPoint(
+//                point: office.coordinate.point, type: .waypoint,
+//                pointContext: nil, drivingArrivalPointId: nil),
+//            ]
+//
+//        let responseHandler = {(routesResponse: [YMKDrivingRoute]?, error: Error?) -> Void in
+//            if let routes = routesResponse {
+//                self.onRoutesReceived(routes)
+//            } else {
+//                self.onRoutesError(error!)
+//            }
+//        }
+//
+//        let drivingRouter = YMKDirections.sharedInstance().createDrivingRouter()
+//
+//        let drivingOptions = YMKDrivingDrivingOptions()
+//        drivingOptions.routesCount = 2
+//
+//        drivingSession = drivingRouter.requestRoutes(
+//            with: requestPoints,
+//            drivingOptions: drivingOptions,
+//            vehicleOptions: YMKDrivingVehicleOptions(),
+//            routeHandler: responseHandler)
         
     }
     
-    private func onRoutesError(_ error: Error) {
-        let routingError = (error as NSError).userInfo[YRTUnderlyingErrorKey] as! YRTError
-        var errorMessage = "Unknown error"
-        if routingError.isKind(of: YRTNetworkError.self) {
-            errorMessage = "Network error"
-        } else if routingError.isKind(of: YRTRemoteError.self) {
-            errorMessage = "Remote server error"
-        }
-
-        let alert = UIAlertController(title: "Error", message: errorMessage, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-
-        present(alert, animated: true, completion: nil)
-    }
-    
-}
-
-//MARK: - Presentation
-
-extension MapViewController {
-    
-    func show(office: IOffice) {
-        
-        let viewModel = BankContentViewModel(office: office)
-        let viewController = BankContentViewController()
-        viewController.viewModel = viewModel
-        viewController.addRouteCompletion = { [weak self] office in
-            self?.createRoute(toOffice: office)
-        }
-
-        self.present(viewController, animated: true)
-        
-    }
+//    private func onRoutesReceived(_ routes: [YMKDrivingRoute]) {
+//
+//        self.removeRoutes()
+//
+//        self.routes = routes
+//
+//        let distance = routes.first?.distanceToFinish
+//        let timeTravelToPoint = routes.first?.timeTravelToPoint
+//
+//        print("LOG Distance \(distance)")
+//        print("LOG timeTravelToPoint \(timeTravelToPoint)")
+//
+//        routes.enumerated().forEach { pair in
+//            let routePolyline = self.routesCollection.addPolyline(with: pair.element.geometry)
+//            if pair.offset == 0 {
+//                routePolyline.styleMainRoute()
+//            } else {
+//                routePolyline.styleAlternativeRoute()
+//            }
+//        }
+//
+//    }
+//
+//    private func onRoutesError(_ error: Error) {
+//        let routingError = (error as NSError).userInfo[YRTUnderlyingErrorKey] as! YRTError
+//        var errorMessage = "Unknown error"
+//        if routingError.isKind(of: YRTNetworkError.self) {
+//            errorMessage = "Network error"
+//        } else if routingError.isKind(of: YRTRemoteError.self) {
+//            errorMessage = "Remote server error"
+//        }
+//
+//        let alert = UIAlertController(title: "Error", message: errorMessage, preferredStyle: .alert)
+//        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+//
+//        present(alert, animated: true, completion: nil)
+//    }
     
 }
 
@@ -431,7 +475,6 @@ extension MapViewController {
         
         let image = UIImage(named: "office_icon_circle")!
         
-//        let placemark = map.mapObjects.addPlacemark()
         let placemark = collection.addPlacemark()
         placemark.geometry = office.coordinate.point
         let style = YMKIconStyle(anchor: nil, rotationType: nil, zIndex: nil, flat: nil, visible: nil, scale: 0.6, tappableArea: nil)
