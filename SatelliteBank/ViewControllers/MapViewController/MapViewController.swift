@@ -394,11 +394,11 @@ extension MapViewController {
     
     private func addPlacemark(office: IOffice, toCollection collection: YMKClusterizedPlacemarkCollection) {
         
-        let image = UIImage(named: "office_icon_circle")!
+        let image = office.iconImage!
         
         let placemark = collection.addPlacemark()
         placemark.geometry = office.coordinate.point
-        let style = YMKIconStyle(anchor: nil, rotationType: nil, zIndex: nil, flat: nil, visible: nil, scale: 0.6, tappableArea: nil)
+        let style = YMKIconStyle(anchor: nil, rotationType: nil, zIndex: nil, flat: nil, visible: nil, scale: 1.5, tappableArea: nil)
         placemark.setIconWith(image, style: style)
         placemark.isDraggable = true
 

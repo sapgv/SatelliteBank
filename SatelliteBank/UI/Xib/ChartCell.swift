@@ -20,6 +20,16 @@ class ChartCell: UITableViewCell {
     
     private var index: Int = 0
     
+    private var office: IOffice?
+    
+    @IBOutlet weak var loadImageView: UIImageView!
+    
+    @IBOutlet weak var queueLabel: UILabel!
+    
+    @IBOutlet weak var waitLabel: UILabel!
+    
+    @IBOutlet weak var loadLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         self.selectionStyle = .none
@@ -36,14 +46,26 @@ class ChartCell: UITableViewCell {
         }
     }
     
-    func setup(charData: [ChartData] = ChartData.generate()) {
+    func setup(office: IOffice, charData: [ChartData] = ChartData.generate()) {
+        self.office = office
         self.charData = charData
+        self.setupLabels()
         self.updateChart(index: self.index)
     }
     
     @IBAction func daySelect(_ sender: UIButton) {
         self.index = sender.tag
         self.updateChart(index: sender.tag)
+    }
+    
+    private func setupLabels() {
+        guard let office = self.office else { return }
+        self.loadImageView.image = office.iconImage
+        self.loadLabel.text = office.load.title
+        self.loadLabel.textColor = office.load.color
+//        self.queueLabel.text = "Очередь \(office.queue) человека"
+        self.waitLabel.text = office.load.waitTitle
+        
     }
     
     private func updateChart(index: Int) {

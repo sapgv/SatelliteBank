@@ -76,7 +76,7 @@ extension BankContentViewController: UITableViewDataSource {
             return cell
         case 2:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "ChartCell", for: indexPath) as? ChartCell else { return UITableViewCell() }
-            cell.setup()
+            cell.setup(office: office)
             return cell
             
         case 3:

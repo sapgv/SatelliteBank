@@ -76,6 +76,7 @@
 		10C838792ADAD29D00932CC6 /* multibonus.json in Resources */ = {isa = PBXBuildFile; fileRef = 10C838782ADAD29D00932CC6 /* multibonus.json */; };
 		10C8387B2ADAD2FD00932CC6 /* Bonus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C8387A2ADAD2FD00932CC6 /* Bonus.swift */; };
 		10C8387D2ADAD40E00932CC6 /* BonusService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C8387C2ADAD40E00932CC6 /* BonusService.swift */; };
+		10C8387F2ADAECB400932CC6 /* OfficeLoad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C8387E2ADAECB400932CC6 /* OfficeLoad.swift */; };
 		3050344B9C029F502440D735 /* Pods_SatelliteBank.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFDC9AED26327F2C511D59D4 /* Pods_SatelliteBank.framework */; };
 /* End PBXBuildFile section */
 
@@ -151,6 +152,7 @@
 		10C838782ADAD29D00932CC6 /* multibonus.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = multibonus.json; sourceTree = "<group>"; };
 		10C8387A2ADAD2FD00932CC6 /* Bonus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bonus.swift; sourceTree = "<group>"; };
 		10C8387C2ADAD40E00932CC6 /* BonusService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonusService.swift; sourceTree = "<group>"; };
+		10C8387E2ADAECB400932CC6 /* OfficeLoad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfficeLoad.swift; sourceTree = "<group>"; };
 		2E9E4335137551567CBD13CB /* Pods-SatelliteBank.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SatelliteBank.release.xcconfig"; path = "Target Support Files/Pods-SatelliteBank/Pods-SatelliteBank.release.xcconfig"; sourceTree = "<group>"; };
 		7640744D2B08E1C331430BEE /* Pods-SatelliteBank.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SatelliteBank.debug.xcconfig"; path = "Target Support Files/Pods-SatelliteBank/Pods-SatelliteBank.debug.xcconfig"; sourceTree = "<group>"; };
 		FFDC9AED26327F2C511D59D4 /* Pods_SatelliteBank.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SatelliteBank.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -249,6 +251,7 @@
 			isa = PBXGroup;
 			children = (
 				10BBC9FA2AD997570079085F /* Office.swift */,
+				10C8387E2ADAECB400932CC6 /* OfficeLoad.swift */,
 				10BBC9FC2AD997960079085F /* WorkTime.swift */,
 				10C8387A2ADAD2FD00932CC6 /* Bonus.swift */,
 			);
@@ -622,6 +625,7 @@
 				10BBCA082AD9B9680079085F /* CloseButton.swift in Sources */,
 				10BBC9F92AD970140079085F /* VerticalContentScrollView.swift in Sources */,
 				10BEBBC62AD87111008F9DF0 /* LoginViewAlternativeLoginButton.swift in Sources */,
+				10C8387F2ADAECB400932CC6 /* OfficeLoad.swift in Sources */,
 				10BBC9C72AD9230B0079085F /* ScaleMinusMapButton.swift in Sources */,
 				108F3D342ADA666D00B23072 /* Double + Extensions.swift in Sources */,
 				10BBC9FB2AD997570079085F /* Office.swift in Sources */,
