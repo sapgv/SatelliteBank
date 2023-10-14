@@ -10,6 +10,15 @@
 		108AE3F02ADB002B004C3A23 /* ScheduleMasstransitRouteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108AE3EF2ADB002B004C3A23 /* ScheduleMasstransitRouteButton.swift */; };
 		108AE3F42ADB1B6B004C3A23 /* BonusMapButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108AE3F32ADB1B6B004C3A23 /* BonusMapButton.swift */; };
 		108AE3F72ADB2172004C3A23 /* BonusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108AE3F62ADB2172004C3A23 /* BonusViewController.swift */; };
+		108AE3F92ADB2A08004C3A23 /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108AE3F82ADB2A08004C3A23 /* ScheduleViewController.swift */; };
+		108AE3FD2ADB2BE0004C3A23 /* BankContentDescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108AE3FB2ADB2BE0004C3A23 /* BankContentDescriptionCell.swift */; };
+		108AE3FE2ADB2BE0004C3A23 /* BankContentDescriptionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 108AE3FC2ADB2BE0004C3A23 /* BankContentDescriptionCell.xib */; };
+		108AE4012ADB2C0F004C3A23 /* BankDescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108AE3FF2ADB2C0F004C3A23 /* BankDescriptionCell.swift */; };
+		108AE4022ADB2C0F004C3A23 /* BankDescriptionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 108AE4002ADB2C0F004C3A23 /* BankDescriptionCell.xib */; };
+		108AE4052ADB2CC3004C3A23 /* ScheduleTimeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108AE4032ADB2CC3004C3A23 /* ScheduleTimeCell.swift */; };
+		108AE4062ADB2CC3004C3A23 /* ScheduleTimeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 108AE4042ADB2CC3004C3A23 /* ScheduleTimeCell.xib */; };
+		108AE4092ADB2E05004C3A23 /* ButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108AE4072ADB2E05004C3A23 /* ButtonCell.swift */; };
+		108AE40A2ADB2E05004C3A23 /* ButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 108AE4082ADB2E05004C3A23 /* ButtonCell.xib */; };
 		108F3D342ADA666D00B23072 /* Double + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108F3D332ADA666D00B23072 /* Double + Extensions.swift */; };
 		108F3D362ADA693300B23072 /* ScheduleRouteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108F3D352ADA693300B23072 /* ScheduleRouteButton.swift */; };
 		108F3D382ADA698300B23072 /* ScheduleCarRouteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108F3D372ADA698300B23072 /* ScheduleCarRouteButton.swift */; };
@@ -31,8 +40,6 @@
 		10BBC9CB2AD929590079085F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10BBC9CA2AD929590079085F /* Assets.xcassets */; };
 		10BBC9D12AD930D70079085F /* YandexMapKit + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BBC9D02AD930D70079085F /* YandexMapKit + Extensions.swift */; };
 		10BBC9D82AD93D200079085F /* BankContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BBC9D72AD93D200079085F /* BankContentViewController.swift */; };
-		10BBC9DD2AD93D880079085F /* BankContentDescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BBC9DB2AD93D880079085F /* BankContentDescriptionCell.swift */; };
-		10BBC9DE2AD93D880079085F /* BankContentDescriptionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10BBC9DC2AD93D880079085F /* BankContentDescriptionCell.xib */; };
 		10BBC9E32AD93FC70079085F /* PrimaryInvertedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BBC9E22AD93FC70079085F /* PrimaryInvertedButton.swift */; };
 		10BBC9E52AD940C50079085F /* BankContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BBC9E42AD940C50079085F /* BankContentViewModel.swift */; };
 		10BBC9E72AD942F30079085F /* ScheduleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BBC9E62AD942F30079085F /* ScheduleButton.swift */; };
@@ -88,6 +95,15 @@
 		108AE3EF2ADB002B004C3A23 /* ScheduleMasstransitRouteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleMasstransitRouteButton.swift; sourceTree = "<group>"; };
 		108AE3F32ADB1B6B004C3A23 /* BonusMapButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonusMapButton.swift; sourceTree = "<group>"; };
 		108AE3F62ADB2172004C3A23 /* BonusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonusViewController.swift; sourceTree = "<group>"; };
+		108AE3F82ADB2A08004C3A23 /* ScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
+		108AE3FB2ADB2BE0004C3A23 /* BankContentDescriptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankContentDescriptionCell.swift; sourceTree = "<group>"; };
+		108AE3FC2ADB2BE0004C3A23 /* BankContentDescriptionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BankContentDescriptionCell.xib; sourceTree = "<group>"; };
+		108AE3FF2ADB2C0F004C3A23 /* BankDescriptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankDescriptionCell.swift; sourceTree = "<group>"; };
+		108AE4002ADB2C0F004C3A23 /* BankDescriptionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BankDescriptionCell.xib; sourceTree = "<group>"; };
+		108AE4032ADB2CC3004C3A23 /* ScheduleTimeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTimeCell.swift; sourceTree = "<group>"; };
+		108AE4042ADB2CC3004C3A23 /* ScheduleTimeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScheduleTimeCell.xib; sourceTree = "<group>"; };
+		108AE4072ADB2E05004C3A23 /* ButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonCell.swift; sourceTree = "<group>"; };
+		108AE4082ADB2E05004C3A23 /* ButtonCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ButtonCell.xib; sourceTree = "<group>"; };
 		108F3D332ADA666D00B23072 /* Double + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double + Extensions.swift"; sourceTree = "<group>"; };
 		108F3D352ADA693300B23072 /* ScheduleRouteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleRouteButton.swift; sourceTree = "<group>"; };
 		108F3D372ADA698300B23072 /* ScheduleCarRouteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCarRouteButton.swift; sourceTree = "<group>"; };
@@ -109,8 +125,6 @@
 		10BBC9CA2AD929590079085F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		10BBC9D02AD930D70079085F /* YandexMapKit + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "YandexMapKit + Extensions.swift"; sourceTree = "<group>"; };
 		10BBC9D72AD93D200079085F /* BankContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankContentViewController.swift; sourceTree = "<group>"; };
-		10BBC9DB2AD93D880079085F /* BankContentDescriptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankContentDescriptionCell.swift; sourceTree = "<group>"; };
-		10BBC9DC2AD93D880079085F /* BankContentDescriptionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BankContentDescriptionCell.xib; sourceTree = "<group>"; };
 		10BBC9E22AD93FC70079085F /* PrimaryInvertedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryInvertedButton.swift; sourceTree = "<group>"; };
 		10BBC9E42AD940C50079085F /* BankContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankContentViewModel.swift; sourceTree = "<group>"; };
 		10BBC9E62AD942F30079085F /* ScheduleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleButton.swift; sourceTree = "<group>"; };
@@ -186,6 +200,14 @@
 			path = BonusViewController;
 			sourceTree = "<group>";
 		};
+		108AE3FA2ADB2A0C004C3A23 /* ScheduleViewController */ = {
+			isa = PBXGroup;
+			children = (
+				108AE3F82ADB2A08004C3A23 /* ScheduleViewController.swift */,
+			);
+			path = ScheduleViewController;
+			sourceTree = "<group>";
+		};
 		108F3D392ADA69C800B23072 /* PrepareRouteViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -245,14 +267,20 @@
 		10BBC9DA2AD93D660079085F /* Xib */ = {
 			isa = PBXGroup;
 			children = (
-				10BBC9DB2AD93D880079085F /* BankContentDescriptionCell.swift */,
-				10BBC9DC2AD93D880079085F /* BankContentDescriptionCell.xib */,
+				108AE3FB2ADB2BE0004C3A23 /* BankContentDescriptionCell.swift */,
+				108AE3FC2ADB2BE0004C3A23 /* BankContentDescriptionCell.xib */,
 				10BBC9E82AD943830079085F /* WorkTimeCell.swift */,
 				10BBC9E92AD943830079085F /* WorkTimeCell.xib */,
 				10BBC9EC2AD946900079085F /* ChartCell.swift */,
 				10BBC9ED2AD946900079085F /* ChartCell.xib */,
 				10BBC9F22AD953FD0079085F /* AddRouteCell.swift */,
 				10BBC9F32AD953FD0079085F /* AddRouteCell.xib */,
+				108AE3FF2ADB2C0F004C3A23 /* BankDescriptionCell.swift */,
+				108AE4002ADB2C0F004C3A23 /* BankDescriptionCell.xib */,
+				108AE4032ADB2CC3004C3A23 /* ScheduleTimeCell.swift */,
+				108AE4042ADB2CC3004C3A23 /* ScheduleTimeCell.xib */,
+				108AE4072ADB2E05004C3A23 /* ButtonCell.swift */,
+				108AE4082ADB2E05004C3A23 /* ButtonCell.xib */,
 			);
 			path = Xib;
 			sourceTree = "<group>";
@@ -418,6 +446,7 @@
 				10BEBBD42AD873F7008F9DF0 /* TabViewController */,
 				10BBC9D22AD9345C0079085F /* MapViewController */,
 				10BBC9D92AD93D340079085F /* FavoriteViewController */,
+				108AE3FA2ADB2A0C004C3A23 /* ScheduleViewController */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -510,12 +539,15 @@
 			files = (
 				10C838792ADAD29D00932CC6 /* multibonus.json in Resources */,
 				10BBC9FF2AD9996C0079085F /* offices.txt in Resources */,
+				108AE3FE2ADB2BE0004C3A23 /* BankContentDescriptionCell.xib in Resources */,
+				108AE40A2ADB2E05004C3A23 /* ButtonCell.xib in Resources */,
+				108AE4062ADB2CC3004C3A23 /* ScheduleTimeCell.xib in Resources */,
 				10BEBB9C2AD86F9A008F9DF0 /* LaunchScreen.storyboard in Resources */,
 				10BBC9EB2AD943830079085F /* WorkTimeCell.xib in Resources */,
 				10BBC9F52AD953FD0079085F /* AddRouteCell.xib in Resources */,
 				10BBC9CB2AD929590079085F /* Assets.xcassets in Resources */,
-				10BBC9DE2AD93D880079085F /* BankContentDescriptionCell.xib in Resources */,
 				10BBC9EF2AD946900079085F /* ChartCell.xib in Resources */,
+				108AE4022ADB2C0F004C3A23 /* BankDescriptionCell.xib in Resources */,
 				10BEBB972AD86F99008F9DF0 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -595,12 +627,14 @@
 				10C8387B2ADAD2FD00932CC6 /* Bonus.swift in Sources */,
 				10BEBBCB2AD87111008F9DF0 /* LoginTextFieldView.swift in Sources */,
 				10BEBB942AD86F99008F9DF0 /* MapViewController.swift in Sources */,
+				108AE3F92ADB2A08004C3A23 /* ScheduleViewController.swift in Sources */,
 				10BBC9D12AD930D70079085F /* YandexMapKit + Extensions.swift in Sources */,
 				10BEBBCE2AD87111008F9DF0 /* LoginPhoneTextField.swift in Sources */,
 				10BEBBD82AD8779C008F9DF0 /* FavoriteViewController.swift in Sources */,
 				108F3D382ADA698300B23072 /* ScheduleCarRouteButton.swift in Sources */,
 				10BEBB902AD86F99008F9DF0 /* AppDelegate.swift in Sources */,
 				10BBC9D82AD93D200079085F /* BankContentViewController.swift in Sources */,
+				108AE4012ADB2C0F004C3A23 /* BankDescriptionCell.swift in Sources */,
 				10BEBBCA2AD87111008F9DF0 /* LoginViewLogoImageView.swift in Sources */,
 				108AE3F42ADB1B6B004C3A23 /* BonusMapButton.swift in Sources */,
 				10BBC9C92AD923710079085F /* MapButtonVerticalStackView.swift in Sources */,
@@ -610,7 +644,6 @@
 				10BEBBC92AD87111008F9DF0 /* LoginViewSubmitButton.swift in Sources */,
 				10BBC9FD2AD997960079085F /* WorkTime.swift in Sources */,
 				10BEBBC82AD87111008F9DF0 /* LoginViewMessageLabel.swift in Sources */,
-				10BBC9DD2AD93D880079085F /* BankContentDescriptionCell.swift in Sources */,
 				108F3D492ADA7FB200B23072 /* RouteLocationDelegate.swift in Sources */,
 				10C8387D2ADAD40E00932CC6 /* BonusService.swift in Sources */,
 				10BBCA062AD99D580079085F /* Error + Extensions.swift in Sources */,
@@ -622,6 +655,8 @@
 				10BEBBA82AD870F7008F9DF0 /* MapViewModel.swift in Sources */,
 				108F3D3B2ADA69D800B23072 /* PrepareRouteViewController.swift in Sources */,
 				10BBCA042AD99C910079085F /* Thread + Extensions.swift in Sources */,
+				108AE4052ADB2CC3004C3A23 /* ScheduleTimeCell.swift in Sources */,
+				108AE4092ADB2E05004C3A23 /* ButtonCell.swift in Sources */,
 				108AE3F72ADB2172004C3A23 /* BonusViewController.swift in Sources */,
 				10AEF8EE2ADAFA49008C3CBE /* BicyсleRouteService.swift in Sources */,
 				10BEBBCC2AD87111008F9DF0 /* PrimaryLabel.swift in Sources */,
@@ -650,6 +685,7 @@
 				108F3D432ADA752C00B23072 /* MapObjectTapListener.swift in Sources */,
 				10BEBBC52AD87111008F9DF0 /* LoginViewSkipButton.swift in Sources */,
 				10BBC9C22AD91D300079085F /* MapButton.swift in Sources */,
+				108AE3FD2ADB2BE0004C3A23 /* BankContentDescriptionCell.swift in Sources */,
 				10BBC9E52AD940C50079085F /* BankContentViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

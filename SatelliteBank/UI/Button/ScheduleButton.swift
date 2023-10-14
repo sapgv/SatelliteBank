@@ -9,9 +9,21 @@ import UIKit
 
 final class ScheduleButton: PrimaryInvertedButton {
 
+    var action: ((ScheduleButton) -> Void)?
+    
     override var intrinsicContentSize: CGSize {
         let size = super.intrinsicContentSize
         return CGSize(width: size.width + 16, height: size.height)
+    }
+    
+    override func commonInit() {
+        super.commonInit()
+        self.addTarget(self, action: #selector(self.tapAction), for: .touchUpInside)
+    }
+    
+    @objc
+    func tapAction() {
+        self.action?(self)
     }
     
 }

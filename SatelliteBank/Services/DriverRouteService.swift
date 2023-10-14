@@ -143,17 +143,13 @@ extension DriverRouteService {
         
         self.summarySession = drivingRouter.requestRoutesSummary(with: requestPoints, drivingOptions: drivingOptions, vehicleOptions: vehicleOptions) { [weak self] summary, error in
             
-            if let summary = summary?.first {
-                
-                self?.summary = summary
-                
-                completion(nil)
+            guard let summary = summary?.first else {
+                completion(error?.NSError)
+                return
             }
-            else {
-                
-                completion(error!.NSError)
-                
-            }
+            
+            self?.summary = summary
+            completion(nil)
             
         }
         
@@ -174,20 +170,15 @@ extension DriverRouteService {
         
         let drivingRouter = YMKDirections.sharedInstance().createDrivingRouter()
         
-        self.drivingSession = drivingRouter.requestRoutes(with: requestPoints, drivingOptions: drivingOptions, vehicleOptions: YMKDrivingVehicleOptions()) { [weak self] routesResponse, error in
+        self.drivingSession = drivingRouter.requestRoutes(with: requestPoints, drivingOptions: drivingOptions, vehicleOptions: YMKDrivingVehicleOptions()) { [weak self] routes, error in
             
-            if let routes = routesResponse {
-                
-                self?.routes = routes
-                
-                completion(nil)
-                
+            guard let routes = routes else {
+                completion(error?.NSError)
+                return
             }
-            else {
-                
-                completion(error!.NSError)
-                
-            }
+            
+            self?.routes = routes
+            completion(nil)
             
         }
         

@@ -67,6 +67,9 @@ extension BankContentViewController: UITableViewDataSource {
         case 0:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "BankContentDescriptionCell", for: indexPath) as? BankContentDescriptionCell else { return UITableViewCell() }
             cell.setup(office: office)
+            cell.button.action = { [weak self] _ in
+                self?.showSchedule(office: office)
+            }
             cell.closeButton.action = { [weak self] _ in
                 self?.dismiss(animated: true)
             }
@@ -112,4 +115,17 @@ extension BankContentViewController: UITableViewDelegate {
     
 }
 
+//MARK: - Schdule
 
+extension BankContentViewController {
+    
+    private func showSchedule(office: IOffice) {
+        
+        let scheduleViewController = ScheduleViewController()
+        scheduleViewController.office = office
+        
+        self.present(scheduleViewController, animated: true)
+        
+    }
+    
+}

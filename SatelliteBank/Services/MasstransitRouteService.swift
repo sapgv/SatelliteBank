@@ -132,15 +132,15 @@ extension MasstransitRouteService {
         
         let transitOptions = YMKTransitOptions()
         
-        self.summarySession = drivingRouter.requestRoutesSummary(with: requestPoints, transitOptions: transitOptions) { summary, error in
+        self.summarySession = drivingRouter.requestRoutesSummary(with: requestPoints, transitOptions: transitOptions) { [weak self] summary, error in
+
+            guard let summary = summary?.first else {
+                completion(error?.NSError)
+                return
+            }
             
-            if let summary = summary?.first {
-                self.summary = summary
-                completion(nil)
-            }
-            else {
-                completion(error!.NSError)
-            }
+            self?.summary = summary
+            completion(nil)
             
         }
             
@@ -163,18 +163,15 @@ extension MasstransitRouteService {
         
         let transitOptions = YMKTransitOptions()
         
-        self.drivingSession = drivingRouter.requestRoutes(with: requestPoints, transitOptions: transitOptions) { routes, error in
+        self.drivingSession = drivingRouter.requestRoutes(with: requestPoints, transitOptions: transitOptions) { [weak self] routes, error in
             
-            if let routes = routes {
-                
-                self.routes = routes
-                
-                completion(nil)
-                
+            guard let routes = routes else {
+                completion(error?.NSError)
+                return
             }
-            else {
-                completion(error!.NSError)
-            }
+            
+            self?.routes = routes
+            completion(nil)
             
         }
         

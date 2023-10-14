@@ -64,9 +64,7 @@ extension MapViewController: IMapViewController {
     
 }
 
-extension MapViewController: IRouteLocationDelegate {
-    
-}
+extension MapViewController: IRouteLocationDelegate {}
 
 class MapViewController: UIViewController {
     
@@ -123,9 +121,27 @@ class MapViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.viewModel?.locationManager.requestWhenInUseAuthorization()
-        self.viewModel?.requestLocation()
+//        self.viewModel?.locationManager.requestWhenInUseAuthorization()
+//        self.viewModel?.requestLocation()
         self.updateRouteButton()
+        
+        guard let viewModel = self.viewModel else { return }
+        
+        switch viewModel.locationManager.authorizationStatus {
+        case .notDetermined:
+            viewModel.locationManager.requestWhenInUseAuthorization()
+        case .restricted:
+            // show message
+            break
+        case .denied:
+            // show message
+            break
+        case .authorizedWhenInUse, .authorizedAlways:
+            viewModel.requestLocation()
+        default:
+            break
+        }
+        
     }
     
     override func viewDidDisappear(_ animated: Bool) {

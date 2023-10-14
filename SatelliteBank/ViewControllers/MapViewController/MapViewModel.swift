@@ -244,4 +244,23 @@ extension MapViewModel: CLLocationManagerDelegate {
         print("LOG didFailWithError \(error.localizedDescription)")
         // Handle failure to get a user’s location
     }
+    
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        
+        switch manager.authorizationStatus {
+        case .notDetermined:
+            manager.requestWhenInUseAuthorization()
+        case .restricted:
+            // show message
+            break
+        case .denied:
+            // show message
+            break
+        case .authorizedWhenInUse, .authorizedAlways:
+            self.requestLocation()
+        default:
+            break
+        }
+        
+    }
 }
