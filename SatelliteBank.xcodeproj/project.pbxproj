@@ -28,7 +28,6 @@
 		10BBC9D82AD93D200079085F /* BankContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BBC9D72AD93D200079085F /* BankContentViewController.swift */; };
 		10BBC9DD2AD93D880079085F /* BankContentDescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BBC9DB2AD93D880079085F /* BankContentDescriptionCell.swift */; };
 		10BBC9DE2AD93D880079085F /* BankContentDescriptionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10BBC9DC2AD93D880079085F /* BankContentDescriptionCell.xib */; };
-		10BBC9E12AD93F290079085F /* Bank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BBC9E02AD93F290079085F /* Bank.swift */; };
 		10BBC9E32AD93FC70079085F /* PrimaryInvertedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BBC9E22AD93FC70079085F /* PrimaryInvertedButton.swift */; };
 		10BBC9E52AD940C50079085F /* BankContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BBC9E42AD940C50079085F /* BankContentViewModel.swift */; };
 		10BBC9E72AD942F30079085F /* ScheduleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BBC9E62AD942F30079085F /* ScheduleButton.swift */; };
@@ -74,6 +73,9 @@
 		10BEBBD12AD87111008F9DF0 /* SecondaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BEBBC02AD87111008F9DF0 /* SecondaryButton.swift */; };
 		10BEBBD62AD87420008F9DF0 /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BEBBD52AD87420008F9DF0 /* TabViewController.swift */; };
 		10BEBBD82AD8779C008F9DF0 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BEBBD72AD8779C008F9DF0 /* FavoriteViewController.swift */; };
+		10C838792ADAD29D00932CC6 /* multibonus.json in Resources */ = {isa = PBXBuildFile; fileRef = 10C838782ADAD29D00932CC6 /* multibonus.json */; };
+		10C8387B2ADAD2FD00932CC6 /* Bonus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C8387A2ADAD2FD00932CC6 /* Bonus.swift */; };
+		10C8387D2ADAD40E00932CC6 /* BonusService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C8387C2ADAD40E00932CC6 /* BonusService.swift */; };
 		3050344B9C029F502440D735 /* Pods_SatelliteBank.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFDC9AED26327F2C511D59D4 /* Pods_SatelliteBank.framework */; };
 /* End PBXBuildFile section */
 
@@ -99,7 +101,6 @@
 		10BBC9D72AD93D200079085F /* BankContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankContentViewController.swift; sourceTree = "<group>"; };
 		10BBC9DB2AD93D880079085F /* BankContentDescriptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankContentDescriptionCell.swift; sourceTree = "<group>"; };
 		10BBC9DC2AD93D880079085F /* BankContentDescriptionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BankContentDescriptionCell.xib; sourceTree = "<group>"; };
-		10BBC9E02AD93F290079085F /* Bank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bank.swift; sourceTree = "<group>"; };
 		10BBC9E22AD93FC70079085F /* PrimaryInvertedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryInvertedButton.swift; sourceTree = "<group>"; };
 		10BBC9E42AD940C50079085F /* BankContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankContentViewModel.swift; sourceTree = "<group>"; };
 		10BBC9E62AD942F30079085F /* ScheduleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleButton.swift; sourceTree = "<group>"; };
@@ -147,6 +148,9 @@
 		10BEBBC02AD87111008F9DF0 /* SecondaryButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondaryButton.swift; sourceTree = "<group>"; };
 		10BEBBD52AD87420008F9DF0 /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
 		10BEBBD72AD8779C008F9DF0 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
+		10C838782ADAD29D00932CC6 /* multibonus.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = multibonus.json; sourceTree = "<group>"; };
+		10C8387A2ADAD2FD00932CC6 /* Bonus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bonus.swift; sourceTree = "<group>"; };
+		10C8387C2ADAD40E00932CC6 /* BonusService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonusService.swift; sourceTree = "<group>"; };
 		2E9E4335137551567CBD13CB /* Pods-SatelliteBank.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SatelliteBank.release.xcconfig"; path = "Target Support Files/Pods-SatelliteBank/Pods-SatelliteBank.release.xcconfig"; sourceTree = "<group>"; };
 		7640744D2B08E1C331430BEE /* Pods-SatelliteBank.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SatelliteBank.debug.xcconfig"; path = "Target Support Files/Pods-SatelliteBank/Pods-SatelliteBank.debug.xcconfig"; sourceTree = "<group>"; };
 		FFDC9AED26327F2C511D59D4 /* Pods_SatelliteBank.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SatelliteBank.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -244,9 +248,9 @@
 		10BBC9DF2AD93F200079085F /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				10BBC9E02AD93F290079085F /* Bank.swift */,
 				10BBC9FA2AD997570079085F /* Office.swift */,
 				10BBC9FC2AD997960079085F /* WorkTime.swift */,
+				10C8387A2ADAD2FD00932CC6 /* Bonus.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -255,6 +259,7 @@
 			isa = PBXGroup;
 			children = (
 				10BBCA012AD999B00079085F /* OfficeService.swift */,
+				10C8387C2ADAD40E00932CC6 /* BonusService.swift */,
 				108F3D462ADA772600B23072 /* DriverRouteService.swift */,
 				108F3D4A2ADA84AA00B23072 /* PedastrianRouteService.swift */,
 				108F3D482ADA7FB200B23072 /* RouteLocationDelegate.swift */,
@@ -377,6 +382,7 @@
 			isa = PBXGroup;
 			children = (
 				10BBC9FE2AD9996C0079085F /* offices.txt */,
+				10C838782ADAD29D00932CC6 /* multibonus.json */,
 				10BEBB8F2AD86F99008F9DF0 /* AppDelegate.swift */,
 				10BEBB912AD86F99008F9DF0 /* SceneDelegate.swift */,
 				10BEBB952AD86F99008F9DF0 /* Main.storyboard */,
@@ -487,6 +493,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10C838792ADAD29D00932CC6 /* multibonus.json in Resources */,
 				10BBC9FF2AD9996C0079085F /* offices.txt in Resources */,
 				10BEBB9C2AD86F9A008F9DF0 /* LaunchScreen.storyboard in Resources */,
 				10BBC9EB2AD943830079085F /* WorkTimeCell.xib in Resources */,
@@ -570,6 +577,7 @@
 				10BEBBCD2AD87111008F9DF0 /* LoginTextFieldPlaceholderLabel.swift in Sources */,
 				10BBC9E32AD93FC70079085F /* PrimaryInvertedButton.swift in Sources */,
 				10BEBBCF2AD87111008F9DF0 /* AppColor.swift in Sources */,
+				10C8387B2ADAD2FD00932CC6 /* Bonus.swift in Sources */,
 				10BEBBCB2AD87111008F9DF0 /* LoginTextFieldView.swift in Sources */,
 				10BEBB942AD86F99008F9DF0 /* MapViewController.swift in Sources */,
 				10BBC9D12AD930D70079085F /* YandexMapKit + Extensions.swift in Sources */,
@@ -588,6 +596,7 @@
 				10BEBBC82AD87111008F9DF0 /* LoginViewMessageLabel.swift in Sources */,
 				10BBC9DD2AD93D880079085F /* BankContentDescriptionCell.swift in Sources */,
 				108F3D492ADA7FB200B23072 /* RouteLocationDelegate.swift in Sources */,
+				10C8387D2ADAD40E00932CC6 /* BonusService.swift in Sources */,
 				10BBCA062AD99D580079085F /* Error + Extensions.swift in Sources */,
 				108F3D362ADA693300B23072 /* ScheduleRouteButton.swift in Sources */,
 				10BEBBA92AD870F7008F9DF0 /* LoginViewController.swift in Sources */,
@@ -601,7 +610,6 @@
 				10BBCA042AD99C910079085F /* Thread + Extensions.swift in Sources */,
 				10BEBBCC2AD87111008F9DF0 /* PrimaryLabel.swift in Sources */,
 				10BBC9F42AD953FD0079085F /* AddRouteCell.swift in Sources */,
-				10BBC9E12AD93F290079085F /* Bank.swift in Sources */,
 				108F3D472ADA772600B23072 /* DriverRouteService.swift in Sources */,
 				10BBCA0C2AD9CD960079085F /* UIKit + Extensions.swift in Sources */,
 				108F3D452ADA756E00B23072 /* MyFloatingPanelLayout.swift in Sources */,

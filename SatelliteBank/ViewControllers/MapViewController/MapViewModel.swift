@@ -12,11 +12,15 @@ protocol IMapViewModel: NSObject {
     
     var officeService: IOfficeService { get }
     
+    var bonusService: IBonusService { get }
+    
     var locationManager: CLLocationManager { get }
     
     var requestLocationCompletion: ((CLLocation) -> Void)? { get set }
     
     var createRouteCompletion: ((Swift.Result<IOffice, NSError>) -> Void)? { get set }
+    
+    var updateDataCompletion: ((NSError?) -> Void)? { get set }
     
     var driverRouteService: DriverRouteService { get }
     
@@ -28,11 +32,15 @@ protocol IMapViewModel: NSObject {
     
     func removeRoutes()
     
+    func updateData()
+    
 }
 
 final class MapViewModel: NSObject, IMapViewModel {
     
     let officeService: IOfficeService
+    
+    let bonusService: IBonusService
     
     let locationManager: CLLocationManager
     
@@ -40,15 +48,19 @@ final class MapViewModel: NSObject, IMapViewModel {
     
     var createRouteCompletion: ((Swift.Result<IOffice, NSError>) -> Void)?
     
+    var updateDataCompletion: ((NSError?) -> Void)?
+    
     var driverRouteService: DriverRouteService
     
     var pedastrinaRouteService: PedastrianRouteService
     
     init(officeService: IOfficeService = OfficeService.shared,
+         bonusService: IBonusService = BonusService.shared,
          locationManager: CLLocationManager = CLLocationManager(),
          driverRouteService: DriverRouteService = DriverRouteService(),
          pedastrinaRouteService: PedastrianRouteService = PedastrianRouteService()) {
         self.officeService = officeService
+        self.bonusService = bonusService
         self.locationManager = locationManager
         self.driverRouteService = driverRouteService
         self.pedastrinaRouteService = pedastrinaRouteService
@@ -115,6 +127,54 @@ final class MapViewModel: NSObject, IMapViewModel {
     func removeRoutes() {
         
         self.driverRouteService.removeRoutes()
+        
+    }
+    
+    func updateData() {
+        
+        var updateError: NSError?
+        
+        let resultQueue = DispatchQueue(label: "updateDataQueue", attributes: .concurrent)
+        
+        let group = DispatchGroup()
+        
+        group.enter()
+        
+        self.officeService.update { [weak self] error in
+         
+            resultQueue.async(flags: .barrier) {
+
+                defer {
+                    group.leave()
+                }
+                
+                updateError = error
+                
+            }
+            
+        }
+        
+        group.enter()
+        
+        self.bonusService.update { error in
+            
+            resultQueue.async(flags: .barrier) {
+
+                defer {
+                    group.leave()
+                }
+                
+                updateError = error
+                
+            }
+            
+        }
+        
+        group.notify(queue: .main) { [weak self] in
+            
+            self?.updateDataCompletion?(updateError)
+            
+        }
         
     }
     

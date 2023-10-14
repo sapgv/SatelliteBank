@@ -37,7 +37,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let tabViewController = TabViewController()
         
-        tabViewController.setViewControllers([mapViewController, favoriteNavigationController], animated: false)
+        tabViewController.setViewControllers([mapViewController], animated: false)
         tabViewController.selectedIndex = 0
         
         self.window?.rootViewController = tabViewController

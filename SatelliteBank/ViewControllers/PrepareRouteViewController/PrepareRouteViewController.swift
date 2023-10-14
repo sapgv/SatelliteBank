@@ -41,6 +41,16 @@ final class PrepareRouteViewController: UIViewController {
         return label
     }()
     
+    private lazy var labelAddressTo: UILabel = { [weak self] in
+        let label = UILabel()
+        label.textColor = UIColor.secondaryLabel
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
+        label.font = UIFont.systemFont(ofSize: 12)
+        label.text = self?.office?.address ?? ""
+        return label
+    }()
+    
     private let scheduleCarTypeView = ScheduleTypeView<ScheduleCarRouteButton>()
     
     private let scheduleWalkTypeView = ScheduleTypeView<ScheduleWalkRouteButton>()
@@ -141,12 +151,14 @@ extension PrepareRouteViewController {
         
         self.labelFrom.translatesAutoresizingMaskIntoConstraints = false
         self.labelTo.translatesAutoresizingMaskIntoConstraints = false
+        self.labelAddressTo.translatesAutoresizingMaskIntoConstraints = false
         self.scrollView.translatesAutoresizingMaskIntoConstraints = false
         self.closseButton.translatesAutoresizingMaskIntoConstraints = false
         
         self.view.addSubview(self.scrollView)
         self.view.addSubview(self.labelFrom)
         self.view.addSubview(self.labelTo)
+        self.view.addSubview(self.labelAddressTo)
         self.view.addSubview(self.closseButton)
         
         self.closseButton.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 0).isActive = true
@@ -162,8 +174,12 @@ extension PrepareRouteViewController {
         self.labelTo.topAnchor.constraint(equalTo: self.labelFrom.bottomAnchor, constant: padding).isActive = true
         self.labelTo.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -padding).isActive = true
         
+        self.labelAddressTo.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: padding).isActive = true
+        self.labelAddressTo.topAnchor.constraint(equalTo: self.labelTo.bottomAnchor, constant: 8).isActive = true
+        self.labelAddressTo.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -padding).isActive = true
+        
         self.scrollView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 0).isActive = true
-        self.scrollView.topAnchor.constraint(equalTo: self.labelTo.bottomAnchor, constant: 0).isActive = true
+        self.scrollView.topAnchor.constraint(equalTo: self.labelAddressTo.bottomAnchor, constant: 0).isActive = true
         self.scrollView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: 0).isActive = true
         self.scrollViewHeightConstraint = self.scrollView.heightAnchor.constraint(equalToConstant: 100)
         self.scrollViewHeightConstraint?.isActive = true

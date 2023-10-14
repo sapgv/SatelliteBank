@@ -86,7 +86,7 @@ class MapViewController: UIViewController {
         self.setupScaleMapStackView()
         self.setupBottomMapButtonStackView()
         self.layout()
-        self.updateOffice()
+        self.updateData()
         
         self.routesCollection = map.mapObjects.add()
         
@@ -127,6 +127,17 @@ class MapViewController: UIViewController {
             
             self?.currentLocation = location
             self?.updateCurrentLocation(location: location)
+            
+        }
+        
+        self.viewModel?.updateDataCompletion = { [weak self] error in
+            
+            if let error = error {
+                print(error.localizedDescription)
+                return
+            }
+            
+            self?.layoutPlacemarks()
             
         }
         
@@ -196,18 +207,9 @@ class MapViewController: UIViewController {
         
     }
     
-    private func updateOffice() {
+    private func updateData() {
         
-        self.viewModel?.officeService.update { [weak self] error in
-         
-            if let error = error {
-                print(error.localizedDescription)
-                return
-            }
-            
-            self?.layoutPlacemarks()
-            
-        }
+        self.viewModel?.updateData()
         
     }
     

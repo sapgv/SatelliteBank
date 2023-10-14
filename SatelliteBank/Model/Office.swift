@@ -33,14 +33,6 @@ final class Office: IOffice {
     
     let coordinate: CLLocationCoordinate2D
 
-    internal init(salePointName: String, address: String, status: String = "", openHours: [IWorkTime] = [], coordinate: CLLocationCoordinate2D) {
-        self.salePointName = salePointName
-        self.address = address
-        self.status = status
-        self.openHours = openHours
-        self.coordinate = coordinate
-    }
-    
     init(data: [String: Any]) {
         self.salePointName = data["salePointName"] as? String ?? ""
         self.address = data["address"] as? String ?? ""
