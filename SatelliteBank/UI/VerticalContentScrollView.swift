@@ -1,5 +1,5 @@
 //
-//  ContentScrollView.swift
+//  VerticalContentScrollView.swift
 //  SatelliteBank
 //
 //  Created by Grigory Sapogov on 13.10.2023.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class ContentScrollView: UIScrollView {
+final class VerticalContentScrollView: UIScrollView {
     
     private(set) lazy var wrapperView = UIView()
     

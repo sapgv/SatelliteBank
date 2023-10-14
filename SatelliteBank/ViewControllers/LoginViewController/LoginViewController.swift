@@ -26,7 +26,7 @@ final class LoginViewController: UIViewController {
     
     private lazy var alternativeLogin: LoginViewAlternativeLoginButton = LoginViewAlternativeLoginButton()
     
-    private lazy var scrollView = ContentScrollView()
+    private lazy var scrollView = VerticalContentScrollView()
     
     private var contentView: UIView {
         scrollView.wrapperView

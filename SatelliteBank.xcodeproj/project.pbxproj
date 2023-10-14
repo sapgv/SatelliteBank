@@ -39,7 +39,7 @@
 		10BBC9F42AD953FD0079085F /* AddRouteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BBC9F22AD953FD0079085F /* AddRouteCell.swift */; };
 		10BBC9F52AD953FD0079085F /* AddRouteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10BBC9F32AD953FD0079085F /* AddRouteCell.xib */; };
 		10BBC9F72AD95EF20079085F /* ChartData + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BBC9F62AD95EF20079085F /* ChartData + Extensions.swift */; };
-		10BBC9F92AD970140079085F /* ContentScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BBC9F82AD970140079085F /* ContentScrollView.swift */; };
+		10BBC9F92AD970140079085F /* VerticalContentScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BBC9F82AD970140079085F /* VerticalContentScrollView.swift */; };
 		10BBC9FB2AD997570079085F /* Office.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BBC9FA2AD997570079085F /* Office.swift */; };
 		10BBC9FD2AD997960079085F /* WorkTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BBC9FC2AD997960079085F /* WorkTime.swift */; };
 		10BBC9FF2AD9996C0079085F /* offices.txt in Resources */ = {isa = PBXBuildFile; fileRef = 10BBC9FE2AD9996C0079085F /* offices.txt */; };
@@ -110,7 +110,7 @@
 		10BBC9F22AD953FD0079085F /* AddRouteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRouteCell.swift; sourceTree = "<group>"; };
 		10BBC9F32AD953FD0079085F /* AddRouteCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddRouteCell.xib; sourceTree = "<group>"; };
 		10BBC9F62AD95EF20079085F /* ChartData + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChartData + Extensions.swift"; sourceTree = "<group>"; };
-		10BBC9F82AD970140079085F /* ContentScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentScrollView.swift; sourceTree = "<group>"; };
+		10BBC9F82AD970140079085F /* VerticalContentScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalContentScrollView.swift; sourceTree = "<group>"; };
 		10BBC9FA2AD997570079085F /* Office.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Office.swift; sourceTree = "<group>"; };
 		10BBC9FC2AD997960079085F /* WorkTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkTime.swift; sourceTree = "<group>"; };
 		10BBC9FE2AD9996C0079085F /* offices.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = offices.txt; sourceTree = "<group>"; };
@@ -325,7 +325,7 @@
 				10BBC9C32AD91D960079085F /* MapButton */,
 				10BEBBBE2AD87111008F9DF0 /* Button */,
 				10BEBBBD2AD87111008F9DF0 /* AppColor.swift */,
-				10BBC9F82AD970140079085F /* ContentScrollView.swift */,
+				10BBC9F82AD970140079085F /* VerticalContentScrollView.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -612,7 +612,7 @@
 				10BBCA0E2AD9D1270079085F /* RouteMapButton.swift in Sources */,
 				10BEBBD02AD87111008F9DF0 /* PrimaryButton.swift in Sources */,
 				10BBCA082AD9B9680079085F /* CloseButton.swift in Sources */,
-				10BBC9F92AD970140079085F /* ContentScrollView.swift in Sources */,
+				10BBC9F92AD970140079085F /* VerticalContentScrollView.swift in Sources */,
 				10BEBBC62AD87111008F9DF0 /* LoginViewAlternativeLoginButton.swift in Sources */,
 				10BBC9C72AD9230B0079085F /* ScaleMinusMapButton.swift in Sources */,
 				108F3D342ADA666D00B23072 /* Double + Extensions.swift in Sources */,

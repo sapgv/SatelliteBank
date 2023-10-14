@@ -15,7 +15,7 @@ protocol PrepareRouteViewControllerDelegate: AnyObject {
 
 final class PrepareRouteViewController: UIViewController {
     
-    private lazy var scrollView = ContentScrollView()
+    private lazy var scrollView = VerticalContentScrollView()
     
     private var contentView: UIView {
         scrollView.wrapperView
@@ -112,7 +112,6 @@ final class PrepareRouteViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         self.scrollViewHeightConstraint?.constant = self.contentView.bounds.height
-        self.scrollView.contentSize = CGSize(width: self.scrollView.contentSize.width, height: self.contentView.bounds.height)
     }
     
     func updateTitle() {
@@ -182,10 +181,12 @@ extension PrepareRouteViewController {
         self.scheduleCarTypeView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: padding).isActive = true
         self.scheduleCarTypeView.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: padding).isActive = true
         self.scheduleCarTypeView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -padding).isActive = true
+        self.scheduleCarTypeView.heightAnchor.constraint(equalToConstant: 60).isActive = true
         
         self.scheduleWalkTypeView.leadingAnchor.constraint(equalTo: self.scheduleCarTypeView.trailingAnchor, constant: padding).isActive = true
         self.scheduleWalkTypeView.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: padding).isActive = true
         self.scheduleWalkTypeView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -padding).isActive = true
+        self.scheduleWalkTypeView.heightAnchor.constraint(equalToConstant: 60).isActive = true
         
     }
     
