@@ -108,6 +108,8 @@ class MapViewController: UIViewController {
         
         self.viewModel?.driverRouteService.delegate = self
         self.viewModel?.pedastrinaRouteService.delegate = self
+        self.viewModel?.bicyсleRouteService.delegate = self
+        self.viewModel?.masstransitRouteService.delegate = self
         
         self.routesCollection = map.mapObjects.add()
         
@@ -441,6 +443,22 @@ extension MapViewController: PrepareRouteViewControllerDelegate {
             let routePolyline = self.routesCollection.addPolyline(with: route.geometry)
             
             routePolyline.stylePedastrianRoute()
+            
+        case .bicycle:
+            
+            guard let route = self.viewModel?.bicyсleRouteService.routes.first else { return }
+            
+            let routePolyline = self.routesCollection.addPolyline(with: route.geometry)
+            
+            routePolyline.styleBicycelRoute()
+            
+        case .masstransit:
+            
+            guard let route = self.viewModel?.masstransitRouteService.routes.last else { return }
+            
+            let routePolyline = self.routesCollection.addPolyline(with: route.geometry)
+            
+            routePolyline.styleMasstransitRoute()
             
         }
     }

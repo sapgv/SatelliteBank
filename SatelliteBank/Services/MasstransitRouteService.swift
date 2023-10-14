@@ -1,5 +1,5 @@
 //
-//  DriverRouteService.swift
+//  MasstransitRouteService.swift
 //  SatelliteBank
 //
 //  Created by Grigory Sapogov on 14.10.2023.
@@ -8,26 +8,22 @@
 import YandexMapsMobile
 import CoreLocation
 
-final class DriverRouteService {
+final class MasstransitRouteService {
     
-    private(set) var routes: [YMKDrivingRoute] = []
+    private(set) var routes: [YMKMasstransitRoute] = []
     
-    private(set) var summary: YMKDrivingSummary?
+    private(set) var summary: YMKMasstransitSummary?
     
     weak var delegate: IRouteLocationDelegate?
     
-    private(set) var drivingSession: YMKDrivingSession?
+    private(set) var drivingSession: YMKMasstransitSession?
     
-    private(set) var summarySession: YMKDrivingSummarySession?
+    private(set) var summarySession: YMKMasstransitSummarySession?
     
-    private(set) var drivingOptions: YMKDrivingDrivingOptions
+    private(set) var timeOptions: YMKTimeOptions
     
-    private(set) var vehicleOptions: YMKDrivingVehicleOptions
-    
-    init(drivingOptions: YMKDrivingDrivingOptions = DriverRouteService.createDrivingOption(),
-         vehicleOptions: YMKDrivingVehicleOptions = DriverRouteService.createVehicleOptions()) {
-        self.drivingOptions = drivingOptions
-        self.vehicleOptions = vehicleOptions
+    init(timeOptions: YMKTimeOptions = MasstransitRouteService.createTimeOption()) {
+        self.timeOptions = timeOptions
     }
     
     func removeRoutes() {
@@ -38,7 +34,7 @@ final class DriverRouteService {
     }
     
     func createRoute(toOffice office: IOffice, completion: @escaping (NSError?) -> Void) {
-
+        
         let group = DispatchGroup()
 
         var resultError: NSError?
@@ -57,8 +53,6 @@ final class DriverRouteService {
                 
                 resultError = error
                 
-                
-                
             }
             
         }
@@ -75,8 +69,6 @@ final class DriverRouteService {
                 
                 resultError = error
                 
-                
-                
             }
             
         }
@@ -91,23 +83,20 @@ final class DriverRouteService {
     
 }
 
-//MARK: - Errors
+//MARK: - Options
 
-enum RouteError: Error, LocalizedError {
+extension MasstransitRouteService {
     
-    case createRouteFailure
-    
-    var errorDescription: String? {
-        switch self {
-        case .createRouteFailure:
-            return "Не удалось псотроить маршрут"
-        }
+    static func createTimeOption() -> YMKTimeOptions {
+        let timeOptions = YMKTimeOptions()
+        return timeOptions
     }
+    
 }
 
 //MARK: - Request Points
 
-extension DriverRouteService {
+extension MasstransitRouteService {
     
     private func requestPoints(toOffice office: IOffice) -> [YMKRequestPoint]? {
         
@@ -127,87 +116,68 @@ extension DriverRouteService {
     }
     
 }
-
+ 
 //MARK: - Summary
 
-extension DriverRouteService {
+extension MasstransitRouteService {
     
-    private func createSummary(toOffice office: IOffice, completion: @escaping (NSError?) -> Void) {
+    func createSummary(toOffice office: IOffice, completion: @escaping (NSError?) -> Void) {
         
         guard let requestPoints = self.requestPoints(toOffice: office) else {
             completion(RouteError.createRouteFailure.NSError)
             return
         }
         
-        let drivingRouter = YMKDirections.sharedInstance().createDrivingRouter()
+        let drivingRouter = YMKTransport.sharedInstance().createMasstransitRouter()
         
-        self.summarySession = drivingRouter.requestRoutesSummary(with: requestPoints, drivingOptions: drivingOptions, vehicleOptions: vehicleOptions) { [weak self] summary, error in
+        let transitOptions = YMKTransitOptions()
+        
+        self.summarySession = drivingRouter.requestRoutesSummary(with: requestPoints, transitOptions: transitOptions) { summary, error in
             
             if let summary = summary?.first {
-                
-                self?.summary = summary
-                
+                self.summary = summary
                 completion(nil)
             }
             else {
-                
                 completion(error!.NSError)
-                
             }
             
         }
-        
+            
     }
     
 }
 
 //MARK: - Routes
 
-extension DriverRouteService {
+extension MasstransitRouteService {
     
-    private func createRoutePrivate(toOffice office: IOffice, completion: @escaping (NSError?) -> Void) {
+    func createRoutePrivate(toOffice office: IOffice, completion: @escaping (NSError?) -> Void) {
         
         guard let requestPoints = self.requestPoints(toOffice: office) else {
             completion(RouteError.createRouteFailure.NSError)
             return
         }
         
-        let drivingRouter = YMKDirections.sharedInstance().createDrivingRouter()
+        let drivingRouter = YMKTransport.sharedInstance().createMasstransitRouter()
         
-        self.drivingSession = drivingRouter.requestRoutes(with: requestPoints, drivingOptions: drivingOptions, vehicleOptions: YMKDrivingVehicleOptions()) { [weak self] routesResponse, error in
+        let transitOptions = YMKTransitOptions()
+        
+        self.drivingSession = drivingRouter.requestRoutes(with: requestPoints, transitOptions: transitOptions) { routes, error in
             
-            if let routes = routesResponse {
+            if let routes = routes {
                 
-                self?.routes = routes
+                self.routes = routes
                 
                 completion(nil)
                 
             }
             else {
-                
                 completion(error!.NSError)
-                
             }
             
         }
         
-    }
-    
-}
-
-//MARK: - Options
-
-extension DriverRouteService {
-    
-    static func createDrivingOption() -> YMKDrivingDrivingOptions {
-        let drivingOptions = YMKDrivingDrivingOptions()
-        drivingOptions.routesCount = 2
-        return drivingOptions
-    }
-    
-    static func createVehicleOptions() -> YMKDrivingVehicleOptions {
-        let vehicleOptions = YMKDrivingVehicleOptions()
-        return vehicleOptions
     }
     
 }

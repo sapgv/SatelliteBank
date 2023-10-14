@@ -1,5 +1,5 @@
 //
-//  PedastrianRouteService.swift
+//  PedastrinaRouteService.swift
 //  SatelliteBank
 //
 //  Created by Grigory Sapogov on 14.10.2023.
@@ -8,7 +8,7 @@
 import YandexMapsMobile
 import CoreLocation
 
-final class PedastrianRouteService {
+final class PedastrinaRouteService {
     
     private(set) var routes: [YMKMasstransitRoute] = []
     
@@ -16,13 +16,13 @@ final class PedastrianRouteService {
     
     weak var delegate: IRouteLocationDelegate?
     
-    private var drivingSession: YMKMasstransitSession?
+    private(set) var drivingSession: YMKMasstransitSession?
     
-    private var summarySession: YMKMasstransitSummarySession?
+    private(set) var summarySession: YMKMasstransitSummarySession?
     
-    private var timeOptions: YMKTimeOptions
+    private(set) var timeOptions: YMKTimeOptions
     
-    init(timeOptions: YMKTimeOptions = PedastrianRouteService.createTimeOption()) {
+    init(timeOptions: YMKTimeOptions = PedastrinaRouteService.createTimeOption()) {
         self.timeOptions = timeOptions
     }
     
@@ -85,7 +85,7 @@ final class PedastrianRouteService {
 
 //MARK: - Options
 
-extension PedastrianRouteService {
+extension PedastrinaRouteService {
     
     static func createTimeOption() -> YMKTimeOptions {
         let timeOptions = YMKTimeOptions()
@@ -96,7 +96,7 @@ extension PedastrianRouteService {
 
 //MARK: - Request Points
 
-extension PedastrianRouteService {
+extension PedastrinaRouteService {
     
     private func requestPoints(toOffice office: IOffice) -> [YMKRequestPoint]? {
         
@@ -119,9 +119,9 @@ extension PedastrianRouteService {
  
 //MARK: - Summary
 
-extension PedastrianRouteService {
+extension PedastrinaRouteService {
     
-    private func createSummary(toOffice office: IOffice, completion: @escaping (NSError?) -> Void) {
+    func createSummary(toOffice office: IOffice, completion: @escaping (NSError?) -> Void) {
         
         guard let requestPoints = self.requestPoints(toOffice: office) else {
             completion(RouteError.createRouteFailure.NSError)
@@ -148,9 +148,9 @@ extension PedastrianRouteService {
 
 //MARK: - Routes
 
-extension PedastrianRouteService {
+extension PedastrinaRouteService {
     
-    private func createRoutePrivate(toOffice office: IOffice, completion: @escaping (NSError?) -> Void) {
+    func createRoutePrivate(toOffice office: IOffice, completion: @escaping (NSError?) -> Void) {
         
         guard let requestPoints = self.requestPoints(toOffice: office) else {
             completion(RouteError.createRouteFailure.NSError)

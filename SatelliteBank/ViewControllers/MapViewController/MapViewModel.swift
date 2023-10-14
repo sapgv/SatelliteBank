@@ -24,7 +24,11 @@ protocol IMapViewModel: NSObject {
     
     var driverRouteService: DriverRouteService { get }
     
-    var pedastrinaRouteService: PedastrianRouteService { get }
+    var pedastrinaRouteService: PedastrinaRouteService { get }
+    
+    var bicyсleRouteService: BicyсleRouteService { get }
+    
+    var masstransitRouteService: MasstransitRouteService { get }
     
     func requestLocation()
     
@@ -52,18 +56,26 @@ final class MapViewModel: NSObject, IMapViewModel {
     
     var driverRouteService: DriverRouteService
     
-    var pedastrinaRouteService: PedastrianRouteService
+    var pedastrinaRouteService: PedastrinaRouteService
+    
+    var bicyсleRouteService: BicyсleRouteService
+    
+    var masstransitRouteService: MasstransitRouteService
     
     init(officeService: IOfficeService = OfficeService.shared,
          bonusService: IBonusService = BonusService.shared,
          locationManager: CLLocationManager = CLLocationManager(),
          driverRouteService: DriverRouteService = DriverRouteService(),
-         pedastrinaRouteService: PedastrianRouteService = PedastrianRouteService()) {
+         pedastrinaRouteService: PedastrinaRouteService = PedastrinaRouteService(),
+         bicyсleRouteService: BicyсleRouteService = BicyсleRouteService(),
+         masstransitRouteService: MasstransitRouteService = MasstransitRouteService()) {
         self.officeService = officeService
         self.bonusService = bonusService
         self.locationManager = locationManager
         self.driverRouteService = driverRouteService
         self.pedastrinaRouteService = pedastrinaRouteService
+        self.bicyсleRouteService = bicyсleRouteService
+        self.masstransitRouteService = masstransitRouteService
         super.init()
         self.locationManager.delegate = self
     }
@@ -111,6 +123,37 @@ final class MapViewModel: NSObject, IMapViewModel {
 
         }
         
+        group.enter()
+        
+        self.bicyсleRouteService.createRoute(toOffice: office) { error in
+
+            resultQueue.async(flags: .barrier) {
+                
+                defer {
+                    group.leave()
+                }
+                
+                resultError = error
+            }
+
+        }
+        
+        group.enter()
+        
+        self.masstransitRouteService.createRoute(toOffice: office) { error in
+
+            resultQueue.async(flags: .barrier) {
+                
+                defer {
+                    group.leave()
+                }
+                
+                resultError = error
+            }
+
+        }
+        
+        
         group.notify(queue: .main) { [weak self] in
             
             if let resultError = resultError {
@@ -140,7 +183,7 @@ final class MapViewModel: NSObject, IMapViewModel {
         
         group.enter()
         
-        self.officeService.update { [weak self] error in
+        self.officeService.update { error in
          
             resultQueue.async(flags: .barrier) {
 

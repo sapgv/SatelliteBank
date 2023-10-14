@@ -7,18 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		108AE3F02ADB002B004C3A23 /* ScheduleMasstransitRouteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108AE3EF2ADB002B004C3A23 /* ScheduleMasstransitRouteButton.swift */; };
 		108F3D342ADA666D00B23072 /* Double + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108F3D332ADA666D00B23072 /* Double + Extensions.swift */; };
 		108F3D362ADA693300B23072 /* ScheduleRouteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108F3D352ADA693300B23072 /* ScheduleRouteButton.swift */; };
 		108F3D382ADA698300B23072 /* ScheduleCarRouteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108F3D372ADA698300B23072 /* ScheduleCarRouteButton.swift */; };
 		108F3D3B2ADA69D800B23072 /* PrepareRouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108F3D3A2ADA69D800B23072 /* PrepareRouteViewController.swift */; };
 		108F3D3D2ADA6F9100B23072 /* ScheduleTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108F3D3C2ADA6F9100B23072 /* ScheduleTypeView.swift */; };
 		108F3D3F2ADA727800B23072 /* ScheduleWalkRouteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108F3D3E2ADA727800B23072 /* ScheduleWalkRouteButton.swift */; };
-		108F3D412ADA73B600B23072 /* ScheduleBusRouteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108F3D402ADA73B600B23072 /* ScheduleBusRouteButton.swift */; };
 		108F3D432ADA752C00B23072 /* MapObjectTapListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108F3D422ADA752C00B23072 /* MapObjectTapListener.swift */; };
 		108F3D452ADA756E00B23072 /* MyFloatingPanelLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108F3D442ADA756E00B23072 /* MyFloatingPanelLayout.swift */; };
 		108F3D472ADA772600B23072 /* DriverRouteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108F3D462ADA772600B23072 /* DriverRouteService.swift */; };
 		108F3D492ADA7FB200B23072 /* RouteLocationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108F3D482ADA7FB200B23072 /* RouteLocationDelegate.swift */; };
-		108F3D4B2ADA84AA00B23072 /* PedastrianRouteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108F3D4A2ADA84AA00B23072 /* PedastrianRouteService.swift */; };
+		108F3D4B2ADA84AA00B23072 /* PedastrinaRouteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108F3D4A2ADA84AA00B23072 /* PedastrinaRouteService.swift */; };
+		10AEF8EE2ADAFA49008C3CBE /* BicyсleRouteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AEF8ED2ADAFA49008C3CBE /* BicyсleRouteService.swift */; };
+		10AEF8F02ADAFC32008C3CBE /* ScheduleBycicleRouteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AEF8EF2ADAFC32008C3CBE /* ScheduleBycicleRouteButton.swift */; };
+		10AEF8F22ADAFE8A008C3CBE /* MasstransitRouteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AEF8F12ADAFE8A008C3CBE /* MasstransitRouteService.swift */; };
 		10BBC9C22AD91D300079085F /* MapButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BBC9C12AD91D300079085F /* MapButton.swift */; };
 		10BBC9C52AD922C90079085F /* ScalePlusMapButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BBC9C42AD922C90079085F /* ScalePlusMapButton.swift */; };
 		10BBC9C72AD9230B0079085F /* ScaleMinusMapButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BBC9C62AD9230B0079085F /* ScaleMinusMapButton.swift */; };
@@ -81,18 +84,21 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		108AE3EF2ADB002B004C3A23 /* ScheduleMasstransitRouteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleMasstransitRouteButton.swift; sourceTree = "<group>"; };
 		108F3D332ADA666D00B23072 /* Double + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double + Extensions.swift"; sourceTree = "<group>"; };
 		108F3D352ADA693300B23072 /* ScheduleRouteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleRouteButton.swift; sourceTree = "<group>"; };
 		108F3D372ADA698300B23072 /* ScheduleCarRouteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCarRouteButton.swift; sourceTree = "<group>"; };
 		108F3D3A2ADA69D800B23072 /* PrepareRouteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrepareRouteViewController.swift; sourceTree = "<group>"; };
 		108F3D3C2ADA6F9100B23072 /* ScheduleTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTypeView.swift; sourceTree = "<group>"; };
 		108F3D3E2ADA727800B23072 /* ScheduleWalkRouteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleWalkRouteButton.swift; sourceTree = "<group>"; };
-		108F3D402ADA73B600B23072 /* ScheduleBusRouteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleBusRouteButton.swift; sourceTree = "<group>"; };
 		108F3D422ADA752C00B23072 /* MapObjectTapListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapObjectTapListener.swift; sourceTree = "<group>"; };
 		108F3D442ADA756E00B23072 /* MyFloatingPanelLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFloatingPanelLayout.swift; sourceTree = "<group>"; };
 		108F3D462ADA772600B23072 /* DriverRouteService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverRouteService.swift; sourceTree = "<group>"; };
 		108F3D482ADA7FB200B23072 /* RouteLocationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteLocationDelegate.swift; sourceTree = "<group>"; };
-		108F3D4A2ADA84AA00B23072 /* PedastrianRouteService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PedastrianRouteService.swift; sourceTree = "<group>"; };
+		108F3D4A2ADA84AA00B23072 /* PedastrinaRouteService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PedastrinaRouteService.swift; sourceTree = "<group>"; };
+		10AEF8ED2ADAFA49008C3CBE /* BicyсleRouteService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BicyсleRouteService.swift"; sourceTree = "<group>"; };
+		10AEF8EF2ADAFC32008C3CBE /* ScheduleBycicleRouteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleBycicleRouteButton.swift; sourceTree = "<group>"; };
+		10AEF8F12ADAFE8A008C3CBE /* MasstransitRouteService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasstransitRouteService.swift; sourceTree = "<group>"; };
 		10BBC9C12AD91D300079085F /* MapButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapButton.swift; sourceTree = "<group>"; };
 		10BBC9C42AD922C90079085F /* ScalePlusMapButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScalePlusMapButton.swift; sourceTree = "<group>"; };
 		10BBC9C62AD9230B0079085F /* ScaleMinusMapButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleMinusMapButton.swift; sourceTree = "<group>"; };
@@ -190,7 +196,8 @@
 				108F3D352ADA693300B23072 /* ScheduleRouteButton.swift */,
 				108F3D372ADA698300B23072 /* ScheduleCarRouteButton.swift */,
 				108F3D3E2ADA727800B23072 /* ScheduleWalkRouteButton.swift */,
-				108F3D402ADA73B600B23072 /* ScheduleBusRouteButton.swift */,
+				10AEF8EF2ADAFC32008C3CBE /* ScheduleBycicleRouteButton.swift */,
+				108AE3EF2ADB002B004C3A23 /* ScheduleMasstransitRouteButton.swift */,
 				108F3D3C2ADA6F9100B23072 /* ScheduleTypeView.swift */,
 			);
 			path = MapButton;
@@ -264,7 +271,9 @@
 				10BBCA012AD999B00079085F /* OfficeService.swift */,
 				10C8387C2ADAD40E00932CC6 /* BonusService.swift */,
 				108F3D462ADA772600B23072 /* DriverRouteService.swift */,
-				108F3D4A2ADA84AA00B23072 /* PedastrianRouteService.swift */,
+				108F3D4A2ADA84AA00B23072 /* PedastrinaRouteService.swift */,
+				10AEF8ED2ADAFA49008C3CBE /* BicyсleRouteService.swift */,
+				10AEF8F12ADAFE8A008C3CBE /* MasstransitRouteService.swift */,
 				108F3D482ADA7FB200B23072 /* RouteLocationDelegate.swift */,
 			);
 			path = Services;
@@ -608,19 +617,22 @@
 				10BEBBC12AD87111008F9DF0 /* CurrentLocationMapButton.swift in Sources */,
 				10BBC9C52AD922C90079085F /* ScalePlusMapButton.swift in Sources */,
 				10BEBBA82AD870F7008F9DF0 /* MapViewModel.swift in Sources */,
-				108F3D412ADA73B600B23072 /* ScheduleBusRouteButton.swift in Sources */,
 				108F3D3B2ADA69D800B23072 /* PrepareRouteViewController.swift in Sources */,
 				10BBCA042AD99C910079085F /* Thread + Extensions.swift in Sources */,
+				10AEF8EE2ADAFA49008C3CBE /* BicyсleRouteService.swift in Sources */,
 				10BEBBCC2AD87111008F9DF0 /* PrimaryLabel.swift in Sources */,
+				108AE3F02ADB002B004C3A23 /* ScheduleMasstransitRouteButton.swift in Sources */,
 				10BBC9F42AD953FD0079085F /* AddRouteCell.swift in Sources */,
 				108F3D472ADA772600B23072 /* DriverRouteService.swift in Sources */,
 				10BBCA0C2AD9CD960079085F /* UIKit + Extensions.swift in Sources */,
 				108F3D452ADA756E00B23072 /* MyFloatingPanelLayout.swift in Sources */,
 				10BBC9F72AD95EF20079085F /* ChartData + Extensions.swift in Sources */,
-				108F3D4B2ADA84AA00B23072 /* PedastrianRouteService.swift in Sources */,
+				108F3D4B2ADA84AA00B23072 /* PedastrinaRouteService.swift in Sources */,
 				10BEBBC22AD87111008F9DF0 /* String + Extensions.swift in Sources */,
 				108F3D3D2ADA6F9100B23072 /* ScheduleTypeView.swift in Sources */,
+				10AEF8F02ADAFC32008C3CBE /* ScheduleBycicleRouteButton.swift in Sources */,
 				10BBCA0E2AD9D1270079085F /* RouteMapButton.swift in Sources */,
+				10AEF8F22ADAFE8A008C3CBE /* MasstransitRouteService.swift in Sources */,
 				10BEBBD02AD87111008F9DF0 /* PrimaryButton.swift in Sources */,
 				10BBCA082AD9B9680079085F /* CloseButton.swift in Sources */,
 				10BBC9F92AD970140079085F /* VerticalContentScrollView.swift in Sources */,

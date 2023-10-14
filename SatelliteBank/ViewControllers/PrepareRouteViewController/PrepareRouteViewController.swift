@@ -55,6 +55,10 @@ final class PrepareRouteViewController: UIViewController {
     
     private let scheduleWalkTypeView = ScheduleTypeView<ScheduleWalkRouteButton>()
     
+    private let scheduleBicycleTypeView = ScheduleTypeView<ScheduleBycicleRouteButton>()
+    
+    private let scheduleMasstransitTypeView = ScheduleTypeView<ScheduleMasstransitRouteButton>()
+    
     let closseButton = CloseButton()
     
     var office: IOffice!
@@ -68,6 +72,8 @@ final class PrepareRouteViewController: UIViewController {
     enum RouteType {
         case drive
         case pedastrian
+        case bicycle
+        case masstransit
     }
     
     private(set) var activeRouteType: RouteType? {
@@ -104,6 +110,23 @@ final class PrepareRouteViewController: UIViewController {
         self.scheduleWalkTypeView.button.action = { [weak self] _ in
             self?.activeRouteType = .pedastrian
         }
+        
+        self.scheduleBicycleTypeView.action = { [weak self] in
+            self?.activeRouteType = .bicycle
+        }
+        
+        self.scheduleBicycleTypeView.button.action = { [weak self] _ in
+            self?.activeRouteType = .bicycle
+        }
+        
+        self.scheduleMasstransitTypeView.action = { [weak self] in
+            self?.activeRouteType = .masstransit
+        }
+        
+        self.scheduleMasstransitTypeView.button.action = { [weak self] _ in
+            self?.activeRouteType = .masstransit
+        }
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -127,6 +150,8 @@ final class PrepareRouteViewController: UIViewController {
     func updateTitle() {
         self.scheduleCarTypeView.title.text = self.mapViewModel?.driverRouteService.summary?.weight.timeWithTraffic.text
         self.scheduleWalkTypeView.title.text = self.mapViewModel?.pedastrinaRouteService.summary?.weight.time.text
+        self.scheduleBicycleTypeView.title.text = self.mapViewModel?.bicyсleRouteService.summary?.weight.time.text
+        self.scheduleMasstransitTypeView.title.text = self.mapViewModel?.masstransitRouteService.summary?.weight.time.text
     }
     
     private func updateButtons() {
@@ -134,6 +159,10 @@ final class PrepareRouteViewController: UIViewController {
         self.scheduleCarTypeView.layer.borderWidth = self.activeRouteType == .drive ? 1 : 0
         self.scheduleWalkTypeView.layer.borderColor = self.activeRouteType == .pedastrian ? AppColor.primary.cgColor : nil
         self.scheduleWalkTypeView.layer.borderWidth = self.activeRouteType == .pedastrian ? 1 : 0
+        self.scheduleBicycleTypeView.layer.borderColor = self.activeRouteType == .bicycle ? AppColor.primary.cgColor : nil
+        self.scheduleBicycleTypeView.layer.borderWidth = self.activeRouteType == .bicycle ? 1 : 0
+        self.scheduleMasstransitTypeView.layer.borderColor = self.activeRouteType == .masstransit ? AppColor.primary.cgColor : nil
+        self.scheduleMasstransitTypeView.layer.borderWidth = self.activeRouteType == .masstransit ? 1 : 0
     }
     
 }
@@ -190,9 +219,13 @@ extension PrepareRouteViewController {
         
         self.scheduleCarTypeView.translatesAutoresizingMaskIntoConstraints = false
         self.scheduleWalkTypeView.translatesAutoresizingMaskIntoConstraints = false
+        self.scheduleBicycleTypeView.translatesAutoresizingMaskIntoConstraints = false
+        self.scheduleMasstransitTypeView.translatesAutoresizingMaskIntoConstraints = false
         
         self.contentView.addSubview(self.scheduleCarTypeView)
         self.contentView.addSubview(self.scheduleWalkTypeView)
+        self.contentView.addSubview(self.scheduleBicycleTypeView)
+        self.contentView.addSubview(self.scheduleMasstransitTypeView)
         
         self.scheduleCarTypeView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: padding).isActive = true
         self.scheduleCarTypeView.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: padding).isActive = true
@@ -203,6 +236,16 @@ extension PrepareRouteViewController {
         self.scheduleWalkTypeView.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: padding).isActive = true
         self.scheduleWalkTypeView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -padding).isActive = true
         self.scheduleWalkTypeView.heightAnchor.constraint(equalToConstant: 60).isActive = true
+        
+        self.scheduleBicycleTypeView.leadingAnchor.constraint(equalTo: self.scheduleWalkTypeView.trailingAnchor, constant: padding).isActive = true
+        self.scheduleBicycleTypeView.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: padding).isActive = true
+        self.scheduleBicycleTypeView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -padding).isActive = true
+        self.scheduleBicycleTypeView.heightAnchor.constraint(equalToConstant: 60).isActive = true
+        
+        self.scheduleMasstransitTypeView.leadingAnchor.constraint(equalTo: self.scheduleBicycleTypeView.trailingAnchor, constant: padding).isActive = true
+        self.scheduleMasstransitTypeView.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: padding).isActive = true
+        self.scheduleMasstransitTypeView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -padding).isActive = true
+        self.scheduleMasstransitTypeView.heightAnchor.constraint(equalToConstant: 60).isActive = true
         
     }
     
