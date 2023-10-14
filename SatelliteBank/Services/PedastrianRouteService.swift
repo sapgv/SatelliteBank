@@ -12,21 +12,95 @@ final class PedastrianRouteService {
     
     private(set) var routes: [YMKMasstransitRoute] = []
     
-    var routesCollection: YMKMapObjectCollection!
+    private(set) var summary: YMKMasstransitSummary?
     
     weak var delegate: IRouteLocationDelegate?
     
-    var drivingSession: YMKMasstransitSession?
+    private var drivingSession: YMKMasstransitSession?
+    
+    private var summarySession: YMKMasstransitSummarySession?
+    
+    private var timeOptions: YMKTimeOptions
+    
+    init(timeOptions: YMKTimeOptions = PedastrianRouteService.createTimeOption()) {
+        self.timeOptions = timeOptions
+    }
     
     func removeRoutes() {
         self.drivingSession?.cancel()
+        self.summarySession?.cancel()
         self.routes.removeAll()
-        self.routesCollection.clear()
+        self.summary = nil
     }
     
     func createRoute(toOffice office: IOffice, completion: @escaping (NSError?) -> Void) {
         
-        guard let currentLocation = delegate?.currentLocation else { return }
+        let group = DispatchGroup()
+
+        var resultError: NSError?
+        
+        let resultQueue = DispatchQueue(label: "DriverRouteServiceQueue", attributes: .concurrent)
+        
+        group.enter()
+        
+        self.createRoutePrivate(toOffice: office) { error in
+            
+            resultQueue.async(flags: .barrier) {
+
+                defer {
+                    group.leave()
+                }
+                
+                resultError = error
+                
+            }
+            
+        }
+        
+        group.enter()
+        
+        self.createSummary(toOffice: office) { error in
+
+            resultQueue.async(flags: .barrier) {
+
+                defer {
+                    group.leave()
+                }
+                
+                resultError = error
+                
+            }
+            
+        }
+        
+        group.notify(queue: .main) {
+            
+            completion(resultError)
+            
+        }
+        
+    }
+    
+}
+
+//MARK: - Options
+
+extension PedastrianRouteService {
+    
+    static func createTimeOption() -> YMKTimeOptions {
+        let timeOptions = YMKTimeOptions()
+        return timeOptions
+    }
+    
+}
+
+//MARK: - Request Points
+
+extension PedastrianRouteService {
+    
+    private func requestPoints(toOffice office: IOffice) -> [YMKRequestPoint]? {
+        
+        guard let currentLocation = delegate?.currentLocation else { return nil }
         
         let requestPoints : [YMKRequestPoint] = [
             YMKRequestPoint(
@@ -37,47 +111,69 @@ final class PedastrianRouteService {
                 pointContext: nil, drivingArrivalPointId: nil),
             ]
         
-        let responseHandler = { (routesResponse: [YMKMasstransitRoute]?,
-                                 error: Error?) -> Void in
-            if let routes = routesResponse {
-                self.onRoutesReceived(routes, completion: completion)
-            } else {
-                self.onRoutesError(error!, completion: completion)
-            }
+        return requestPoints
+        
+    }
+    
+}
+ 
+//MARK: - Summary
+
+extension PedastrianRouteService {
+    
+    private func createSummary(toOffice office: IOffice, completion: @escaping (NSError?) -> Void) {
+        
+        guard let requestPoints = self.requestPoints(toOffice: office) else {
+            completion(RouteError.createRouteFailure.NSError)
+            return
         }
         
-        let drivingRouter = YMKPedestrianRouter()
+        let drivingRouter = YMKTransport.sharedInstance().createPedestrianRouter()
         
-        let timeOpetions = YMKTimeOptions()
-        
-        drivingSession = drivingRouter.requestRoutes(with: requestPoints, timeOptions: timeOpetions, routeHandler: responseHandler)
-        
-    }
-    
-    private func onRoutesReceived(_ routes: [YMKMasstransitRoute], completion: @escaping (NSError?) -> Void) {
-        
-        self.removeRoutes()
-        
-        self.routes = routes
-        
-        routes.enumerated().forEach { pair in
-            let routePolyline = self.routesCollection.addPolyline(with: pair.element.geometry)
-            if pair.offset == 0 {
-                routePolyline.styleMainRoute()
-            } else {
-                routePolyline.styleAlternativeRoute()
+        self.summarySession = drivingRouter.requestRoutesSummary(with: requestPoints, timeOptions: timeOptions) { summary, error in
+            
+            if let summary = summary?.first {
+                self.summary = summary
+                completion(nil)
             }
+            else {
+                completion(error!.NSError)
+            }
+            
         }
         
-        completion(nil)
-        
     }
     
-    private func onRoutesError(_ error: Error, completion: @escaping (NSError?) -> Void) {
+}
+
+//MARK: - Routes
+
+extension PedastrianRouteService {
+    
+    private func createRoutePrivate(toOffice office: IOffice, completion: @escaping (NSError?) -> Void) {
         
-        completion(error.NSError)
+        guard let requestPoints = self.requestPoints(toOffice: office) else {
+            completion(RouteError.createRouteFailure.NSError)
+            return
+        }
+        
+        let drivingRouter = YMKTransport.sharedInstance().createPedestrianRouter()
+        
+        self.drivingSession = drivingRouter.requestRoutes(with: requestPoints, timeOptions: timeOptions) { routes, error in
+            
+            if let routes = routes {
+                
+                self.routes = routes
+                
+                completion(nil)
+                
+            }
+            else {
+                completion(error!.NSError)
+            }
+            
+        }
         
     }
-    
     
 }

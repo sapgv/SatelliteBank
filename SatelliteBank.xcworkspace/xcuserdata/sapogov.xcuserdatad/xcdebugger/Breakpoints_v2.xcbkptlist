@@ -7,32 +7,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "775F7677-0369-4D45-87A3-68FE86015014"
+            uuid = "E34FBDC9-017A-40EE-803C-A376923139C5"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "SatelliteBank/ViewControllers/MapViewController.swift"
+            filePath = "SatelliteBank/ViewControllers/PrepareRouteViewController/PrepareRouteViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "119"
-            endingLineNumber = "119"
-            landmarkName = "setupCurrentLocationButton()"
+            startingLineNumber = "91"
+            endingLineNumber = "91"
+            landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "EA29347E-B272-42DB-A03A-AF72EEF192A7"
+            uuid = "5CB69B45-BEAE-4D1C-B6A8-F6710EA9606A"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "SatelliteBank/ViewControllers/MapViewController.swift"
+            filePath = "SatelliteBank/ViewControllers/PrepareRouteViewController/PrepareRouteViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "126"
-            endingLineNumber = "126"
-            landmarkName = "setupCurrentLocationButton()"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
+            landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

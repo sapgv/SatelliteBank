@@ -12,21 +12,106 @@ final class DriverRouteService {
     
     private(set) var routes: [YMKDrivingRoute] = []
     
-    var routesCollection: YMKMapObjectCollection!
+    private(set) var summary: YMKDrivingSummary?
     
     weak var delegate: IRouteLocationDelegate?
     
-    var drivingSession: YMKDrivingSession?
+    private var drivingSession: YMKDrivingSession?
+    
+    private var summarySession: YMKDrivingSummarySession?
+    
+    private var drivingOptions: YMKDrivingDrivingOptions
+    
+    private var vehicleOptions: YMKDrivingVehicleOptions
+    
+    init(drivingOptions: YMKDrivingDrivingOptions = DriverRouteService.createDrivingOption(),
+         vehicleOptions: YMKDrivingVehicleOptions = DriverRouteService.createVehicleOptions()) {
+        self.drivingOptions = drivingOptions
+        self.vehicleOptions = vehicleOptions
+    }
     
     func removeRoutes() {
         self.drivingSession?.cancel()
+        self.summarySession?.cancel()
         self.routes.removeAll()
-        self.routesCollection.clear()
+        self.summary = nil
     }
     
     func createRoute(toOffice office: IOffice, completion: @escaping (NSError?) -> Void) {
+
+        let group = DispatchGroup()
+
+        var resultError: NSError?
         
-        guard let currentLocation = delegate?.currentLocation else { return }
+        let resultQueue = DispatchQueue(label: "DriverRouteServiceQueue", attributes: .concurrent)
+        
+        group.enter()
+        
+        self.createRoutePrivate(toOffice: office) { error in
+            
+            resultQueue.async(flags: .barrier) {
+
+                defer {
+                    group.leave()
+                }
+                
+                resultError = error
+                
+                
+                
+            }
+            
+        }
+        
+        group.enter()
+        
+        self.createSummary(toOffice: office) { error in
+
+            resultQueue.async(flags: .barrier) {
+
+                defer {
+                    group.leave()
+                }
+                
+                resultError = error
+                
+                
+                
+            }
+            
+        }
+        
+        group.notify(queue: .main) {
+            
+            completion(resultError)
+            
+        }
+        
+    }
+    
+}
+
+//MARK: - Errors
+
+enum RouteError: Error, LocalizedError {
+    
+    case createRouteFailure
+    
+    var errorDescription: String? {
+        switch self {
+        case .createRouteFailure:
+            return "Не удалось псотроить маршрут"
+        }
+    }
+}
+
+//MARK: - Request Points
+
+extension DriverRouteService {
+    
+    private func requestPoints(toOffice office: IOffice) -> [YMKRequestPoint]? {
+        
+        guard let currentLocation = delegate?.currentLocation else { return nil }
         
         let requestPoints : [YMKRequestPoint] = [
             YMKRequestPoint(
@@ -37,50 +122,92 @@ final class DriverRouteService {
                 pointContext: nil, drivingArrivalPointId: nil),
             ]
         
-        let responseHandler = {(routesResponse: [YMKDrivingRoute]?, error: Error?) -> Void in
-            if let routes = routesResponse {
-                self.onRoutesReceived(routes, completion: completion)
-            } else {
-                self.onRoutesError(error!, completion: completion)
-            }
+        return requestPoints
+        
+    }
+    
+}
+
+//MARK: - Summary
+
+extension DriverRouteService {
+    
+    private func createSummary(toOffice office: IOffice, completion: @escaping (NSError?) -> Void) {
+        
+        guard let requestPoints = self.requestPoints(toOffice: office) else {
+            completion(RouteError.createRouteFailure.NSError)
+            return
         }
         
         let drivingRouter = YMKDirections.sharedInstance().createDrivingRouter()
         
-        let drivingOptions = YMKDrivingDrivingOptions()
-        drivingOptions.routesCount = 2
-        
-        drivingSession = drivingRouter.requestRoutes(
-            with: requestPoints,
-            drivingOptions: drivingOptions,
-            vehicleOptions: YMKDrivingVehicleOptions(),
-            routeHandler: responseHandler)
-        
-    }
-    
-    private func onRoutesReceived(_ routes: [YMKDrivingRoute], completion: @escaping (NSError?) -> Void) {
-        
-        self.removeRoutes()
-        
-        self.routes = routes
-        
-        routes.enumerated().forEach { pair in
-            let routePolyline = self.routesCollection.addPolyline(with: pair.element.geometry)
-            if pair.offset == 0 {
-                routePolyline.styleMainRoute()
-            } else {
-                routePolyline.styleAlternativeRoute()
+        self.summarySession = drivingRouter.requestRoutesSummary(with: requestPoints, drivingOptions: drivingOptions, vehicleOptions: vehicleOptions) { [weak self] summary, error in
+            
+            if let summary = summary?.first {
+                
+                self?.summary = summary
+                
+                completion(nil)
             }
+            else {
+                
+                completion(error!.NSError)
+                
+            }
+            
         }
         
-        completion(nil)
+    }
+    
+}
+
+//MARK: - Routes
+
+extension DriverRouteService {
+    
+    private func createRoutePrivate(toOffice office: IOffice, completion: @escaping (NSError?) -> Void) {
+        
+        guard let requestPoints = self.requestPoints(toOffice: office) else {
+            completion(RouteError.createRouteFailure.NSError)
+            return
+        }
+        
+        let drivingRouter = YMKDirections.sharedInstance().createDrivingRouter()
+        
+        self.drivingSession = drivingRouter.requestRoutes(with: requestPoints, drivingOptions: drivingOptions, vehicleOptions: YMKDrivingVehicleOptions()) { [weak self] routesResponse, error in
+            
+            if let routes = routesResponse {
+                
+                self?.routes = routes
+                
+                completion(nil)
+                
+            }
+            else {
+                
+                completion(error!.NSError)
+                
+            }
+            
+        }
         
     }
     
-    private func onRoutesError(_ error: Error, completion: @escaping (NSError?) -> Void) {
-        
-        completion(error.NSError)
-        
+}
+
+//MARK: - Options
+
+extension DriverRouteService {
+    
+    static func createDrivingOption() -> YMKDrivingDrivingOptions {
+        let drivingOptions = YMKDrivingDrivingOptions()
+        drivingOptions.routesCount = 2
+        return drivingOptions
+    }
+    
+    static func createVehicleOptions() -> YMKDrivingVehicleOptions {
+        let vehicleOptions = YMKDrivingVehicleOptions()
+        return vehicleOptions
     }
     
 }

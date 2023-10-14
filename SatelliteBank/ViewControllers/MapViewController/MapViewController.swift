@@ -86,7 +86,6 @@ class MapViewController: UIViewController {
         self.setupScaleMapStackView()
         self.setupBottomMapButtonStackView()
         self.layout()
-//        self.setupContentViewController()
         self.updateOffice()
         
         self.routesCollection = map.mapObjects.add()
@@ -108,7 +107,9 @@ class MapViewController: UIViewController {
     private func setupViewModel() {
         
         self.viewModel?.driverRouteService.delegate = self
-        self.viewModel?.driverRouteService.routesCollection = map.mapObjects.add()
+        self.viewModel?.pedastrinaRouteService.delegate = self
+        
+        self.routesCollection = map.mapObjects.add()
         
         self.viewModel?.createRouteCompletion = { [weak self] result in
             
@@ -133,52 +134,65 @@ class MapViewController: UIViewController {
     
     private func showRoutePanel(office: IOffice) {
         
-        self.fpc = FloatingPanelController()
-        
-        self.fpc.layout = MyFloatingPanelLayout()
-        
-        // Set a content view controller.
-        let contentVC = PrepareRouteViewController()
-        contentVC.office = office
-        contentVC.closeCompletion = { [weak self] in
-            self?.viewModel?.clearRoutes()
+        if let prepareRouteViewController = self.fpc?.contentViewController as? PrepareRouteViewController,
+           prepareRouteViewController.view.window != nil
+        {
+            if let activeRouteType = prepareRouteViewController.activeRouteType {
+                self.showRoutes(forType: activeRouteType)
+            }
+            prepareRouteViewController.updateTitle()
         }
-//        contentVC.delegate = self
-        
-        let navigationController = UINavigationController(rootViewController: contentVC)
-        
-        let appearance = SurfaceAppearance()
-        appearance.cornerRadius = 16
-        fpc.surfaceView.appearance = appearance
-        
-        self.fpc.set(contentViewController: contentVC)
-        
-//        self.fpc.addPanel(toParent: self)
-        
-        self.view.addSubview(fpc.view)
+        else {
+            
+            self.fpc = FloatingPanelController()
+            
+            self.fpc.layout = MyFloatingPanelLayout()
+            
+            // Set a content view controller.
+            let contentVC = PrepareRouteViewController()
+            contentVC.office = office
+            contentVC.delegate = self
+            contentVC.mapViewModel = self.viewModel
+            contentVC.closeCompletion = { [weak self] in
+                self?.removeRoutes()
+                self?.viewModel?.removeRoutes()
+            }
+    //        contentVC.delegate = self
+            
+            let appearance = SurfaceAppearance()
+            appearance.cornerRadius = 16
+            fpc.surfaceView.appearance = appearance
+            
+            self.fpc.set(contentViewController: contentVC)
+            
+            self.view.addSubview(fpc.view)
 
-        // REQUIRED. It makes the floating panel view have the same size as the controller's view.
-        fpc.view.frame = self.view.bounds
+            // REQUIRED. It makes the floating panel view have the same size as the controller's view.
+            fpc.view.frame = self.view.bounds
 
-        // In addition, Auto Layout constraints are highly recommended.
-        // Constraint the fpc.view to all four edges of your controller's view.
-        // It makes the layout more robust on trait collection change.
-        fpc.view.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-          fpc.view.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 0.0),
-          fpc.view.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 0.0),
-          fpc.view.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: 0.0),
-          fpc.view.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 0.0),
-        ])
+            // In addition, Auto Layout constraints are highly recommended.
+            // Constraint the fpc.view to all four edges of your controller's view.
+            // It makes the layout more robust on trait collection change.
+            fpc.view.translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activate([
+              fpc.view.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 0.0),
+              fpc.view.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 0.0),
+              fpc.view.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: 0.0),
+              fpc.view.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 0.0),
+            ])
 
-        // Add the floating panel controller to the controller hierarchy.
-        self.addChild(fpc)
+            // Add the floating panel controller to the controller hierarchy.
+            self.addChild(fpc)
 
-        // Show the floating panel at the initial position defined in your `FloatingPanelLayout` object.
-        fpc.show(animated: true) { [weak self] in
-            // Inform the floating panel controller that the transition to the controller hierarchy has completed.
-            self?.fpc.didMove(toParent: self)
+            // Show the floating panel at the initial position defined in your `FloatingPanelLayout` object.
+            fpc.show(animated: true) { [weak self] in
+                // Inform the floating panel controller that the transition to the controller hierarchy has completed.
+                self?.fpc.didMove(toParent: self)
+            }
+            
         }
+        
+        
         
     }
     
@@ -194,28 +208,6 @@ class MapViewController: UIViewController {
             self?.layoutPlacemarks()
             
         }
-        
-    }
-    
-    private func setupContentViewController() {
-        
-        self.fpc = FloatingPanelController()
-        
-        self.fpc.layout = MyFloatingPanelLayout()
-        
-        // Set a content view controller.
-        let contentVC = MapContentViewController()
-        contentVC.delegate = self
-        
-        let navigationController = UINavigationController(rootViewController: contentVC)
-        
-        let appearance = SurfaceAppearance()
-        appearance.cornerRadius = 16
-        fpc.surfaceView.appearance = appearance
-        
-        self.fpc.set(contentViewController: navigationController)
-        
-        self.fpc.addPanel(toParent: self)
         
     }
     
@@ -247,12 +239,7 @@ class MapViewController: UIViewController {
             self?.moveToCurrentLocation()
         }
         
-        let routeButton: RouteMapButton = RouteMapButton()
-        routeButton.action = { [weak self] _ in
-            self?.removeRoutes()
-        }
-        
-        self.bottomMapButtonStackView.setButtons(buttons: [routeButton, locationMapButton])
+        self.bottomMapButtonStackView.setButtons(buttons: [locationMapButton])
         
     }
     
@@ -325,75 +312,7 @@ extension MapViewController {
         
         self.viewModel?.createRoute(toOffice: office)
         
-//        guard let currentLocation = self.currentLocation else { return }
-//
-//        let requestPoints : [YMKRequestPoint] = [
-//            YMKRequestPoint(
-//                point: currentLocation.point, type: .waypoint,
-//                pointContext: nil, drivingArrivalPointId: nil),
-//            YMKRequestPoint(
-//                point: office.coordinate.point, type: .waypoint,
-//                pointContext: nil, drivingArrivalPointId: nil),
-//            ]
-//
-//        let responseHandler = {(routesResponse: [YMKDrivingRoute]?, error: Error?) -> Void in
-//            if let routes = routesResponse {
-//                self.onRoutesReceived(routes)
-//            } else {
-//                self.onRoutesError(error!)
-//            }
-//        }
-//
-//        let drivingRouter = YMKDirections.sharedInstance().createDrivingRouter()
-//
-//        let drivingOptions = YMKDrivingDrivingOptions()
-//        drivingOptions.routesCount = 2
-//
-//        drivingSession = drivingRouter.requestRoutes(
-//            with: requestPoints,
-//            drivingOptions: drivingOptions,
-//            vehicleOptions: YMKDrivingVehicleOptions(),
-//            routeHandler: responseHandler)
-        
     }
-    
-//    private func onRoutesReceived(_ routes: [YMKDrivingRoute]) {
-//
-//        self.removeRoutes()
-//
-//        self.routes = routes
-//
-//        let distance = routes.first?.distanceToFinish
-//        let timeTravelToPoint = routes.first?.timeTravelToPoint
-//
-//        print("LOG Distance \(distance)")
-//        print("LOG timeTravelToPoint \(timeTravelToPoint)")
-//
-//        routes.enumerated().forEach { pair in
-//            let routePolyline = self.routesCollection.addPolyline(with: pair.element.geometry)
-//            if pair.offset == 0 {
-//                routePolyline.styleMainRoute()
-//            } else {
-//                routePolyline.styleAlternativeRoute()
-//            }
-//        }
-//
-//    }
-//
-//    private func onRoutesError(_ error: Error) {
-//        let routingError = (error as NSError).userInfo[YRTUnderlyingErrorKey] as! YRTError
-//        var errorMessage = "Unknown error"
-//        if routingError.isKind(of: YRTNetworkError.self) {
-//            errorMessage = "Network error"
-//        } else if routingError.isKind(of: YRTRemoteError.self) {
-//            errorMessage = "Remote server error"
-//        }
-//
-//        let alert = UIAlertController(title: "Error", message: errorMessage, preferredStyle: .alert)
-//        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-//
-//        present(alert, animated: true, completion: nil)
-//    }
     
 }
 
@@ -483,6 +402,45 @@ extension MapViewController {
 
         placemark.addTapListener(with: mapObjectTapListener)
         
+    }
+    
+}
+
+//MARK: - PrepareRouteViewControllerDelegate
+
+extension MapViewController: PrepareRouteViewControllerDelegate {
+    
+    func showRoutes(forType type: PrepareRouteViewController.RouteType) {
+        
+        self.removeRoutes()
+        
+        switch type {
+            
+        case .drive:
+            
+            guard let routes = self.viewModel?.driverRouteService.routes else { return }
+            
+            routes.enumerated().forEach { pair in
+            
+                let routePolyline = self.routesCollection.addPolyline(with: pair.element.geometry)
+                
+                if pair.offset == 0 {
+                    routePolyline.styleMainRoute()
+                } else {
+                    routePolyline.styleAlternativeRoute()
+                }
+                
+            }
+            
+        case .pedastrian:
+            
+            guard let route = self.viewModel?.pedastrinaRouteService.routes.first else { return }
+            
+            let routePolyline = self.routesCollection.addPolyline(with: route.geometry)
+            
+            routePolyline.stylePedastrianRoute()
+            
+        }
     }
     
 }

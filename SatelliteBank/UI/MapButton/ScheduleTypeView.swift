@@ -11,9 +11,12 @@ final class ScheduleTypeView<T: ScheduleRouteButton>: UIView {
     
     let button: T = T.init()
     
-    private var title: UILabel = {
+    var action: (() -> Void)?
+    
+    private(set) var title: UILabel = {
         let label = UILabel()
         label.numberOfLines = 1
+        label.font = UIFont.systemFont(ofSize: 10)
         return label
     }()
     
@@ -22,7 +25,7 @@ final class ScheduleTypeView<T: ScheduleRouteButton>: UIView {
         stackView.axis = .vertical
         stackView.distribution = .fill
         stackView.alignment = .center
-        stackView.spacing = 8
+        stackView.spacing = 4
         return stackView
     }()
     
@@ -40,8 +43,12 @@ final class ScheduleTypeView<T: ScheduleRouteButton>: UIView {
         self.layer.cornerRadius = 8
         self.clipsToBounds = true
         self.backgroundColor = .secondarySystemBackground
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapAction))
+        self.addGestureRecognizer(tapGesture)
         self.layout()
     }
+    
+    private let padding: CGFloat = 8
     
     func layout() {
         
@@ -49,17 +56,19 @@ final class ScheduleTypeView<T: ScheduleRouteButton>: UIView {
         
         self.addSubview(stackView)
         
-        self.stackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0).isActive = true
-        self.stackView.topAnchor.constraint(equalTo: self.topAnchor, constant: 0).isActive = true
-        self.stackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0).isActive = true
-        self.stackView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0).isActive = true
+        self.stackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: padding).isActive = true
+        self.stackView.topAnchor.constraint(equalTo: self.topAnchor, constant: padding).isActive = true
+        self.stackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -padding).isActive = true
+        self.stackView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -padding).isActive = true
         
         self.stackView.addArrangedSubview(self.button)
         self.stackView.addArrangedSubview(self.title)
         
-        self.button.widthAnchor.constraint(equalToConstant: 44).isActive = true
-//        self.button.heightAnchor.constraint(equalToConstant: 44).isActive = true
-        
+    }
+    
+    @objc
+    private func tapAction() {
+        self.action?()
     }
     
 }

@@ -7,6 +7,12 @@
 
 import UIKit
 
+protocol PrepareRouteViewControllerDelegate: AnyObject {
+    
+    func showRoutes(forType type: PrepareRouteViewController.RouteType)
+    
+}
+
 final class PrepareRouteViewController: UIViewController {
     
     private lazy var scrollView = ContentScrollView()
@@ -16,6 +22,8 @@ final class PrepareRouteViewController: UIViewController {
     }
     
     var closeCompletion: (() -> Void)?
+    
+    weak var delegate: PrepareRouteViewControllerDelegate?
     
     private let labelFrom: UILabel = {
         let label = UILabel()
@@ -37,11 +45,28 @@ final class PrepareRouteViewController: UIViewController {
     
     private let scheduleWalkTypeView = ScheduleTypeView<ScheduleWalkRouteButton>()
     
-    private let scheduleBusTypeView = ScheduleTypeView<ScheduleBusRouteButton>()
-    
     let closseButton = CloseButton()
     
     var office: IOffice!
+    
+    weak var mapViewModel: IMapViewModel?
+    
+    private let padding: CGFloat = 16
+    
+    private var scrollViewHeightConstraint: NSLayoutConstraint?
+    
+    enum RouteType {
+        case drive
+        case pedastrian
+    }
+    
+    private(set) var activeRouteType: RouteType? {
+        didSet {
+            self.updateButtons()
+            guard let activeRouteType = activeRouteType else { return }
+            self.delegate?.showRoutes(forType: activeRouteType)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,23 +78,65 @@ final class PrepareRouteViewController: UIViewController {
                 self?.closeCompletion?()
             }
         }
+        
+        self.scheduleCarTypeView.button.action = { [weak self] _ in
+            self?.activeRouteType = .drive
+        }
+        
+        self.scheduleCarTypeView.action = { [weak self] in
+            self?.activeRouteType = .drive
+        }
+        
+        self.scheduleWalkTypeView.action = { [weak self] in
+            self?.activeRouteType = .pedastrian
+        }
+        
+        self.scheduleWalkTypeView.button.action = { [weak self] _ in
+            self?.activeRouteType = .pedastrian
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.updateTitle()
+        self.activeRouteType = .drive
     }
     
     private func setupScrollView() {
         self.scrollView.bounces = true
         self.scrollView.alwaysBounceHorizontal = true
         self.scrollView.showsHorizontalScrollIndicator = false
+        self.scrollView.alwaysBounceVertical = false
     }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        self.scrollViewHeightConstraint?.constant = self.contentView.bounds.height
+        self.scrollView.contentSize = CGSize(width: self.scrollView.contentSize.width, height: self.contentView.bounds.height)
+    }
+    
+    func updateTitle() {
+        self.scheduleCarTypeView.title.text = self.mapViewModel?.driverRouteService.summary?.weight.timeWithTraffic.text
+        self.scheduleWalkTypeView.title.text = self.mapViewModel?.pedastrinaRouteService.summary?.weight.time.text
+    }
+    
+    private func updateButtons() {
+        self.scheduleCarTypeView.layer.borderColor = self.activeRouteType == .drive ? AppColor.primary.cgColor : nil
+        self.scheduleCarTypeView.layer.borderWidth = self.activeRouteType == .drive ? 1 : 0
+        self.scheduleWalkTypeView.layer.borderColor = self.activeRouteType == .pedastrian ? AppColor.primary.cgColor : nil
+        self.scheduleWalkTypeView.layer.borderWidth = self.activeRouteType == .pedastrian ? 1 : 0
+    }
+    
+}
+
+//MARK: - layout
+
+extension PrepareRouteViewController {
     
     private func layout() {
-        
         self.layoutScrollView()
         self.layoutContent()
-        
-        
     }
-    
-    private let padding: CGFloat = 16
     
     private func layoutScrollView() {
         
@@ -104,41 +171,22 @@ final class PrepareRouteViewController: UIViewController {
         
     }
     
-    private var scrollViewHeightConstraint: NSLayoutConstraint?
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        self.scrollViewHeightConstraint?.constant = self.contentView.bounds.height
-    }
-    
     private func layoutContent() {
         
         self.scheduleCarTypeView.translatesAutoresizingMaskIntoConstraints = false
         self.scheduleWalkTypeView.translatesAutoresizingMaskIntoConstraints = false
-        self.scheduleBusTypeView.translatesAutoresizingMaskIntoConstraints = false
         
         self.contentView.addSubview(self.scheduleCarTypeView)
         self.contentView.addSubview(self.scheduleWalkTypeView)
-        self.contentView.addSubview(self.scheduleBusTypeView)
         
         self.scheduleCarTypeView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: padding).isActive = true
         self.scheduleCarTypeView.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: padding).isActive = true
         self.scheduleCarTypeView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -padding).isActive = true
-        self.scheduleCarTypeView.widthAnchor.constraint(equalToConstant: 64).isActive = true
-        self.scheduleCarTypeView.heightAnchor.constraint(equalToConstant: 64).isActive = true
         
         self.scheduleWalkTypeView.leadingAnchor.constraint(equalTo: self.scheduleCarTypeView.trailingAnchor, constant: padding).isActive = true
         self.scheduleWalkTypeView.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: padding).isActive = true
         self.scheduleWalkTypeView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -padding).isActive = true
-        self.scheduleWalkTypeView.widthAnchor.constraint(equalToConstant: 64).isActive = true
-        self.scheduleWalkTypeView.heightAnchor.constraint(equalToConstant: 64).isActive = true
         
-        self.scheduleBusTypeView.leadingAnchor.constraint(equalTo: self.scheduleWalkTypeView.trailingAnchor, constant: padding).isActive = true
-        self.scheduleBusTypeView.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: padding).isActive = true
-        self.scheduleBusTypeView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -padding).isActive = true
-        self.scheduleBusTypeView.widthAnchor.constraint(equalToConstant: 64).isActive = true
-        self.scheduleBusTypeView.heightAnchor.constraint(equalToConstant: 64).isActive = true
-
     }
     
 }

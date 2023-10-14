@@ -20,11 +20,13 @@ protocol IMapViewModel: NSObject {
     
     var driverRouteService: DriverRouteService { get }
     
+    var pedastrinaRouteService: PedastrianRouteService { get }
+    
     func requestLocation()
     
     func createRoute(toOffice office: IOffice)
     
-    func clearRoutes()
+    func removeRoutes()
     
 }
 
@@ -60,10 +62,47 @@ final class MapViewModel: NSObject, IMapViewModel {
     
     func createRoute(toOffice office: IOffice) {
         
-        self.driverRouteService.createRoute(toOffice: office) { [weak self] error in
+        var resultError: NSError?
+        
+        let resultQueue = DispatchQueue(label: "MapViewModelRouteQueue", attributes: .concurrent)
+        
+        let group = DispatchGroup()
+        
+        group.enter()
+        
+        self.driverRouteService.createRoute(toOffice: office) { error in
+
+            resultQueue.async(flags: .barrier) {
+                
+                defer {
+                    group.leave()
+                }
+                
+                resultError = error
+            }
             
-            if let error = error {
-                self?.createRouteCompletion?(.failure(error.NSError))
+
+        }
+        
+        group.enter()
+        
+        self.pedastrinaRouteService.createRoute(toOffice: office) { error in
+
+            resultQueue.async(flags: .barrier) {
+                
+                defer {
+                    group.leave()
+                }
+                
+                resultError = error
+            }
+
+        }
+        
+        group.notify(queue: .main) { [weak self] in
+            
+            if let resultError = resultError {
+                self?.createRouteCompletion?(.failure(resultError.NSError))
             }
             else {
                 self?.createRouteCompletion?(.success(office))
@@ -73,7 +112,7 @@ final class MapViewModel: NSObject, IMapViewModel {
         
     }
     
-    func clearRoutes() {
+    func removeRoutes() {
         
         self.driverRouteService.removeRoutes()
         

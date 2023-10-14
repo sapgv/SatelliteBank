@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        YMKMapKit.setApiKey("a5b4968e-1ff7-4182-921a-9a08db8b6319")
+        YMKMapKit.setApiKey("7db63342-fa99-4fc9-a38c-2c8f54989094")
         YMKMapKit.sharedInstance()
         
         self.restoreAppearance()

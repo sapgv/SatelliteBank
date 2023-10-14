@@ -72,6 +72,14 @@ extension YMKPolylineMapObject {
         outlineColor = .black
         outlineWidth = 1.0
     }
+    
+    func stylePedastrianRoute() {
+        zIndex = 5.0
+        setStrokeColorWith(.systemPurple)
+        strokeWidth = 4.0
+        outlineColor = .black
+        outlineWidth = 1.0
+    }
 }
 
 extension YMKDrivingRoute {
