@@ -20,14 +20,23 @@ extension MapViewController: IMapViewController {
     
     func didTap(placemark: YMKPlacemarkMapObject) {
         
-        guard let office = self.viewModel?
+        if let office = self.viewModel?
             .officeService
             .offices
             .first(where: {
-                $0.coordinate.latitude == placemark.geometry.latitude && $0.coordinate.longitude == placemark.geometry.longitude
-            }) else { return }
-        
-        self.show(office: office)
+                $0.coordinate == placemark.geometry.coordinate
+            }) {
+            self.show(office: office)
+        }
+        else if let bonus = self.viewModel?
+            .bonusService
+            .bonuses
+            .first(where: {
+                $0.coordinate == placemark.geometry.coordinate
+                
+            }) {
+            self.show(bonus: bonus)
+        }
         
     }
     
@@ -41,6 +50,15 @@ extension MapViewController: IMapViewController {
         }
 
         self.present(viewController, animated: true)
+        
+    }
+    
+    private func show(bonus: IBonus) {
+        
+        let bonusViewController = BonusViewController()
+        bonusViewController.bonus = bonus
+        
+        self.present(bonusViewController, animated: true)
         
     }
     
@@ -60,6 +78,8 @@ class MapViewController: UIViewController {
     
     private lazy var bottomMapButtonStackView: MapButtonVerticalStackView = MapButtonVerticalStackView()
     
+    private lazy var topMapButtonStackView: MapButtonVerticalStackView = MapButtonVerticalStackView()
+    
     private let mapView: YMKMapView = YMKMapView()
     
     private var map: YMKMap {
@@ -72,9 +92,17 @@ class MapViewController: UIViewController {
     
     private var routesCollection: YMKMapObjectCollection!
     
+    private var bonusesCollection: YMKMapObjectCollection!
+    
     private var routes: [YMKDrivingRoute] = [] {
         didSet {
             self.updateRouteButton()
+        }
+    }
+    
+    private var showBonuses: Bool = false {
+        didSet {
+            self.updateBonusLayer()
         }
     }
     
@@ -85,6 +113,7 @@ class MapViewController: UIViewController {
         self.setupViewModel()
         self.setupScaleMapStackView()
         self.setupBottomMapButtonStackView()
+        self.setupTopMapButtonStackView()
         self.layout()
         self.updateData()
         
@@ -112,7 +141,7 @@ class MapViewController: UIViewController {
         self.viewModel?.masstransitRouteService.delegate = self
         
         self.routesCollection = map.mapObjects.add()
-        
+        self.bonusesCollection = map.mapObjects.add()
         self.viewModel?.createRouteCompletion = { [weak self] result in
             
             switch result {
@@ -170,8 +199,7 @@ class MapViewController: UIViewController {
                 self?.removeRoutes()
                 self?.viewModel?.removeRoutes()
             }
-    //        contentVC.delegate = self
-            
+
             let appearance = SurfaceAppearance()
             appearance.cornerRadius = 16
             fpc.surfaceView.appearance = appearance
@@ -247,6 +275,18 @@ class MapViewController: UIViewController {
         
     }
     
+    private func setupTopMapButtonStackView() {
+        
+        let bonusMapButton: BonusMapButton = BonusMapButton()
+        
+        bonusMapButton.action = { [weak self] _ in
+            self?.showBonuses.toggle()
+        }
+        
+        self.topMapButtonStackView.setButtons(buttons: [bonusMapButton])
+        
+    }
+    
     private func updateRouteButton() {
         guard let button = self.bottomMapButtonStackView.buttons.first(where: { $0 is RouteMapButton }) else { return }
         button.isHidden = self.routes.isEmpty
@@ -291,14 +331,6 @@ class MapViewController: UIViewController {
         
         self.currentLocationPlacemark.geometry = point
         
-    }
-    
-}
-
-extension MapViewController: ContentViewControllerDelegate {
-    
-    func searchBarTextDidBeginEditing() {
-        fpc.move(to: .full, animated: true)
     }
     
 }
@@ -382,19 +414,19 @@ extension MapViewController {
         
         guard let viewModel = self.viewModel else { return }
         
-        let collection = mapView.mapWindow.map.mapObjects.addClusterizedPlacemarkCollection(with: self)
+        let collectionPlacemarks = mapView.mapWindow.map.mapObjects.addClusterizedPlacemarkCollection(with: self)
         
         for office in viewModel.officeService.offices {
             
-            self.addPlacemark(office: office, toCollection: collection)
+            self.addPlacemarkOffice(office: office, toCollection: collectionPlacemarks)
             
         }
         
-        collection.clusterPlacemarks(withClusterRadius: 60, minZoom: 15)
+        collectionPlacemarks.clusterPlacemarks(withClusterRadius: 60, minZoom: 15)
         
     }
     
-    private func addPlacemark(office: IOffice, toCollection collection: YMKClusterizedPlacemarkCollection) {
+    private func addPlacemarkOffice(office: IOffice, toCollection collection: YMKClusterizedPlacemarkCollection) {
         
         let image = office.iconImage!
         
@@ -405,6 +437,37 @@ extension MapViewController {
         placemark.isDraggable = true
 
         placemark.addTapListener(with: mapObjectTapListener)
+        
+    }
+    
+    private func addPlacemarkBonus(bonus: IBonus) {
+        
+        let image = UIImage(named: "bonus")!
+        
+        let placemark = self.bonusesCollection.addPlacemark()
+        placemark.geometry = bonus.coordinate.point
+        let style = YMKIconStyle(anchor: nil, rotationType: nil, zIndex: nil, flat: nil, visible: nil, scale: 1, tappableArea: nil)
+        placemark.setIconWith(image, style: style)
+        placemark.isDraggable = true
+        
+        placemark.addTapListener(with: mapObjectTapListener)
+
+    }
+    
+    private func updateBonusLayer() {
+        
+        guard showBonuses else {
+            self.bonusesCollection.clear()
+            return
+        }
+        
+        guard let viewModel = self.viewModel else { return }
+        
+        for bonus in viewModel.bonusService.bonuses {
+            
+            self.addPlacemarkBonus(bonus: bonus)
+            
+        }
         
     }
     
@@ -474,6 +537,7 @@ extension MapViewController {
         self.mapView.translatesAutoresizingMaskIntoConstraints = false
         self.scaleMapStackView.translatesAutoresizingMaskIntoConstraints = false
         self.bottomMapButtonStackView.translatesAutoresizingMaskIntoConstraints = false
+        self.topMapButtonStackView.translatesAutoresizingMaskIntoConstraints = false
         
         for button in self.scaleMapStackView.buttons {
             button.translatesAutoresizingMaskIntoConstraints = false
@@ -483,9 +547,14 @@ extension MapViewController {
             button.translatesAutoresizingMaskIntoConstraints = false
         }
         
+        for button in self.topMapButtonStackView.buttons {
+            button.translatesAutoresizingMaskIntoConstraints = false
+        }
+        
         self.view.addSubview(self.mapView)
         self.view.addSubview(self.scaleMapStackView)
         self.view.addSubview(self.bottomMapButtonStackView)
+        self.view.addSubview(self.topMapButtonStackView)
 
         self.mapView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 0).isActive = true
         self.mapView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 0).isActive = true
@@ -506,6 +575,16 @@ extension MapViewController {
         self.bottomMapButtonStackView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -16).isActive = true
         
         for button in self.bottomMapButtonStackView.buttons {
+            button.widthAnchor.constraint(equalToConstant: locationArrowButtonSize).isActive = true
+            button.heightAnchor.constraint(equalToConstant: locationArrowButtonSize).isActive = true
+            button.layer.cornerRadius = locationArrowButtonSize / 2
+            button.clipsToBounds = true
+        }
+        
+        self.topMapButtonStackView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16).isActive = true
+        self.topMapButtonStackView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 16).isActive = true
+        
+        for button in self.topMapButtonStackView.buttons {
             button.widthAnchor.constraint(equalToConstant: locationArrowButtonSize).isActive = true
             button.heightAnchor.constraint(equalToConstant: locationArrowButtonSize).isActive = true
             button.layer.cornerRadius = locationArrowButtonSize / 2

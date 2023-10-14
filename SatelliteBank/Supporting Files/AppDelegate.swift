@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         YMKMapKit.setApiKey("7db63342-fa99-4fc9-a38c-2c8f54989094")
         YMKMapKit.sharedInstance()
-        
+
         self.restoreAppearance()
         
         OfficeService.shared.update()

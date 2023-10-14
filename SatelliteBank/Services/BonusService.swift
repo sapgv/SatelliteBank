@@ -41,7 +41,7 @@ final class BonusService: IBonusService {
         
         self.accessQueue.async {
             
-            guard let url = Bundle.main.url(forResource: "offices", withExtension: "txt") else { return }
+            guard let url = Bundle.main.url(forResource: "multibonus", withExtension: "json") else { return }
             
             do {
                 let data = try Data(contentsOf: url)

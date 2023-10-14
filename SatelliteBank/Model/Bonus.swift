@@ -32,9 +32,10 @@ final class Bonus: IBonus {
     init(data: [String: Any]) {
         self.name = data["name"] as? String ?? ""
         self.address = data["address"] as? String ?? ""
-        self.percent = data["percent"] as? Double ?? 0
-        let latitude = data["lat"] as? CGFloat ?? 0
-        let longitude = data["lng"] as? CGFloat ?? 0
+        let percentString = data["percent"] as? String ?? ""
+        self.percent = Double(percentString) ?? 0
+        let latitude = data["lat"] as? Double ?? 0
+        let longitude = data["lng"] as? Double ?? 0
         self.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
     }
     

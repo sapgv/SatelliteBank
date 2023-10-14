@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		108AE3F02ADB002B004C3A23 /* ScheduleMasstransitRouteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108AE3EF2ADB002B004C3A23 /* ScheduleMasstransitRouteButton.swift */; };
+		108AE3F42ADB1B6B004C3A23 /* BonusMapButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108AE3F32ADB1B6B004C3A23 /* BonusMapButton.swift */; };
+		108AE3F72ADB2172004C3A23 /* BonusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108AE3F62ADB2172004C3A23 /* BonusViewController.swift */; };
 		108F3D342ADA666D00B23072 /* Double + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108F3D332ADA666D00B23072 /* Double + Extensions.swift */; };
 		108F3D362ADA693300B23072 /* ScheduleRouteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108F3D352ADA693300B23072 /* ScheduleRouteButton.swift */; };
 		108F3D382ADA698300B23072 /* ScheduleCarRouteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108F3D372ADA698300B23072 /* ScheduleCarRouteButton.swift */; };
@@ -60,7 +62,6 @@
 		10BEBBA92AD870F7008F9DF0 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BEBBA72AD870F7008F9DF0 /* LoginViewController.swift */; };
 		10BEBBC12AD87111008F9DF0 /* CurrentLocationMapButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BEBBAA2AD87111008F9DF0 /* CurrentLocationMapButton.swift */; };
 		10BEBBC22AD87111008F9DF0 /* String + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BEBBAC2AD87111008F9DF0 /* String + Extensions.swift */; };
-		10BEBBC42AD87111008F9DF0 /* MapContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BEBBAE2AD87111008F9DF0 /* MapContentViewController.swift */; };
 		10BEBBC52AD87111008F9DF0 /* LoginViewSkipButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BEBBB12AD87111008F9DF0 /* LoginViewSkipButton.swift */; };
 		10BEBBC62AD87111008F9DF0 /* LoginViewAlternativeLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BEBBB22AD87111008F9DF0 /* LoginViewAlternativeLoginButton.swift */; };
 		10BEBBC72AD87111008F9DF0 /* LoginViewTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BEBBB32AD87111008F9DF0 /* LoginViewTitleLabel.swift */; };
@@ -85,6 +86,8 @@
 
 /* Begin PBXFileReference section */
 		108AE3EF2ADB002B004C3A23 /* ScheduleMasstransitRouteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleMasstransitRouteButton.swift; sourceTree = "<group>"; };
+		108AE3F32ADB1B6B004C3A23 /* BonusMapButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonusMapButton.swift; sourceTree = "<group>"; };
+		108AE3F62ADB2172004C3A23 /* BonusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonusViewController.swift; sourceTree = "<group>"; };
 		108F3D332ADA666D00B23072 /* Double + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double + Extensions.swift"; sourceTree = "<group>"; };
 		108F3D352ADA693300B23072 /* ScheduleRouteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleRouteButton.swift; sourceTree = "<group>"; };
 		108F3D372ADA698300B23072 /* ScheduleCarRouteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCarRouteButton.swift; sourceTree = "<group>"; };
@@ -139,7 +142,6 @@
 		10BEBBA72AD870F7008F9DF0 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		10BEBBAA2AD87111008F9DF0 /* CurrentLocationMapButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentLocationMapButton.swift; sourceTree = "<group>"; };
 		10BEBBAC2AD87111008F9DF0 /* String + Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String + Extensions.swift"; sourceTree = "<group>"; };
-		10BEBBAE2AD87111008F9DF0 /* MapContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapContentViewController.swift; sourceTree = "<group>"; };
 		10BEBBB12AD87111008F9DF0 /* LoginViewSkipButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewSkipButton.swift; sourceTree = "<group>"; };
 		10BEBBB22AD87111008F9DF0 /* LoginViewAlternativeLoginButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewAlternativeLoginButton.swift; sourceTree = "<group>"; };
 		10BEBBB32AD87111008F9DF0 /* LoginViewTitleLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewTitleLabel.swift; sourceTree = "<group>"; };
@@ -176,6 +178,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		108AE3F52ADB2165004C3A23 /* BonusViewController */ = {
+			isa = PBXGroup;
+			children = (
+				108AE3F62ADB2172004C3A23 /* BonusViewController.swift */,
+			);
+			path = BonusViewController;
+			sourceTree = "<group>";
+		};
 		108F3D392ADA69C800B23072 /* PrepareRouteViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -189,6 +199,7 @@
 			children = (
 				10BBC9C12AD91D300079085F /* MapButton.swift */,
 				10BEBBAA2AD87111008F9DF0 /* CurrentLocationMapButton.swift */,
+				108AE3F32ADB1B6B004C3A23 /* BonusMapButton.swift */,
 				10BBC9C42AD922C90079085F /* ScalePlusMapButton.swift */,
 				10BBC9C62AD9230B0079085F /* ScaleMinusMapButton.swift */,
 				10BBC9C82AD923710079085F /* MapButtonVerticalStackView.swift */,
@@ -212,14 +223,6 @@
 				108F3D442ADA756E00B23072 /* MyFloatingPanelLayout.swift */,
 			);
 			path = MapViewController;
-			sourceTree = "<group>";
-		};
-		10BBC9D32AD934980079085F /* MapContentViewController */ = {
-			isa = PBXGroup;
-			children = (
-				10BEBBAE2AD87111008F9DF0 /* MapContentViewController.swift */,
-			);
-			path = MapContentViewController;
 			sourceTree = "<group>";
 		};
 		10BBC9D62AD93D090079085F /* BankContentViewController */ = {
@@ -408,11 +411,11 @@
 		10BEBBD32AD87380008F9DF0 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				108AE3F52ADB2165004C3A23 /* BonusViewController */,
 				108F3D392ADA69C800B23072 /* PrepareRouteViewController */,
 				10BBC9D62AD93D090079085F /* BankContentViewController */,
 				10BEBBA52AD870F7008F9DF0 /* LoginViewController */,
 				10BEBBD42AD873F7008F9DF0 /* TabViewController */,
-				10BBC9D32AD934980079085F /* MapContentViewController */,
 				10BBC9D22AD9345C0079085F /* MapViewController */,
 				10BBC9D92AD93D340079085F /* FavoriteViewController */,
 			);
@@ -599,6 +602,7 @@
 				10BEBB902AD86F99008F9DF0 /* AppDelegate.swift in Sources */,
 				10BBC9D82AD93D200079085F /* BankContentViewController.swift in Sources */,
 				10BEBBCA2AD87111008F9DF0 /* LoginViewLogoImageView.swift in Sources */,
+				108AE3F42ADB1B6B004C3A23 /* BonusMapButton.swift in Sources */,
 				10BBC9C92AD923710079085F /* MapButtonVerticalStackView.swift in Sources */,
 				10BBCA022AD999B00079085F /* OfficeService.swift in Sources */,
 				10BEBBC72AD87111008F9DF0 /* LoginViewTitleLabel.swift in Sources */,
@@ -612,13 +616,13 @@
 				10BBCA062AD99D580079085F /* Error + Extensions.swift in Sources */,
 				108F3D362ADA693300B23072 /* ScheduleRouteButton.swift in Sources */,
 				10BEBBA92AD870F7008F9DF0 /* LoginViewController.swift in Sources */,
-				10BEBBC42AD87111008F9DF0 /* MapContentViewController.swift in Sources */,
 				10BEBBD62AD87420008F9DF0 /* TabViewController.swift in Sources */,
 				10BEBBC12AD87111008F9DF0 /* CurrentLocationMapButton.swift in Sources */,
 				10BBC9C52AD922C90079085F /* ScalePlusMapButton.swift in Sources */,
 				10BEBBA82AD870F7008F9DF0 /* MapViewModel.swift in Sources */,
 				108F3D3B2ADA69D800B23072 /* PrepareRouteViewController.swift in Sources */,
 				10BBCA042AD99C910079085F /* Thread + Extensions.swift in Sources */,
+				108AE3F72ADB2172004C3A23 /* BonusViewController.swift in Sources */,
 				10AEF8EE2ADAFA49008C3CBE /* BicyсleRouteService.swift in Sources */,
 				10BEBBCC2AD87111008F9DF0 /* PrimaryLabel.swift in Sources */,
 				108AE3F02ADB002B004C3A23 /* ScheduleMasstransitRouteButton.swift in Sources */,

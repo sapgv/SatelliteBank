@@ -34,6 +34,7 @@ class ChartCell: UITableViewCell {
         super.awakeFromNib()
         self.selectionStyle = .none
         self.chartView.leftAxis.enabled = false
+        self.chartView.fitBars = true
         self.chartView.rightAxis.enabled = false
         self.chartView.xAxis.labelPosition = .bottom
         self.chartView.dragEnabled = false
@@ -46,9 +47,9 @@ class ChartCell: UITableViewCell {
         }
     }
     
-    func setup(office: IOffice, charData: [ChartData] = ChartData.generate()) {
+    func setup(office: IOffice) {
         self.office = office
-        self.charData = charData
+        self.charData = ChartData.generate(office: office, color: office.load.color)
         self.setupLabels()
         self.updateChart(index: self.index)
     }
@@ -63,7 +64,6 @@ class ChartCell: UITableViewCell {
         self.loadImageView.image = office.iconImage
         self.loadLabel.text = office.load.title
         self.loadLabel.textColor = office.load.color
-//        self.queueLabel.text = "Очередь \(office.queue) человека"
         self.waitLabel.text = office.load.waitTitle
         
     }

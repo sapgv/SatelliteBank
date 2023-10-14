@@ -8,6 +8,8 @@
 import YandexMapsMobile
 
 final class MapObjectTapListener: NSObject, YMKMapObjectTapListener {
+
+    private weak var controller: IMapViewController?
     
     init(controller: IMapViewController) {
         self.controller = controller
@@ -19,6 +21,4 @@ final class MapObjectTapListener: NSObject, YMKMapObjectTapListener {
         return true
     }
 
-    private weak var controller: IMapViewController?
-    
 }
