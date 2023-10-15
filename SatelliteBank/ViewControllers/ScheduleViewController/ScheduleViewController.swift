@@ -11,7 +11,7 @@ final class ScheduleViewController: UIViewController {
     
     var office: IOffice?
     
-    private var date: Date = Date()
+    var date: Date = Date()
     
     private var tableView: UITableView!
     

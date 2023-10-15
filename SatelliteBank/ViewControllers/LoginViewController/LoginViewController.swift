@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import SkyFloatingLabelTextField
 
 final class LoginViewController: UIViewController {
     

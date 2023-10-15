@@ -235,6 +235,9 @@ class MapViewController: UIViewController {
                 self?.removeRoutes()
                 self?.viewModel?.removeRoutes()
             }
+            contentVC.scheduleCompletion = { [weak self] office, time in
+                self?.showSchedule(office: office, time: time)
+            }
 
             let appearance = SurfaceAppearance()
             appearance.cornerRadius = 16
@@ -504,6 +507,22 @@ extension MapViewController {
             self.addPlacemarkBonus(bonus: bonus)
             
         }
+        
+    }
+    
+}
+
+//MARK: - Show Schedule
+
+extension MapViewController {
+    
+    private func showSchedule(office: IOffice, time: Double) {
+        
+        let scheduleViewController = ScheduleViewController()
+        scheduleViewController.office = office
+        scheduleViewController.date = Date().addingTimeInterval(time)
+        
+        self.present(scheduleViewController, animated: true)
         
     }
     

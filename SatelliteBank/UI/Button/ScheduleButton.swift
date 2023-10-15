@@ -18,6 +18,7 @@ final class ScheduleButton: PrimaryInvertedButton {
     
     override func commonInit() {
         super.commonInit()
+        self.setTitle("Запланировать посещение", for: .normal)
         self.addTarget(self, action: #selector(self.tapAction), for: .touchUpInside)
     }
     

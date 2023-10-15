@@ -23,6 +23,8 @@ final class PrepareRouteViewController: UIViewController {
     
     var closeCompletion: (() -> Void)?
     
+    var scheduleCompletion: ((IOffice, Double) -> Void)?
+    
     weak var delegate: PrepareRouteViewControllerDelegate?
     
     private let labelFrom: UILabel = {
@@ -59,7 +61,9 @@ final class PrepareRouteViewController: UIViewController {
     
     private let scheduleMasstransitTypeView = ScheduleTypeView<ScheduleMasstransitRouteButton>()
     
-    let closseButton = CloseButton()
+    private let scheduleButton = ScheduleButton()
+    
+    private let closseButton = CloseButton()
     
     var office: IOffice!
     
@@ -84,15 +88,47 @@ final class PrepareRouteViewController: UIViewController {
         }
     }
     
+    private var activeTimeDistance: Double? {
+        switch self.activeRouteType {
+        case .drive:
+            return self.mapViewModel?.driverRouteService.summary?.weight.timeWithTraffic.value
+        case .pedastrian:
+            return self.mapViewModel?.pedastrinaRouteService.summary?.weight.time.value
+        case .bicycle:
+            return self.mapViewModel?.bicyсleRouteService.summary?.weight.time.value
+        case .masstransit:
+            return self.mapViewModel?.masstransitRouteService.summary?.weight.time.value
+        default:
+            return nil
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.labelTo.text = self.office?.salePointName ?? "Банк"
         self.setupScrollView()
+        self.setupUI()
         self.layout()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.updateTitle()
+        self.activeRouteType = .drive
+    }
+    
+    private func setupUI() {
+        
         self.closseButton.action = { [weak self] _ in
             self?.dismiss(animated: true) {
                 self?.closeCompletion?()
             }
+        }
+        
+        self.scheduleButton.action = { [weak self] _ in
+            guard let activeTimeDistance = self?.activeTimeDistance else { return }
+            guard let office = self?.office else { return }
+            self?.scheduleCompletion?(office, activeTimeDistance)
         }
         
         self.scheduleCarTypeView.button.action = { [weak self] _ in
@@ -127,12 +163,6 @@ final class PrepareRouteViewController: UIViewController {
             self?.activeRouteType = .masstransit
         }
         
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        self.updateTitle()
-        self.activeRouteType = .drive
     }
     
     private func setupScrollView() {
@@ -183,12 +213,14 @@ extension PrepareRouteViewController {
         self.labelAddressTo.translatesAutoresizingMaskIntoConstraints = false
         self.scrollView.translatesAutoresizingMaskIntoConstraints = false
         self.closseButton.translatesAutoresizingMaskIntoConstraints = false
+        self.scheduleButton.translatesAutoresizingMaskIntoConstraints = false
         
         self.view.addSubview(self.scrollView)
         self.view.addSubview(self.labelFrom)
         self.view.addSubview(self.labelTo)
         self.view.addSubview(self.labelAddressTo)
         self.view.addSubview(self.closseButton)
+        self.view.addSubview(self.scheduleButton)
         
         self.closseButton.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 0).isActive = true
         self.closseButton.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: 0).isActive = true
@@ -212,6 +244,11 @@ extension PrepareRouteViewController {
         self.scrollView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: 0).isActive = true
         self.scrollViewHeightConstraint = self.scrollView.heightAnchor.constraint(equalToConstant: 100)
         self.scrollViewHeightConstraint?.isActive = true
+        
+        self.scheduleButton.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: padding).isActive = true
+        self.scheduleButton.topAnchor.constraint(equalTo: self.scrollView.bottomAnchor, constant: 0).isActive = true
+        self.scheduleButton.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -padding).isActive = true
+        self.scheduleButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
         
     }
     

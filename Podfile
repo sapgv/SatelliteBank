@@ -8,7 +8,6 @@ target 'SatelliteBank' do
   # Pods for SatelliteBank
   pod 'YandexMapsMobile', '4.4.0-full'
   pod 'FloatingPanel'
-  pod 'SkyFloatingLabelTextField', '~> 3.0'
   pod 'DGCharts'
   
 end
