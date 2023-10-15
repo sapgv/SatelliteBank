@@ -358,9 +358,10 @@ class MapViewController: UIViewController {
     private func moveToCurrentLocation() {
         guard let currentLocation = self.currentLocation else { return }
         
+        let animation = YMKAnimation(type: .smooth, duration: 2)
         let cameraPosition = YMKCameraPosition(target:currentLocation.point, zoom: 14, azimuth: 0, tilt: 0)
         
-        mapView.mapWindow.map.move(with: cameraPosition)
+        mapView.mapWindow.map.move(with: cameraPosition, animation: animation)
         
     }
     
